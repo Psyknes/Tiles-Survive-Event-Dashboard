@@ -508,7 +508,10 @@ let day = ["Sun","Mon","Tue","Wed","Thu","Fri","Sat"][t.d];
 row.innerHTML = `
 <span>${day}</span>
 <span class="time" data-day="${t.d}" data-hour="${t.times[0]}">
-${t.task}
+${t.task}<br>
+<small style="color:#aaa;font-size:11px;">
+${[...new Set(t.events)].join(" | ")}
+</small>
 </span>
 `;
 
