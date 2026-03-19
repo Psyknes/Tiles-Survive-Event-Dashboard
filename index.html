@@ -807,7 +807,7 @@ let h=Math.floor(diff/1000/60/60);
 let m=Math.floor((diff/1000/60)%60);
 
 timer.innerHTML=
-"Next Triple Stack<br><b>"+next.name+"</b><br>"+h+"h "+m+"m";
+"<small>Next</small><br><b>"+next.name+"</b> • "+h+"h "+m+"m";
 
 }
 
@@ -860,8 +860,7 @@ minute:'2-digit'
 });
 
 el.innerHTML =
-"<b>🔹 ACTIVE:</b> "+active.name+
-"<br>"+start+" - "+end;
+"<small>Next</small><br><b>"+next.name+"</b> • "+h+"h "+m+"m";
 
 }
 else if(next){
