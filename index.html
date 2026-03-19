@@ -229,8 +229,8 @@ filter: drop-shadow(0 0 6px rgba(255,215,0,.45))
 
 .allianceLogo{
 display:block;
-margin:auto;
-height:90px;
+margin:0;
+height:50px;
 margin-bottom:8px;
 animation: emblemGlow 3.5s infinite ease-in-out;
 }
@@ -377,6 +377,24 @@ font-weight:bold;
 font-size:14px;
 opacity:.9;
 }  
+
+.headerBar{
+display:flex;
+align-items:center;
+gap:10px;
+margin-bottom:10px;
+}
+
+.headerText h1{
+margin:0;
+font-size:20px;
+}
+
+.headerText .subtitle{
+margin:0;
+font-size:12px;
+opacity:.7;
+}
   
 </style>
 </head>
@@ -385,10 +403,16 @@ opacity:.9;
 
 <div class="appContainer"> 
 
+<div class="headerBar">
+
 <img src="chillin_logo.png" class="allianceLogo">
- 
+
+<div class="headerText">
 <h1>Tiles Survive</h1>
 <div class="subtitle">Alliance Event Planner</div>
+</div>
+
+</div>  
 <div id="activeBanner" class="activeBanner"></div>
   
 <div class="card ghoulionCard">
