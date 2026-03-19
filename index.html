@@ -797,9 +797,37 @@ timer.innerHTML = "No triple tasks";
 return;
 }
 
-let task = triple[0]; // highest priority (for now)
+let selected = null;
+let soonest = null;
 
-let timing = getTaskTiming(task);
+triple.forEach(t => {
+
+let timing = getTaskTiming(t);
+
+// PRIORITY 1 → ACTIVE
+if(timing.active){
+selected = {task:t, timing};
+return;
+}
+
+// PRIORITY 2 → NEXT SOONEST
+if(timing.next){
+if(!soonest || timing.next.start < soonest.timing.next.start){
+soonest = {task:t, timing};
+}
+}
+
+});
+
+if(!selected) selected = soonest;
+
+if(!selected){
+timer.innerHTML = "No upcoming tasks";
+return;
+}
+
+let task = selected.task;
+let timing = selected.timing;
 
 if(timing.active){
 
@@ -845,9 +873,37 @@ el.innerHTML = "No double tasks";
 return;
 }
 
-let task = double[0];
+let selected = null;
+let soonest = null;
 
-let timing = getTaskTiming(task);
+double.forEach(t => {
+
+let timing = getTaskTiming(t);
+
+// PRIORITY 1 → ACTIVE
+if(timing.active){
+selected = {task:t, timing};
+return;
+}
+
+// PRIORITY 2 → NEXT SOONEST
+if(timing.next){
+if(!soonest || timing.next.start < soonest.timing.next.start){
+soonest = {task:t, timing};
+}
+}
+
+});
+
+if(!selected) selected = soonest;
+
+if(!selected){
+el.innerHTML = "No upcoming tasks";
+return;
+}
+
+let task = selected.task;
+let timing = selected.timing;
 
 if(timing.active){
 
@@ -874,10 +930,9 @@ let m = Math.floor((diff/1000/60)%60);
 el.innerHTML =
 "<small>Next</small><br><b>"+task.task+"</b> • "+h+"h "+m+"m";
 
-}else{
-
+else{
 el.innerHTML = "No upcoming tasks";
-
+}  
 }
 
 }
