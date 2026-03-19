@@ -391,14 +391,14 @@ vertical-align:middle;
 </div>
 
 <div class="card triple">
-<h2>◆ Triple Stack (Alliance Duel | Turbo Turtle | Power Play)</h2>
+<h2>◆ Triple Chain (Alliance Duel | Turbo Turtle | Power Play)</h2>
 
 <div id="tripleList"></div>
 </div>
 
 
 <div class="card double">
-<h2>◆ Double Stack (For Rankings)</h2>
+<h2>◆ Double Chain (For Rankings)</h2>
 
 <div id="doubleList"></div>
 
@@ -622,12 +622,19 @@ row.className = "row";
 
 let timeText = "";
 
-if(t.times.includes("ALL")){
+let hasPowerPlay = t.events.includes("Power Play");
+
+if(hasPowerPlay){
+let h = t.times.find(x => x !== "ALL");
+timeText = h.toString().padStart(2,'0') + ":00";
+}
+else if(t.times.includes("ALL")){
 timeText = "All Day";
-}else{
+}
+else{
 let h = t.times[0];
 timeText = h.toString().padStart(2,'0') + ":00";
-}  
+} 
 
 row.innerHTML = `
 <span>${t.d}</span>
@@ -654,9 +661,16 @@ row.className = "row";
 
 let timeText = "";
 
-if(t.times.includes("ALL")){
+let hasPowerPlay = t.events.includes("Power Play");
+
+if(hasPowerPlay){
+let h = t.times.find(x => x !== "ALL");
+timeText = h.toString().padStart(2,'0') + ":00";
+}
+else if(t.times.includes("ALL")){
 timeText = "All Day";
-}else{
+}
+else{
 let h = t.times[0];
 timeText = h.toString().padStart(2,'0') + ":00";
 }
@@ -756,6 +770,26 @@ next = {start};
 return {active,next};
 
 }
+
+function getDayCountdown(type){
+
+let now = new Date();
+
+let end = new Date();
+end.setUTCHours(24,0,0,0);
+
+let diff = end - now;
+
+let h = Math.floor(diff/1000/60/60);
+let m = Math.floor((diff/1000/60)%60);
+
+if(type === "end"){
+return `<span style="color:#ff6a6a">ends</span> in ${h}h ${m}m`;
+}
+
+return `<span style="color:#4dff88">starts</span> in ${h}h ${m}m`;
+
+}
   
 function updateTimer(){
 
@@ -816,7 +850,7 @@ return;
 
 let task = selected.task;
 let timing = selected.timing;
-let hasPowerPlay = task.events && task.events.includes("Power Play");
+let hasPowerPlay = true; // triple always has it
 
 if(!hasPowerPlay && task.times.includes("ALL")){
 timer.innerHTML =
@@ -874,8 +908,21 @@ let soonest = null;
 double.forEach(t => {
 
 // ✅ PRIORITY 0 → ALL DAY
-if(t.times.includes("ALL") && !selected){
-selected = {task:t, timing:null};
+let hasPowerPlay = t.events.includes("Power Play");
+
+if(hasPowerPlay){
+let timing = getTaskTiming(t);
+
+if(timing.active && !selected){
+selected = {task:t, timing};
+return;
+}
+
+if(timing.next){
+if(!soonest || timing.next.start < soonest.timing.next.start){
+soonest = {task:t, timing};
+}
+}
 return;
 }
 
@@ -909,7 +956,8 @@ let hasPowerPlay = task.events && task.events.includes("Power Play");
 
 if(!hasPowerPlay && task.times.includes("ALL")){
 el.innerHTML =
-"<small>🔹 ACTIVE</small><br><b>"+task.task+"</b><br>All Day";
+"<small>🔹 ACTIVE</small><br><b>"+task.task+"</b><br>"+
+"All Day • " + getDayCountdown();
 return;
 }
   
@@ -928,7 +976,7 @@ minute:'2-digit'
 el.innerHTML =
 "<small>🔹 ACTIVE</small><br><b>"+task.task+"</b><br>"+
 "<small style='opacity:.7'>"+[...new Set(task.events)].join(" | ")+"</small><br>"+
-(hasPowerPlay ? (start+" - "+end) : "All Day");
+(hasPowerPlay ? (h+"h "+m+"m") : ("All Day • " + getDayCountdown()));
 
 }else if(timing.next){
 
@@ -949,7 +997,7 @@ el.innerHTML = "No upcoming tasks";
 }  
 }
 
-  function getEventIcons(events){
+function getEventIcons(events){
 
 return [...new Set(events)].map(e => {
 let src = eventIcons[e];
@@ -997,7 +1045,7 @@ let todayTriple = triple.filter(t => t.d === today);
 
 if(todayTriple.length){
 
-html += "<b>◆ Triple Stack</b><br>";
+html += "<b>◆ Triple Chain</b><br>";
 
 todayTriple.forEach(t => {
 
@@ -1007,10 +1055,10 @@ let status = "";
 
 // Handle ALL DAY tasks
   
-if(t.times.includes("ALL")){
-status = "⚡ ACTIVE";
-}
-else if(timing.active){
+let hasPowerPlay = t.events.includes("Power Play");
+
+if(hasPowerPlay){
+if(timing.active){
 status = "⚡ ACTIVE";
 }
 else if(timing.next){
@@ -1018,6 +1066,10 @@ status = "⭐ Upcoming";
 }
 else{
 status = "✔ Completed";
+}
+}
+else if(t.times.includes("ALL")){
+status = "⚡ ACTIVE";
 }
   
 let icons = getEventIcons(t.events);
@@ -1039,7 +1091,7 @@ let todayDouble = double.filter(t => t.d === today);
 
 if(todayDouble.length){
 
-html += "<br><b>◆ Double Stack</b><br>";
+html += "<br><b>◆ Double Chain</b><br>";
 
 todayDouble.forEach(t => {
 
