@@ -275,8 +275,10 @@ border-bottom:1px solid #333;
 padding-bottom:6px;
 }
 
-.hunterSplit{
+.hunterStack{
 display:flex;
+flex-direction:column;
+gap:10px;
 }
 
 .hunterBox{
@@ -289,12 +291,8 @@ align-items:center;
 justify-content:center;
 }
 
-.hunterBox:first-child{
-border-right:1px solid rgba(255,255,255,0.08);
-}
-
 .hunterBox .timer{
-font-size:16px;
+font-size:15px;
 line-height:1.25;
 }
 
@@ -368,7 +366,7 @@ color:#6fb6ff;
 
 <div class="hunterTitle">Task Hunter</div>
 
-<div class="hunterSplit">
+<div class="hunterStack">
 
 <div class="hunterBox tripleBox">
 <div class="hunterLabel">Triple Chain</div>
@@ -378,8 +376,6 @@ color:#6fb6ff;
 <div class="hunterBox doubleBox">
 <div class="hunterLabel">Double Chain</div>
 <div class="timer" id="doubleTimer"></div>
-</div>
-
 </div>
 
 </div>
@@ -792,7 +788,7 @@ minute:'2-digit'
 });
 
 timer.innerHTML=
-"<small>⚡ ACTIVE</small><br><b>"+active.name+"</b>"
+"<small>⚡ ACTIVE</small><br><b>"+active.name+"</b>"+
 "<br>"+start+" - "+end;
 
 let banner=document.getElementById("activeBanner");
@@ -875,7 +871,7 @@ let h = Math.floor(diff/1000/60/60);
 let m = Math.floor((diff/1000/60)%60);
 
 el.innerHTML =
-"<small>Next</small><br><b>"+next.name+"</b>"
+"<small>Next</small><br><b>"+next.name+"</b>"+
 "<br>"+h+"h "+m+"m";
 
 }
