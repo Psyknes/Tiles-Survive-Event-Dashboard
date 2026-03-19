@@ -608,6 +608,26 @@ return {triple, double};
 
 }
 
+function formatToLocalTime(hourUTC, dayStr){
+
+let days = ["Sun","Mon","Tue","Wed","Thu","Fri","Sat"];
+let targetDay = days.indexOf(dayStr);
+
+let date = new Date();
+date.setUTCHours(hourUTC,0,0,0);
+
+let diff = targetDay - date.getUTCDay();
+if(diff < 0) diff += 7;
+
+date.setUTCDate(date.getUTCDate() + diff);
+
+return date.toLocaleTimeString([],{
+hour:'2-digit',
+minute:'2-digit'
+});
+
+}
+  
 function renderTriple(){
 
 let {triple} = classifyTasks();
@@ -626,14 +646,14 @@ let hasPowerPlay = t.events.includes("Power Play");
 
 if(hasPowerPlay){
 let h = t.times.find(x => x !== "ALL");
-timeText = h.toString().padStart(2,'0') + ":00";
+timeText = formatToLocalTime(h, t.d);
 }
 else if(t.times.includes("ALL")){
 timeText = "All Day";
 }
 else{
 let h = t.times[0];
-timeText = h.toString().padStart(2,'0') + ":00";
+timeText = formatToLocalTime(h, t.d);
 } 
 
 row.innerHTML = `
@@ -665,14 +685,14 @@ let hasPowerPlay = t.events.includes("Power Play");
 
 if(hasPowerPlay){
 let h = t.times.find(x => x !== "ALL");
-timeText = h.toString().padStart(2,'0') + ":00";
+timeText = formatToLocalTime(h, t.d);
 }
 else if(t.times.includes("ALL")){
 timeText = "All Day";
 }
 else{
 let h = t.times[0];
-timeText = h.toString().padStart(2,'0') + ":00";
+timeText = formatToLocalTime(h, t.d);
 }
 
 row.innerHTML = `
@@ -703,33 +723,6 @@ return {start:eventStart,end:eventEnd};
 
 }
  
-function convertTimes(){
-
-document.querySelectorAll(".time").forEach(el=>{
-
-let days = ["Sun","Mon","Tue","Wed","Thu","Fri","Sat"];
-let day = days.indexOf(el.dataset.day);
-let hour=parseInt(el.dataset.hour);
-
-let event=new Date();
-event.setUTCHours(hour,0,0,0);
-
-let diff=day-event.getUTCDay();
-if(diff<0) diff+=7;
-
-event.setUTCDate(event.getUTCDate()+diff);
-
-let local=event.toLocaleTimeString([],{
-hour:'2-digit',
-minute:'2-digit'
-});
-
-el.innerText = local + " — " + el.innerText;
-
-});
-
-}
-  
 function getTaskTiming(task){
 
 let now = new Date();
@@ -1012,7 +1005,6 @@ setInterval(function(){
 renderTriple();
 renderDouble();
 
-convertTimes();
 updateTimer();
 updateDoubleTimer();
 updateTodayPanel();
@@ -1022,7 +1014,6 @@ updateTodayPanel();
 renderTriple();
 renderDouble();  
   
-convertTimes();  
 updateTimer();
 updateDoubleTimer();  
  
