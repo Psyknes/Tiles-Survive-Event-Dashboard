@@ -708,12 +708,52 @@ ticker.style.display = "none";
 return;
 }
 
-text.innerHTML = data.message;
+let now = new Date();
 
-// emergency styling
-if(data.emergency){
+// 🔥 DEFAULT STATES
+let isEmergency = false;
+
+// 🔥 CHECK TIMED EMERGENCY
+if(data.emergency && data.emergency.active){
+
+let start = data.emergency.startTime ? new Date(data.emergency.startTime) : null;
+let end = data.emergency.endTime ? new Date(data.emergency.endTime) : null;
+
+// cases:
+// 1. both start + end
+if(start && end){
+if(now >= start && now <= end){
+isEmergency = true;
+}
+}
+
+// 2. only end (active immediately until end)
+else if(!start && end){
+if(now <= end){
+isEmergency = true;
+}
+}
+
+// 3. only start (active after start indefinitely)
+else if(start && !end){
+if(now >= start){
+isEmergency = true;
+}
+}
+
+// 4. fallback (manual on)
+else{
+isEmergency = true;
+}
+
+}
+
+// 🔥 APPLY MESSAGE
+if(isEmergency){
+text.innerHTML = "🚨 " + data.message;
 ticker.classList.add("emergency");
 }else{
+text.innerHTML = data.normalMessage || data.message;
 ticker.classList.remove("emergency");
 }
 
