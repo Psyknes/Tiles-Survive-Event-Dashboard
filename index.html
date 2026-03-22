@@ -1056,14 +1056,9 @@ console.log("Prep load error", e);
 }
 }
   
-let cachedTasks = null;  
-
 function getTasks(){
-if(!cachedTasks){
-cachedTasks = classifyTasks();
-}
-return cachedTasks;
-}  
+return classifyTasks();
+} 
 
 const eventIcons = {
 "Alliance Duel": "Alliance_Duel.PNG",
