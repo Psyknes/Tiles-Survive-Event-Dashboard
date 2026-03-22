@@ -643,7 +643,7 @@ animation: heatPulse 1.5s ease-in-out infinite;
 
 <div>
 
-<b class="ghoulionTitle">Ghoulion Pursuit</b>
+<b id="ghoulionTitle" class="ghoulionTitle">Ghoulion Pursuit</b>
 <div id="ghoulionTimer" class="ghoulionTimer"></div>
 
 </div>
@@ -924,6 +924,7 @@ return;
 }
 
 let e = data.event;   // ✅ DEFINE FIRST
+document.getElementById("ghoulionTitle").innerText = e.name;  
 
 // 🔥 NOW SAFE TO USE
 let imgName = e.name.toLowerCase().replace(/\s+/g,"_");
