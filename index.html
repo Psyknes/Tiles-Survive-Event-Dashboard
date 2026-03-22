@@ -571,9 +571,19 @@ font-size:18px;
 .ghoulionBar.active{
 position:relative;
 overflow:hidden;
-background:linear-gradient(90deg,#2a1a00,#3a2000,#2a1a00);
+
+/* 🔥 stronger base */
+background:linear-gradient(90deg,#3a1f00,#5a2f00,#3a1f00);
 color:#ffcc66;
-box-shadow:0 0 12px rgba(255,140,0,0.6);
+
+/* 🔥 MUCH stronger glow */
+box-shadow:
+0 0 12px rgba(255,140,0,0.8),
+0 0 24px rgba(255,100,0,0.6),
+0 0 36px rgba(255,80,0,0.4);
+
+/* 🔥 subtle scale (makes it pop) */
+transform:scale(1.02);
 }
 
 /* 🔥 moving flame glow */
@@ -584,14 +594,17 @@ top:0;
 left:-100%;
 width:200%;
 height:100%;
+/* 🔥 lighter overlay */
 background:linear-gradient(
 120deg,
 transparent,
-rgba(255,120,0,0.4),
-rgba(255,200,0,0.3),
+rgba(255,120,0,0.25),
+rgba(255,200,0,0.2),
 transparent
 );
+
 animation: flameMove 2s linear infinite;
+pointer-events:none;
 }
 
 /* 🔥 pulse heat effect */
@@ -965,8 +978,13 @@ if(data.state === "active") label = "Active";
 if(data.state === "prep") label = "Next";
 if(data.state === "cooldown") label = "Wrap";
 
+let barClass = "ghoulionBar";
+
+if(data.state === "active") barClass += " active";
+if(data.state === "prep") barClass += " alert";
+
 let timerText =
-"<div class='ghoulionBar'>" +
+"<div class='" + barClass + "'>" +
 e.name + " • " + label + " • " + localTime +
 " • "+h+"h "+m+"m</div>";
 
