@@ -66,8 +66,9 @@ width:100%;
 overflow:hidden;
 white-space:nowrap;
 background:#0f0f0f;
-font-size:12px;
+font-size:13px;          /* slightly bigger text */
 border-bottom:1px solid #222;
+padding:4px 0;           /* NEW → gives breathing room */
 }
 
 .eventScroll{
@@ -77,20 +78,22 @@ animation: scrollTicker 40s linear infinite;
 }
 
 .eventItem{
-margin-right:40px;
+margin-right:50px;      /* was 40px */
 display:inline-flex;
 align-items:center;
 gap:6px;
 }
 
 .eventItem img{
-width:18px;
-height:18px;
+width:24px;          /* was 18px */
+height:24px;
 border-radius:50%;
+object-fit:cover;
 }
 
 .eventUrgent img{
-box-shadow:0 0 8px red;
+box-shadow:0 0 0 2px rgba(255,80,80,0.9),   /* clean ring */
+           0 0 8px rgba(255,0,0,0.6);       /* soft glow */
 }
 
 .eventUrgent{
