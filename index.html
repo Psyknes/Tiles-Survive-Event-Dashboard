@@ -5,7 +5,48 @@
 <title>Tiles Survive Alliance Planner</title>
   
 <style>
+  
+/* 🔥 Ticker container */
+#ticker{
+width:100%;
+overflow:hidden;
+white-space:nowrap;
+background:#111;
+border-bottom:1px solid #333;
+font-size:13px;
+z-index:999;
+}
 
+/* scrolling text */
+.tickerText{
+display:inline-block;
+padding:6px 0;
+padding-left:100%;
+animation: scrollTicker 18s linear infinite;
+}
+
+/* animation */
+@keyframes scrollTicker{
+0%{transform:translateX(0);}
+100%{transform:translateX(-100%);}
+}
+
+/* 🚨 emergency mode */
+#ticker.emergency{
+background:#2a0000;
+color:#ff4d4d;
+box-shadow:0 0 10px rgba(255,0,0,0.6);
+}
+
+#ticker.emergency .tickerText{
+animation-duration:10s;
+}
+
+/* highlight helper (optional use in message) */
+.highlight{
+color:#4fc3f7;
+font-weight:bold;
+}
 body{
 background:#0b0b0b;
 color:white;
@@ -514,6 +555,10 @@ animation: heatPulse 1.5s ease-in-out infinite;
 
 <div class="appContainer"> 
 
+<div id="ticker">
+  <div class="tickerText"></div>
+</div>
+  
 <div class="headerBar">
 
 <img src="chillin_logo.png" class="allianceLogo">
@@ -634,7 +679,36 @@ animation: heatPulse 1.5s ease-in-out infinite;
 
 
 <script>
+  
+async function loadTicker(){
 
+try{
+
+let res = await fetch("data/announcement.json");
+let data = await res.json();
+
+let ticker = document.getElementById("ticker");
+let text = document.querySelector(".tickerText");
+
+if(!data.enabled){
+ticker.style.display = "none";
+return;
+}
+
+text.innerHTML = data.message;
+
+// emergency styling
+if(data.emergency){
+ticker.classList.add("emergency");
+}else{
+ticker.classList.remove("emergency");
+}
+
+}catch(e){
+console.log("Ticker load error", e);
+}
+
+}
 let cachedTasks = null;  
 
 function getTasks(){
@@ -1307,7 +1381,9 @@ renderTriple();
 renderDouble();  
   
 updateTimer();
-updateDoubleTimer();  
+updateDoubleTimer();
+
+loadTicker();  
  
   
 function updateTodayPanel(){
