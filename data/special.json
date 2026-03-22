@@ -36,7 +36,7 @@
     "active": true,
     "priority": 4,
     "start": "2026-03-25T10:00:00Z",
-    "duration": 51840,
+    "duration": 180,
     "repeat": 0
   },
 
