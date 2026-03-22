@@ -757,6 +757,32 @@ animation: heatPulse 1.5s ease-in-out infinite;
 
 <script>
 
+function getLocalDay(hourUTC, dayStr){
+
+if(hourUTC === "ALL") return dayStr;
+
+let days = ["Sun","Mon","Tue","Wed","Thu","Fri","Sat"];
+
+let date = new Date();
+
+if(typeof hourUTC === "string" && hourUTC.includes(":")){
+hourUTC = Number(hourUTC.split(":")[0]);
+}else{
+hourUTC = Number(hourUTC);
+}
+
+date.setUTCHours(hourUTC,0,0,0);
+
+let targetDay = days.indexOf(dayStr);
+let diff = targetDay - date.getUTCDay();
+if(diff < 0) diff += 7;
+
+date.setUTCDate(date.getUTCDate() + diff);
+
+// 🔥 convert to LOCAL day
+return days[date.getDay()];
+}  
+  
 let rawData = [];
   
 let prepData = {};  
@@ -1028,6 +1054,8 @@ let html = "";
 
 longEvents.forEach(e => {
 
+if(!e.end) return;  
+
 let end = new Date(e.end);
 
 if(now > end) return;
@@ -1233,8 +1261,12 @@ timeText = "All Day";
   
 }
   
+let h = t.times.find(x => x !== "ALL");
+
+let displayDay = getLocalDay(h, t.d);
+
 row.innerHTML = `
-<span>${t.d}</span>
+<span>${displayDay}</span>
 <span>${timeText} — ${t.task}</span>
 `;
 
@@ -1253,18 +1285,30 @@ container.innerHTML = "";
 
 double.sort((a,b)=>{
 
+function getNextTime(t){
+let h = t.times.find(x => x !== "ALL");
+if(!h) return Infinity;
+
+let date = new Date();
+
+if(typeof h === "string" && h.includes(":")){
+h = Number(h.split(":")[0]);
+}else{
+h = Number(h);
+}
+
+date.setUTCHours(h,0,0,0);
+
 let days = ["Sun","Mon","Tue","Wed","Thu","Fri","Sat"];
+let diff = days.indexOf(t.d) - date.getUTCDay();
+if(diff < 0) diff += 7;
 
-let d1 = days.indexOf(a.d);
-let d2 = days.indexOf(b.d);
+date.setUTCDate(date.getUTCDate()+diff);
 
-if(d1 !== d2) return d1 - d2;
+return date.getTime();
+}
 
-// secondary sort by time
-let t1 = a.times.find(x => x !== "ALL") || "99:99";
-let t2 = b.times.find(x => x !== "ALL") || "99:99";
-
-return t1.localeCompare(t2);
+return getNextTime(a) - getNextTime(b);
 
 });  
 
@@ -1306,8 +1350,12 @@ timeText = "All Day";
 }
   
 
+let h = t.times.find(x => x !== "ALL");
+
+let displayDay = getLocalDay(h, t.d);
+
 row.innerHTML = `
-<span>${t.d}</span>
+<span>${displayDay}</span>
 <span>${timeText} — ${t.task}</span>
 `;
 
@@ -1355,7 +1403,7 @@ if(diff < 0) diff += 7;
 start.setUTCDate(start.getUTCDate()+diff);
 
 let end = new Date(start);
-end.setHours(end.getHours()+4);
+end.setUTCHours(end.getUTCHours()+4);
 
 if(now >= start && now < end){
 active = {start,end};
@@ -1442,6 +1490,13 @@ soonest = {task:t, timing};
 
 if(!selected) selected = soonest;
 
+// 🔥 FALLBACK (ADD THIS HERE)
+if(!selected && triple.length){
+selected = {
+task: triple[0],
+timing: getTaskTiming(triple[0])
+};
+}
 
 if(!selected){
 timer.innerHTML = "No upcoming tasks";
