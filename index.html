@@ -1189,9 +1189,13 @@ else if(t.times.includes("ALL")){
 timeText = "All Day";
 }
 else{
-let h = t.times[0];
+let h = t.times.find(x => x !== "ALL");
+
+if(h !== undefined){
 timeText = formatToLocalTime(h, t.d);
-} 
+}else{
+timeText = "All Day";
+}
 
 row.innerHTML = `
 <span>${t.d}</span>
@@ -1234,8 +1238,12 @@ else if(t.times.includes("ALL")){
 timeText = "All Day";
 }
 else{
-let h = t.times[0];
+let h = t.times.find(x => x !== "ALL");
+
+if(h !== undefined){
 timeText = formatToLocalTime(h, t.d);
+}else{
+timeText = "All Day";
 }
 
 row.innerHTML = `
