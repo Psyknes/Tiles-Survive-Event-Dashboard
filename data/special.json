@@ -1,6 +1,7 @@
 [
   {
     "name": "Ghoulion Pursuit",
+    "color": "#ff4d4d"
     "short": true,
     "active": true,
     "priority": 1,
@@ -10,6 +11,7 @@
   },
   {
     "name": "Reservoir Raid",
+    "color": "#43fcff"
     "short": true,
     "active": true,
     "priority": 2,
@@ -19,6 +21,7 @@
   },
   {
     "name": "Terror Purge",
+    "color": "#7b45d1"
     "short": true,
     "active": true,
     "priority": 3,
@@ -28,6 +31,7 @@
   },
   {
     "name": "Arcadian Conquest",
+    "color": "#fed342"
     "short": true,
     "active": true,
     "priority": 4,
