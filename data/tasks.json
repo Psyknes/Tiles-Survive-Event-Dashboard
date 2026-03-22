@@ -1,0 +1,882 @@
+[
+  {
+    "d": "Mon",
+    "e": "Alliance Duel",
+    "t": "Hero Gear",
+    "utc": "ALL",
+    "dayExclusive": false,
+    "type": "Triple"
+  },
+  {
+    "d": "Mon",
+    "e": "Alliance Duel",
+    "t": "Intel",
+    "utc": "ALL",
+    "dayExclusive": true,
+    "type": "Single"
+  },
+  {
+    "d": "Mon",
+    "e": "Alliance Duel",
+    "t": "Use Stamina",
+    "utc": "ALL",
+    "dayExclusive": false,
+    "type": "Single"
+  },
+  {
+    "d": "Mon",
+    "e": "Alliance Duel",
+    "t": "Gather RSS",
+    "utc": "ALL",
+    "dayExclusive": false,
+    "type": "Single"
+  },
+  {
+    "d": "Tue",
+    "e": "Alliance Duel",
+    "t": "Build Speed",
+    "utc": "ALL",
+    "dayExclusive": false,
+    "type": "Triple"
+  },
+  {
+    "d": "Tue",
+    "e": "Alliance Duel",
+    "t": "Build Power",
+    "utc": "ALL",
+    "dayExclusive": false,
+    "type": "Double"
+  },
+  {
+    "d": "Tue",
+    "e": "Alliance Duel",
+    "t": "A-Class Truck",
+    "utc": "ALL",
+    "dayExclusive": true,
+    "type": "Single"
+  },
+  {
+    "d": "Tue",
+    "e": "Alliance Duel",
+    "t": "S Tier Dispatch",
+    "utc": "ALL",
+    "dayExclusive": true,
+    "type": "Single"
+  },
+  {
+    "d": "Wed",
+    "e": "Alliance Duel",
+    "t": "Research Speed",
+    "utc": "ALL",
+    "dayExclusive": false,
+    "type": "Triple"
+  },
+  {
+    "d": "Wed",
+    "e": "Alliance Duel",
+    "t": "Behemoth",
+    "utc": "ALL",
+    "dayExclusive": false,
+    "type": "Triple"
+  },
+  {
+    "d": "Wed",
+    "e": "Alliance Duel",
+    "t": "Research Power",
+    "utc": "ALL",
+    "dayExclusive": false,
+    "type": "Double"
+  },
+  {
+    "d": "Wed",
+    "e": "Alliance Duel",
+    "t": "Clash Medals",
+    "utc": "ALL",
+    "dayExclusive": true,
+    "type": "Single"
+  },
+  {
+    "d": "Wed",
+    "e": "Alliance Duel",
+    "t": "Intel",
+    "utc": "ALL",
+    "dayExclusive": true,
+    "type": "Single"
+  },
+  {
+    "d": "Thu",
+    "e": "Alliance Duel",
+    "t": "Recruit",
+    "utc": "ALL",
+    "dayExclusive": false,
+    "type": "Double"
+  },
+  {
+    "d": "Thu",
+    "e": "Alliance Duel",
+    "t": "Hero Frags",
+    "utc": "ALL",
+    "dayExclusive": false,
+    "type": "Triple"
+  },
+  {
+    "d": "Thu",
+    "e": "Alliance Duel",
+    "t": "Hero Skill",
+    "utc": "ALL",
+    "dayExclusive": false,
+    "type": "Double"
+  },
+  {
+    "d": "Fri",
+    "e": "Alliance Duel",
+    "t": "Build Speed",
+    "utc": "ALL",
+    "dayExclusive": false,
+    "type": "Triple"
+  },
+  {
+    "d": "Fri",
+    "e": "Alliance Duel",
+    "t": "Intel",
+    "utc": "ALL",
+    "dayExclusive": true,
+    "type": "Single"
+  },
+  {
+    "d": "Fri",
+    "e": "Alliance Duel",
+    "t": "Research Speed",
+    "utc": "ALL",
+    "dayExclusive": false,
+    "type": "Double"
+  },
+  {
+    "d": "Fri",
+    "e": "Alliance Duel",
+    "t": "Train Speed",
+    "utc": "ALL",
+    "dayExclusive": false,
+    "type": "Single"
+  },
+  {
+    "d": "Fri",
+    "e": "Alliance Duel",
+    "t": "Build Power",
+    "utc": "ALL",
+    "dayExclusive": false,
+    "type": "Double"
+  },
+  {
+    "d": "Fri",
+    "e": "Alliance Duel",
+    "t": "Research Power",
+    "utc": "ALL",
+    "dayExclusive": false,
+    "type": "Double"
+  },
+  {
+    "d": "Fri",
+    "e": "Alliance Duel",
+    "t": "Train Power",
+    "utc": "ALL",
+    "dayExclusive": true,
+    "type": "Single"
+  },
+  {
+    "d": "Sat",
+    "e": "Alliance Duel",
+    "t": "Research Speed",
+    "utc": "ALL",
+    "dayExclusive": false,
+    "type": "Triple"
+  },
+  {
+    "d": "Sat",
+    "e": "Alliance Duel",
+    "t": "A-Class Truck",
+    "utc": "ALL",
+    "dayExclusive": true,
+    "type": "Single"
+  },
+  {
+    "d": "Sat",
+    "e": "Alliance Duel",
+    "t": "S Tier Dispatch",
+    "utc": "ALL",
+    "dayExclusive": true,
+    "type": "Single"
+  },
+  {
+    "d": "Sat",
+    "e": "Alliance Duel",
+    "t": "Build Speed",
+    "utc": "ALL",
+    "dayExclusive": false,
+    "type": "Double"
+  },
+  {
+    "d": "Sat",
+    "e": "Alliance Duel",
+    "t": "Train Speed",
+    "utc": "ALL",
+    "dayExclusive": false,
+    "type": "Single"
+  },
+  {
+    "d": "Sat",
+    "e": "Alliance Duel",
+    "t": "Heal Speed",
+    "utc": "ALL",
+    "dayExclusive": false,
+    "type": "Single"
+  },
+  {
+    "d": "Sat",
+    "e": "Alliance Duel",
+    "t": "Collect Eggs",
+    "utc": "ALL",
+    "dayExclusive": true,
+    "type": "Single"
+  },
+  {
+    "d": "Sat",
+    "e": "Alliance Duel",
+    "t": "Kill Troops",
+    "utc": "ALL",
+    "dayExclusive": true,
+    "type": "Single"
+  },
+  {
+    "d": "Mon",
+    "e": "Turbo Turtle",
+    "t": "Research Speed",
+    "utc": "ALL",
+    "dayExclusive": false,
+    "type": "Double"
+  },
+  {
+    "d": "Mon",
+    "e": "Turbo Turtle",
+    "t": "Train Power",
+    "utc": "ALL",
+    "dayExclusive": true,
+    "type": "Single"
+  },
+  {
+    "d": "Mon",
+    "e": "Turbo Turtle",
+    "t": "Hero Gear",
+    "utc": "ALL",
+    "dayExclusive": false,
+    "type": "Triple"
+  },
+  {
+    "d": "Tue",
+    "e": "Turbo Turtle",
+    "t": "Build Speed",
+    "utc": "ALL",
+    "dayExclusive": false,
+    "type": "Triple"
+  },
+  {
+    "d": "Tue",
+    "e": "Turbo Turtle",
+    "t": "Hero Gear",
+    "utc": "ALL",
+    "dayExclusive": false,
+    "type": "Double"
+  },
+  {
+    "d": "Wed",
+    "e": "Turbo Turtle",
+    "t": "Research Speed",
+    "utc": "ALL",
+    "dayExclusive": false,
+    "type": "Triple"
+  },
+  {
+    "d": "Wed",
+    "e": "Turbo Turtle",
+    "t": "Behemoth",
+    "utc": "ALL",
+    "dayExclusive": false,
+    "type": "Triple"
+  },
+  {
+    "d": "Thu",
+    "e": "Turbo Turtle",
+    "t": "Recruit",
+    "utc": "ALL",
+    "dayExclusive": false,
+    "type": "Double"
+  },
+  {
+    "d": "Thu",
+    "e": "Turbo Turtle",
+    "t": "Hero Frags",
+    "utc": "ALL",
+    "dayExclusive": false,
+    "type": "Triple"
+  },
+  {
+    "d": "Thu",
+    "e": "Turbo Turtle",
+    "t": "Hero Skill",
+    "utc": "ALL",
+    "dayExclusive": false,
+    "type": "Double"
+  },
+  {
+    "d": "Fri",
+    "e": "Turbo Turtle",
+    "t": "Build Speed",
+    "utc": "ALL",
+    "dayExclusive": false,
+    "type": "Triple"
+  },
+  {
+    "d": "Fri",
+    "e": "Turbo Turtle",
+    "t": "Hero Gear",
+    "utc": "ALL",
+    "dayExclusive": false,
+    "type": "Double"
+  },
+  {
+    "d": "Sat",
+    "e": "Turbo Turtle",
+    "t": "Research Speed",
+    "utc": "ALL",
+    "dayExclusive": false,
+    "type": "Triple"
+  },
+  {
+    "d": "Sat",
+    "e": "Turbo Turtle",
+    "t": "Train Power",
+    "utc": "ALL",
+    "dayExclusive": true,
+    "type": "Single"
+  },
+  {
+    "d": "Sun",
+    "e": "Turbo Turtle",
+    "t": "Build Speed",
+    "utc": "ALL",
+    "dayExclusive": false,
+    "type": "Double"
+  },
+  {
+    "d": "Sun",
+    "e": "Turbo Turtle",
+    "t": "Research Speed",
+    "utc": "ALL",
+    "dayExclusive": false,
+    "type": "Double"
+  },
+  {
+    "d": "Sun",
+    "e": "Turbo Turtle",
+    "t": "Recruit",
+    "utc": "ALL",
+    "dayExclusive": false,
+    "type": "Single"
+  },
+  {
+    "d": "Sun",
+    "e": "Turbo Turtle",
+    "t": "Hero Frags",
+    "utc": "ALL",
+    "dayExclusive": false,
+    "type": "Double"
+  },
+  {
+    "d": "Sun",
+    "e": "Turbo Turtle",
+    "t": "Hero Skill",
+    "utc": "ALL",
+    "dayExclusive": false,
+    "type": "Single"
+  },
+  {
+    "d": "Sun",
+    "e": "Turbo Turtle",
+    "t": "Hero Gear",
+    "utc": "ALL",
+    "dayExclusive": false,
+    "type": "Double"
+  },
+  {
+    "d": "Sun",
+    "e": "Turbo Turtle",
+    "t": "Behemoth",
+    "utc": "ALL",
+    "dayExclusive": false,
+    "type": "Double"
+  },
+  {
+    "d": "Sun",
+    "e": "Turbo Turtle",
+    "t": "Kill Infected",
+    "utc": "ALL",
+    "dayExclusive": false,
+    "type": "Single"
+  },
+  {
+    "d": "Sun",
+    "e": "Turbo Turtle",
+    "t": "Gather RSS",
+    "utc": "ALL",
+    "dayExclusive": false,
+    "type": "Single"
+  },
+  {
+    "d": "Mon",
+    "e": "Power Play",
+    "t": "Hero Frags",
+    "utc": "00:00",
+    "dayExclusive": false,
+    "type": "Single"
+  },
+  {
+    "d": "Mon",
+    "e": "Power Play",
+    "t": "Build Speed",
+    "utc": "04:00",
+    "dayExclusive": false,
+    "type": "Single"
+  },
+  {
+    "d": "Mon",
+    "e": "Power Play",
+    "t": "Build Power",
+    "utc": "04:00",
+    "dayExclusive": false,
+    "type": "Single"
+  },
+  {
+    "d": "Mon",
+    "e": "Power Play",
+    "t": "Chief Gear",
+    "utc": "08:00",
+    "dayExclusive": true,
+    "type": "Single"
+  },
+  {
+    "d": "Mon",
+    "e": "Power Play",
+    "t": "Research Speed",
+    "utc": "12:00",
+    "dayExclusive": false,
+    "type": "Double"
+  },
+  {
+    "d": "Mon",
+    "e": "Power Play",
+    "t": "Research Power",
+    "utc": "12:00",
+    "dayExclusive": false,
+    "type": "Single"
+  },
+  {
+    "d": "Mon",
+    "e": "Power Play",
+    "t": "Hero Gear",
+    "utc": "16:00",
+    "dayExclusive": false,
+    "type": "Triple"
+  },
+  {
+    "d": "Mon",
+    "e": "Power Play",
+    "t": "Behemoth",
+    "utc": "20:00",
+    "dayExclusive": false,
+    "type": "Single"
+  },
+  {
+    "d": "Tue",
+    "e": "Power Play",
+    "t": "Build Speed",
+    "utc": "00:00",
+    "dayExclusive": false,
+    "type": "Triple"
+  },
+  {
+    "d": "Tue",
+    "e": "Power Play",
+    "t": "Build Power",
+    "utc": "00:00",
+    "dayExclusive": false,
+    "type": "Double"
+  },
+  {
+    "d": "Tue",
+    "e": "Power Play",
+    "t": "Chief Gear",
+    "utc": "04:00",
+    "dayExclusive": true,
+    "type": "Single"
+  },
+  {
+    "d": "Tue",
+    "e": "Power Play",
+    "t": "Research Speed",
+    "utc": "08:00",
+    "dayExclusive": false,
+    "type": "Single"
+  },
+  {
+    "d": "Tue",
+    "e": "Power Play",
+    "t": "Research Power",
+    "utc": "08:00",
+    "dayExclusive": false,
+    "type": "Single"
+  },
+  {
+    "d": "Tue",
+    "e": "Power Play",
+    "t": "Hero Gear",
+    "utc": "12:00",
+    "dayExclusive": false,
+    "type": "Double"
+  },
+  {
+    "d": "Tue",
+    "e": "Power Play",
+    "t": "Behemoth",
+    "utc": "16:00",
+    "dayExclusive": false,
+    "type": "Single"
+  },
+  {
+    "d": "Tue",
+    "e": "Power Play",
+    "t": "Hero Frags",
+    "utc": "20:00",
+    "dayExclusive": false,
+    "type": "Single"
+  },
+  {
+    "d": "Wed",
+    "e": "Power Play",
+    "t": "Chief Gear",
+    "utc": "00:00",
+    "dayExclusive": true,
+    "type": "Single"
+  },
+  {
+    "d": "Wed",
+    "e": "Power Play",
+    "t": "Research Speed",
+    "utc": "04:00",
+    "dayExclusive": false,
+    "type": "Triple"
+  },
+  {
+    "d": "Wed",
+    "e": "Power Play",
+    "t": "Research Power",
+    "utc": "04:00",
+    "dayExclusive": false,
+    "type": "Double"
+  },
+  {
+    "d": "Wed",
+    "e": "Power Play",
+    "t": "Hero Gear",
+    "utc": "08:00",
+    "dayExclusive": false,
+    "type": "Single"
+  },
+  {
+    "d": "Wed",
+    "e": "Power Play",
+    "t": "Behemoth",
+    "utc": "12:00",
+    "dayExclusive": false,
+    "type": "Triple"
+  },
+  {
+    "d": "Wed",
+    "e": "Power Play",
+    "t": "Hero Frags",
+    "utc": "16:00",
+    "dayExclusive": false,
+    "type": "Single"
+  },
+  {
+    "d": "Wed",
+    "e": "Power Play",
+    "t": "Build Speed",
+    "utc": "20:00",
+    "dayExclusive": false,
+    "type": "Single"
+  },
+  {
+    "d": "Wed",
+    "e": "Power Play",
+    "t": "Build Power",
+    "utc": "20:00",
+    "dayExclusive": false,
+    "type": "Single"
+  },
+  {
+    "d": "Thu",
+    "e": "Power Play",
+    "t": "Research Speed",
+    "utc": "00:00",
+    "dayExclusive": false,
+    "type": "Single"
+  },
+  {
+    "d": "Thu",
+    "e": "Power Play",
+    "t": "Research Power",
+    "utc": "00:00",
+    "dayExclusive": false,
+    "type": "Single"
+  },
+  {
+    "d": "Thu",
+    "e": "Power Play",
+    "t": "Hero Gear",
+    "utc": "04:00",
+    "dayExclusive": false,
+    "type": "Single"
+  },
+  {
+    "d": "Thu",
+    "e": "Power Play",
+    "t": "Behemoth",
+    "utc": "08:00",
+    "dayExclusive": false,
+    "type": "Single"
+  },
+  {
+    "d": "Thu",
+    "e": "Power Play",
+    "t": "Hero Frags",
+    "utc": "12:00",
+    "dayExclusive": false,
+    "type": "Triple"
+  },
+  {
+    "d": "Thu",
+    "e": "Power Play",
+    "t": "Build Speed",
+    "utc": "16:00",
+    "dayExclusive": false,
+    "type": "Single"
+  },
+  {
+    "d": "Thu",
+    "e": "Power Play",
+    "t": "Build Power",
+    "utc": "16:00",
+    "dayExclusive": false,
+    "type": "Single"
+  },
+  {
+    "d": "Thu",
+    "e": "Power Play",
+    "t": "Chief Gear",
+    "utc": "20:00",
+    "dayExclusive": true,
+    "type": "Single"
+  },
+  {
+    "d": "Fri",
+    "e": "Power Play",
+    "t": "Hero Gear",
+    "utc": "00:00",
+    "dayExclusive": false,
+    "type": "Double"
+  },
+  {
+    "d": "Fri",
+    "e": "Power Play",
+    "t": "Behemoth",
+    "utc": "04:00",
+    "dayExclusive": false,
+    "type": "Single"
+  },
+  {
+    "d": "Fri",
+    "e": "Power Play",
+    "t": "Hero Frags",
+    "utc": "08:00",
+    "dayExclusive": false,
+    "type": "Single"
+  },
+  {
+    "d": "Fri",
+    "e": "Power Play",
+    "t": "Build Speed",
+    "utc": "12:00",
+    "dayExclusive": false,
+    "type": "Triple"
+  },
+  {
+    "d": "Fri",
+    "e": "Power Play",
+    "t": "Build Power",
+    "utc": "12:00",
+    "dayExclusive": false,
+    "type": "Double"
+  },
+  {
+    "d": "Fri",
+    "e": "Power Play",
+    "t": "Chief Gear",
+    "utc": "16:00",
+    "dayExclusive": true,
+    "type": "Single"
+  },
+  {
+    "d": "Fri",
+    "e": "Power Play",
+    "t": "Research Speed",
+    "utc": "20:00",
+    "dayExclusive": false,
+    "type": "Double"
+  },
+  {
+    "d": "Fri",
+    "e": "Power Play",
+    "t": "Research Power",
+    "utc": "20:00",
+    "dayExclusive": false,
+    "type": "Double"
+  },
+  {
+    "d": "Sat",
+    "e": "Power Play",
+    "t": "Behemoth",
+    "utc": "00:00",
+    "dayExclusive": false,
+    "type": "Single"
+  },
+  {
+    "d": "Sat",
+    "e": "Power Play",
+    "t": "Hero Frags",
+    "utc": "04:00",
+    "dayExclusive": false,
+    "type": "Single"
+  },
+  {
+    "d": "Sat",
+    "e": "Power Play",
+    "t": "Build Speed",
+    "utc": "08:00",
+    "dayExclusive": false,
+    "type": "Double"
+  },
+  {
+    "d": "Sat",
+    "e": "Power Play",
+    "t": "Build Power",
+    "utc": "08:00",
+    "dayExclusive": false,
+    "type": "Single"
+  },
+  {
+    "d": "Sat",
+    "e": "Power Play",
+    "t": "Chief Gear",
+    "utc": "12:00",
+    "dayExclusive": true,
+    "type": "Single"
+  },
+  {
+    "d": "Sat",
+    "e": "Power Play",
+    "t": "Research Speed",
+    "utc": "16:00",
+    "dayExclusive": false,
+    "type": "Triple"
+  },
+  {
+    "d": "Sat",
+    "e": "Power Play",
+    "t": "Research Power",
+    "utc": "16:00",
+    "dayExclusive": false,
+    "type": "Single"
+  },
+  {
+    "d": "Sat",
+    "e": "Power Play",
+    "t": "Hero Gear",
+    "utc": "20:00",
+    "dayExclusive": false,
+    "type": "Single"
+  },
+  {
+    "d": "Sun",
+    "e": "Power Play",
+    "t": "Hero Frags",
+    "utc": "00:00",
+    "dayExclusive": false,
+    "type": "Double"
+  },
+  {
+    "d": "Sun",
+    "e": "Power Play",
+    "t": "Build Speed",
+    "utc": "04:00",
+    "dayExclusive": false,
+    "type": "Double"
+  },
+  {
+    "d": "Sun",
+    "e": "Power Play",
+    "t": "Build Power",
+    "utc": "04:00",
+    "dayExclusive": false,
+    "type": "Single"
+  },
+  {
+    "d": "Sun",
+    "e": "Power Play",
+    "t": "Chief Gear",
+    "utc": "08:00",
+    "dayExclusive": true,
+    "type": "Single"
+  },
+  {
+    "d": "Sun",
+    "e": "Power Play",
+    "t": "Research Speed",
+    "utc": "12:00",
+    "dayExclusive": false,
+    "type": "Double"
+  },
+  {
+    "d": "Sun",
+    "e": "Power Play",
+    "t": "Research Power",
+    "utc": "12:00",
+    "dayExclusive": false,
+    "type": "Single"
+  },
+  {
+    "d": "Sun",
+    "e": "Power Play",
+    "t": "Hero Gear",
+    "utc": "16:00",
+    "dayExclusive": false,
+    "type": "Double"
+  },
+  {
+    "d": "Sun",
+    "e": "Power Play",
+    "t": "Behemoth",
+    "utc": "20:00",
+    "dayExclusive": false,
+    "type": "Double"
+  }
+]
