@@ -963,12 +963,12 @@ let urgent = diff <= 24*60*60*1000;
 
 let cls = urgent ? "eventItem eventUrgent" : "eventItem";
 
-let imgName = e.name.replace(/\s+/g,"_");
-let imgSrc = "images/events/" + imgName + ".png";  
+let imgName = e.name.toLowerCase().replace(/\s+/g,"_");
+let imgSrc = "images/events/" + imgName + ".png";
 
 html += `
 <span class="${cls}">
-<img src="images/events/${imgName}.png">
+<img src="${imgSrc}">
 ${e.name} • ${d}d ${h}h ${m}m
 </span>
 `;
