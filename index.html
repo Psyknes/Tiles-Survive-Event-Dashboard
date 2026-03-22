@@ -904,10 +904,6 @@ return candidates[0];
 
 function updateSpecialBar(){
 
-let imgName = e.name.toLowerCase().replace(/\s+/g,"_");
-let imgSrc = "images/events/" + imgName + ".png";
-
-document.getElementById("ghoulionImg").src = imgSrc;  
 let data = getActiveShortEvent();
 
 if(!data){
@@ -915,7 +911,14 @@ document.getElementById("ghoulionTimer").innerHTML = "";
 return;
 }
 
-let e = data.event;
+let e = data.event;   // ✅ DEFINE FIRST
+
+// 🔥 NOW SAFE TO USE
+let imgName = e.name.toLowerCase().replace(/\s+/g,"_");
+let imgSrc = "images/events/" + imgName + ".png";
+
+document.getElementById("ghoulionImg").src = imgSrc;
+
 let now = new Date();
 
 let remaining = data.end - now;
@@ -941,6 +944,7 @@ e.name + " • " + label + " • " + localTime +
 " • "+h+"h "+m+"m</div>";
 
 document.getElementById("ghoulionTimer").innerHTML = timerText;
+
 }
 
 function updateLongEventTicker(){
