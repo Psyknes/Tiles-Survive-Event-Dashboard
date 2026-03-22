@@ -1,5 +1,5 @@
 {
   "enabled": true,
-  "emergency": false,
+  "emergency": true,
   "message": "📢 Alliance Event Planner Live — Prepare for upcoming events"
 }
