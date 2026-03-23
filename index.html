@@ -1131,6 +1131,9 @@ let res = await fetch("data/prep.json");
 prepData = await res.json();
 
 console.log("Prep loaded:", prepData);
+
+document.getElementById("prepContent").innerHTML =
+"<pre>" + JSON.stringify(prepData, null, 2) + "</pre>";  
   
 }catch(e){
 console.log("Prep load error", e);
