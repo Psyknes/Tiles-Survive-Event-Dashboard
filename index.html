@@ -1167,22 +1167,38 @@ console.log("Prep loaded:", prepData);
 
 let html = "";
 
-for(let event in prepData){
+let html = "";
 
-let p = prepData[event];
+// 🔥 get next day
+let now = new Date();
+let days = ["Sun","Mon","Tue","Wed","Thu","Fri","Sat"];
+let nextDay = days[(now.getUTCDay() + 1) % 7];
+
+let {triple, double} = getTasks();
+
+// 🔥 collect next day tasks
+let nextDayTasks = [...triple, ...double].filter(t => t.d === nextDay);
+
+nextDayTasks.forEach(t => {
+
+let p = prepData[t.task];
+
+if(!p) return;
+
+// 🔥 only if prep required
+if(!(p.itemPrep || p.activityPrep)) return;
 
 html += `
 <div class="prepRow">
-  <div class="prepTitle">${event}</div>
+  <div class="prepTitle">${t.task}</div>
   ${p.saveItemType ? `<div class="prepItem">Save: ${p.saveItemType}</div>` : ""}
   ${p.prepComment ? `<div class="prepComment">${p.prepComment}</div>` : ""}
-${p.tip ? `<div class="prepTip">${p.tip}</div>` : ""}
 </div>
 `;
 
-}
+});
 
-document.getElementById("prepContent").innerHTML = html;
+document.getElementById("prepContent").innerHTML = html || "No prep needed";
   
 }catch(e){
 console.log("Prep load error", e);
