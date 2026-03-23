@@ -1177,7 +1177,13 @@ let {triple, double} = getTasks();
 // 🔥 collect next day tasks
 let nextDayTasks = [...triple, ...double].filter(t => t.d === nextDay);
 
-nextDayTasks.forEach(t => {
+nextDayTasks
+.sort((a,b)=>{
+let ta = getNextOccurrence(a);
+let tb = getNextOccurrence(b);
+return ta - tb;
+})
+.forEach(t => {
 
 let p = prepData[t.task];
 
