@@ -1186,6 +1186,14 @@ return ta - tb;
 .forEach(t => {
 
 let p = prepData[t.task];
+let nextTime = getNextOccurrence(t);
+
+let diff = nextTime - new Date();
+
+let h = Math.floor(diff/1000/60/60);
+let m = Math.floor((diff/1000/60)%60);
+
+let countdown = h + "h " + m + "m";
 console.log("Checking:", t.task, "→", p);  
 
 if(!p) return;
@@ -1195,7 +1203,7 @@ if(!(p.itemPrep || p.activityPrep)) return;
 
 html += `
 <div class="prepRow">
-  <div class="prepTitle">${t.task}</div>
+  <div class="prepTitle">${t.task} • ${countdown}</div>
   ${p.saveItemType ? `<div class="prepItem">Save: ${p.saveItemType}</div>` : ""}
   ${p.prepComment ? `<div class="prepComment">${p.prepComment}</div>` : ""}
 </div>
