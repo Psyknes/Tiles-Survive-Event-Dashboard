@@ -1041,6 +1041,8 @@ let longEvents = specialEvents
   });
 
 longEvents = longEvents.filter(e => e.end > now);
+
+longEvents = longEvents.filter(e => e.isActive || e.timeToStart > 0);  
   
 // 🔥 PRIORITY LOGIC
 let activeEvents = longEvents.filter(e => e.isActive);
@@ -1416,9 +1418,17 @@ let nextTime = getNextOccurrence(t);
 // 🔥 ACTIVE detection (Power Play only)
 let isActive = false;
 
+// 🔥 Power Play → 4h window
 if(t.events.includes("Power Play")){
 let start = new Date(nextTime.getTime() - 4 * 60 * 60 * 1000);
 if(now >= start && now <= nextTime){
+isActive = true;
+}
+}
+// 🔥 NON Power Play → treat as active if today
+else{
+let sameDay = nextTime.toDateString() === now.toDateString();
+if(sameDay){
 isActive = true;
 }
 }
