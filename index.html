@@ -1275,6 +1275,7 @@ let tasks = buildTaskMap();
 
 let triple = [];
 let double = [];
+let dayExclusive = [];  
 
 tasks.forEach(t => {
 
@@ -1287,6 +1288,9 @@ triple.push({...t, type:"triple"});
 else if(count === 2){
 double.push({...t, type:"double"});
 }
+if(t.dayExclusive){
+dayExclusive.push(t);
+}  
 
 });
 
