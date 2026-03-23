@@ -26,7 +26,7 @@
 
   "message": "<b style='color:#ff4d4d'>WAR ALERT</b> — Rally at <span class='highlight'>Arcadia</span>",
 
-  "normalMessage": "📢 Alliance Event Planner Live — Prepare for upcoming events",
+  "normalMessage":  "🏆 Kudos to <b>DontJoinMyRally</b> | <b>Sky</b> | <b>kreon</b> for Top Ranks in Reservoir Raid — Keep pushing team!",
 
   "templates": [
     "🚨 <b style='color:#ff4d4d'>WAR ALERT</b> — All members rally at <span class='highlight'>Arcadia</span> • Be online",
@@ -36,6 +36,10 @@
     "📢 Power Play live — Focus on <b>Research Speed</b> and <b>Hero Frags</b>",
     
     "🏆 Congrats <b>Ranjan</b> for Top Rank — Keep pushing team!",
+
+    "🏆 Kudos to <b>DontJoinMyRally</b> <b>Sky</b> <b>kreon</b> for Top Ranks in Reservoir Raid — Keep pushing team!",
+
+    "📢 Alliance Event Planner Live — Prepare for upcoming events",
     
     "📦 Save resources today — Upcoming <b>Alliance Duel</b> tasks require prep",
     
