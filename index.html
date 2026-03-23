@@ -1871,10 +1871,26 @@ html += `
 </div>
 `;
 }
+  
+/* ---------- DAY EXCLUSIVE ---------- */
 
+let todayExclusive = dayExclusive.filter(t => t.d === today);
+
+if(todayExclusive.length){
+
+let t = todayExclusive[0];
+
+html += `
+<div class="row" style="font-size:13px;">
+<span><b>◆ Exclusive</b> - ${t.task}</span>
+<span style="font-size:12px;opacity:.85">📌 Today Only</span>
+</div>
+`;
+}
+  
 /* ---------- EMPTY ---------- */
 
-if(!todayTriple.length && !todayDouble.length){
+if(!todayTriple.length && !todayDouble.length && !todayExclusive.length){
 html = "<small>No priority tasks today</small>";
 }
 
