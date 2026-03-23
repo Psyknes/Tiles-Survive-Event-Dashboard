@@ -1272,6 +1272,32 @@ date.setUTCDate(date.getUTCDate() + 7);
 
 return date;
 }
+
+function getCurrentOrNextOccurrence(task){
+
+let now = new Date();
+let next = getNextOccurrence(task);
+
+// 🔥 Power Play active window = 4h before
+if(task.events.includes("Power Play")){
+
+let start = new Date(next.getTime() - 4 * 60 * 60 * 1000);
+
+if(now >= start && now <= next){
+return {
+time: next,
+isActive: true
+};
+}
+
+}
+
+return {
+time: next,
+isActive: false
+};
+
+}  
   
 function renderTriple(){
 
@@ -1424,18 +1450,11 @@ let now = new Date();
 
 triple.forEach(t => {
 
-let nextTime = getNextOccurrence(t);
+let occ = getCurrentOrNextOccurrence(t);
+let nextTime = occ.time;
+let isActive = occ.isActive;
 
 // 🔥 ACTIVE detection (Power Play only)
-let isActive = false;
-
-// 🔥 ONLY Power Play has true ACTIVE window
-if(t.events.includes("Power Play")){
-let start = new Date(nextTime.getTime() - 4 * 60 * 60 * 1000);
-if(now >= start && now <= nextTime){
-isActive = true;
-}
-}
 
 // PRIORITY 1 → ACTIVE
 if(isActive && !selected){
