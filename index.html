@@ -651,10 +651,11 @@ line-height:1.4;
 
 .prepTip{
 font-size:11px;
-opacity:0.9;
-margin-top:4px;
+opacity:0.8;              /* match prepComment */
+margin-top:2px;           /* slightly tighter for Today panel */
+line-height:1.4;
 white-space:pre-line;
-}  
+}
   
 </style>
 </head>
@@ -1799,6 +1800,7 @@ let todayTriple = triple.filter(t => t.d === today);
 if(todayTriple.length){
 
 let t = todayTriple[0];
+let p = prepData[t.task];  
 
 let nextTime = getNextOccurrence(t);
 
@@ -1828,6 +1830,7 @@ status = "✔ Completed";
 html += `
 <div class="row ${status.includes('ACTIVE') ? 'activeRow' : ''}" style="font-size:13px;">
 <span><b>◆ Triple</b> - ${t.task}</span>
+${p?.tip ? `<div class="prepTip">${p.tip}</div>` : ""}
 <span style="font-size:12px;opacity:.85">${status}</span>
 </div>
 `;
