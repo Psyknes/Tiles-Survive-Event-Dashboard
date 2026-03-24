@@ -1405,7 +1405,6 @@ triple.forEach(t => {
 
 let row = document.createElement("div");
 row.className = "row";
-row.style.borderBottom = "none";
 
 let timeText = "";
 
@@ -1620,6 +1619,7 @@ days.sort((a,b)=> order.indexOf(a) - order.indexOf(b));
 
 let row = document.createElement("div");
 row.className = "row";
+row.style.borderBottom = "none";
 
 row.innerHTML = `
 <span>${task}</span>
@@ -2038,7 +2038,7 @@ html += `
   <span style="font-size:12px;opacity:.85">📌 Today's Special</span>
 </div>
 
-${p?.tip ? `<div class="prepTip saveItem" style="margin-left:6px;">${p.tip}</div>` : ""}
+${p?.tip ? `<div class="prepTip" style="margin-left:6px;">${p.tip}</div>` : ""}
 `;
 }
   
