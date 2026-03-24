@@ -345,37 +345,37 @@ animation: emblemGlow 3.5s infinite ease-in-out;
 .leaderImg{
 height:65px;
 width:65px;
-object-fit:cover;
-border-radius:50%;
+object-fit:contain;
+display:block;
 
-/* 🔥 glow ring */
+/* 🔥 keep square shape */
+border-radius:8px;
+
+/* 🔥 soft square glow */
 box-shadow:
-0 0 0 2px rgba(255,215,0,0.8),
-0 0 8px rgba(255,215,0,0.6),
-0 0 14px rgba(77,166,255,0.5);
+0 0 10px rgba(255,180,0,0.5),
+0 0 20px rgba(255,120,0,0.4),
+0 0 30px rgba(255,80,0,0.25);
 
-/* smooth animation */
-animation: leaderGlow 3s ease-in-out infinite;
+/* 🔥 subtle pulse */
+animation: leaderGlow 2.5s ease-in-out infinite;
 }
 
 @keyframes leaderGlow{
 0%{
 box-shadow:
-0 0 0 2px rgba(255,215,0,0.6),
-0 0 6px rgba(255,215,0,0.4),
-0 0 10px rgba(77,166,255,0.3);
+0 0 6px rgba(255,140,0,0.3),
+0 0 12px rgba(255,120,0,0.25);
 }
 50%{
 box-shadow:
-0 0 0 3px rgba(255,215,0,1),
-0 0 14px rgba(255,215,0,0.9),
-0 0 22px rgba(77,166,255,0.7);
+0 0 14px rgba(255,180,0,0.7),
+0 0 26px rgba(255,100,0,0.5);
 }
 100%{
 box-shadow:
-0 0 0 2px rgba(255,215,0,0.6),
-0 0 6px rgba(255,215,0,0.4),
-0 0 10px rgba(77,166,255,0.3);
+0 0 6px rgba(255,140,0,0.3),
+0 0 12px rgba(255,120,0,0.25);
 }
 }  
 
@@ -639,24 +639,25 @@ animation: heatPulse 1.5s ease-in-out infinite;
 
 .prepRow{
 margin-bottom:6px;
-padding:6px;
-border-bottom:1px solid rgba(255,255,255,0.06);
+padding:4px 2px;
+border-bottom:1px solid #1a1a1a;
 }
 
 .prepTitle{
-font-weight:bold;
-font-size:12px;
-margin-bottom:3px;
+font-weight:600;
+font-size:13px;
+margin-bottom:2px;
 }
 
 .prepItem{
 font-size:11px;
 color:#4fc3f7;
+margin-bottom:2px;
 }
 
 .prepComment{
-font-size:10.5px;
-opacity:0.75;
+font-size:11px;
+opacity:0.7;
 line-height:1.3;
 }
 
@@ -676,12 +677,6 @@ border-bottom:none !important;
 border-bottom:1px solid #222;
 padding-bottom:6px;
 margin-bottom:6px;
-}
-
-.leaderImg{
-height:80px;           /* same as logo */
-object-fit:contain;
-display:block;
 }
 
 .leaderBox{
@@ -790,8 +785,8 @@ height:80px;
 <div id="todayPanel"></div>
 </div>
 
-<div id="prepPanel" class="panel">
-<div class="panelTitle">Prep</div>
+<div id="prepPanel" class="card">
+<h2>🧠 Prep</h2>
 <div id="prepContent">Loading...</div>
 </div>
   
