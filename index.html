@@ -656,6 +656,16 @@ margin-top:2px;           /* slightly tighter for Today panel */
 line-height:1.4;
 white-space:pre-line;
 }
+
+.noBorder{
+border-bottom:none !important;
+}  
+
+.saveItem{
+border-bottom:1px solid #222;
+padding-bottom:6px;
+margin-bottom:6px;
+}
   
 </style>
 </head>
@@ -756,17 +766,17 @@ white-space:pre-line;
 <div class="card save">
 <h2>⚔️ Last But Not Least</h2>
 
-<div class="row">
+<div class="row noBorder">
 <span>Hero Skill Manuals</span>
 <span>Thu</span>
 </div>
 
-<div class="row">
+<div class="row noBorder">
 <span>Troop Training Power Up</span>
 <span>Sat</span>
 </div>
 
-<div class="row">
+<div class="row noBorder">
 <span>Troop Training Speed Ups</span>
 <span>Sat</span>
 </div>
@@ -1394,7 +1404,7 @@ container.innerHTML = "";
 triple.forEach(t => {
 
 let row = document.createElement("div");
-row.className = "row";
+row.className = "row noBorder";
 
 let timeText = "";
 
@@ -1619,7 +1629,7 @@ container.appendChild(row);
 
 // 🔥 ADD SAVE ITEM BELOW (your requirement)
 let item = document.createElement("div");
-item.className = "prepComment";
+item.className = "prepComment saveItem";
 item.style.marginLeft = "6px";
 item.innerText = "Save: " + map[task].item;
 
@@ -1958,7 +1968,7 @@ html += `
 <span style="font-size:12px;opacity:.85">${status}</span>
 </div>
 
-${p?.tip ? `<div class="prepTip">${p.tip}</div>` : ""}
+${p?.tip ? `<div class="prepTip saveItem">${p.tip}</div>` : ""}
 `;
 }
 
@@ -2008,7 +2018,7 @@ html += `
   <span style="font-size:12px;opacity:.85">${status}</span>
 </div>
 
-${p?.tip ? `<div class="prepTip" style="margin-left:6px;">${p.tip}</div>` : ""}
+${p?.tip ? `<div class="prepTip saveItem" style="margin-left:6px;">${p.tip}</div>` : ""}
 `;
 }
   
@@ -2027,7 +2037,7 @@ html += `
   <span style="font-size:12px;opacity:.85">📌 Today's Special</span>
 </div>
 
-${p?.tip ? `<div class="prepTip" style="margin-left:6px;">${p.tip}</div>` : ""}
+${p?.tip ? `<div class="prepTip saveItem" style="margin-left:6px;">${p.tip}</div>` : ""}
 `;
 }
   
