@@ -807,7 +807,8 @@ return days[date.getDay()];
   
 let rawData = [];
   
-let prepData = {};  
+let prepData = [];
+let prepMap = {};  
   
 let shortEvents = [];
 let longEvents = [];  
@@ -1164,6 +1165,11 @@ async function loadPrep(){
 try{
 let res = await fetch("data/prep.json");
 prepData = await res.json();
+prepMap = {};
+
+prepData.forEach(p => {
+  prepMap[p.task] = p;
+});  
 
 console.log("Prep loaded:", prepData);
 
@@ -1187,7 +1193,7 @@ return ta - tb;
 })
 .forEach(t => {
 
-let p = prepData[t.task];
+let p = prepMap[t.task];
 let nextTime = getNextOccurrence(t);
 
 let diff = nextTime - new Date();
@@ -1589,7 +1595,7 @@ let map = {};
 
 allTasks.forEach(t => {
 
-let p = prepData[t.task];
+let p = prepMap[t.task];
 
 if(!p || !p.saveItemType) return;
 
@@ -1998,7 +2004,7 @@ let todayTriple = triple.filter(t => t.d === today);
 if(todayTriple.length){
 
 let t = todayTriple[0];
-let p = prepData[t.task];  
+let p = prepMap[t.task]; 
 
 let nextTime = getNextOccurrence(t);
 
@@ -2042,7 +2048,7 @@ let todayDouble = double.filter(t => t.d === today);
 if(todayDouble.length){
 
 let t = todayDouble[0];
-let p = prepData[t.task];  
+let p = prepMap[t.task];
 
 let nextTime = getNextOccurrence(t);
 
@@ -2092,7 +2098,7 @@ let todayExclusive = dayExclusive.filter(t => t.d === today);
 if(todayExclusive.length){
 
 let t = todayExclusive[0];
-let p = prepData[t.task];  
+let p = prepMap[t.task]; 
 
 html += `
 <div class="row" style="font-size:13px; border-bottom:none;">
