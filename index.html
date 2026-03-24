@@ -910,8 +910,12 @@ let cooldown = false;
 
 if(e.repeat > 0){
 
+let repeatMs = e.repeat * 60 * 60 * 1000;
+
+// 🔥 FIX: handle first cycle properly
 let diff = now - start;
-let cycle = Math.floor(diff / (e.repeat * 60 * 60 * 1000));
+
+let cycle = diff < 0 ? 0 : Math.floor(diff / repeatMs);
 let cycleStart = new Date(start.getTime() + cycle * e.repeat * 60 * 60 * 1000);
 let cycleEnd = new Date(cycleStart.getTime() + durationMs);
 
