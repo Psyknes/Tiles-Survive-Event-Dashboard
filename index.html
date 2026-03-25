@@ -1507,14 +1507,8 @@ function getTaskState(task){
   if(!task || !task.times || !task.times.length) return null;
 
   let now = new Date();
-
-  // 🔥 FORCE UTC
-  let nowUTC = new Date(now.toISOString());
-
   let days = ["Sun","Mon","Tue","Wed","Thu","Fri","Sat"];
-  let targetDay = days.indexOf(task.d);
-
-  if(targetDay === -1) return null;
+  let today = now.getDay();
 
   let best = null;
 
@@ -1524,40 +1518,37 @@ function getTaskState(task){
 
     let [h,m] = String(time).split(":").map(Number);
 
-    let base = new Date(Date.UTC(
-      nowUTC.getUTCFullYear(),
-      nowUTC.getUTCMonth(),
-      nowUTC.getUTCDate(),
-      h,
-      m
-    ));
+    let date = new Date();
+    date.setHours(h, m, 0, 0);
 
-    let diff = targetDay - base.getUTCDay();
+    // align day (LOCAL, not UTC)
+    let targetDay = days.indexOf(task.d);
+    let diff = targetDay - today;
     if(diff < 0) diff += 7;
 
-    base.setUTCDate(base.getUTCDate() + diff);
+    date.setDate(date.getDate() + diff);
 
-    let start = new Date(base.getTime() - 4 * 60 * 60 * 1000);
+    let start = new Date(date.getTime() - 4 * 60 * 60 * 1000);
 
     // ACTIVE
-    if(nowUTC >= start && nowUTC <= base){
-      best = {status: "ACTIVE", time: base};
+    if(now >= start && now <= date){
+      best = {status: "ACTIVE", time: date};
       return;
     }
 
-    // FUTURE
-    if(nowUTC < start){
-      if(!best || base < best.time){
-        best = {status: "UPCOMING", time: base};
+    // UPCOMING
+    if(now < start){
+      if(!best || date < best.time){
+        best = {status: "UPCOMING", time: date};
       }
       return;
     }
 
     // PAST → NEXT CYCLE
-    base.setUTCDate(base.getUTCDate() + 7);
+    date.setDate(date.getDate() + 7);
 
-    if(!best || base < best.time){
-      best = {status: "UPCOMING", time: base};
+    if(!best || date < best.time){
+      best = {status: "UPCOMING", time: date};
     }
 
   });
