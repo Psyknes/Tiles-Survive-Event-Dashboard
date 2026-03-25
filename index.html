@@ -2108,14 +2108,28 @@ let status = "";
 if(t.events.includes("Power Play")){
 
 // 🔥 get TODAY's actual time (NOT next occurrence)
-let eventTime = getNextOccurrence(t);
+let h = t.times.find(x => x !== "ALL");
 
-// 🔥 force today instance (not next week)
-if(eventTime > now){
-  let diffDays = Math.floor((eventTime - now) / (1000*60*60*24));
-  if(diffDays >= 6){
-    eventTime.setDate(eventTime.getDate() - 7);
-  }
+if(typeof h === "string" && h.includes(":")){
+  h = Number(h.split(":")[0]);
+}else{
+  h = Number(h);
+}
+
+// 🔥 build TODAY UTC time properly
+let eventTime = new Date();
+eventTime.setUTCHours(h, 0, 0, 0);
+
+// 🔥 align to TODAY's local equivalent of task day
+let localToday = ["Sun","Mon","Tue","Wed","Thu","Fri","Sat"][new Date().getDay()];
+let taskLocalDay = getLocalDay(h, t.d);
+
+// if mismatch → shift date
+if(taskLocalDay !== localToday){
+  let diff = (["Sun","Mon","Tue","Wed","Thu","Fri","Sat"].indexOf(taskLocalDay)
+            - ["Sun","Mon","Tue","Wed","Thu","Fri","Sat"].indexOf(localToday));
+
+  eventTime.setDate(eventTime.getDate() + diff);
 }
 
 let start = new Date(eventTime.getTime() - 4 * 60 * 60 * 1000);
@@ -2159,14 +2173,28 @@ let status = "";
 
 if(t.events.includes("Power Play")){
 
-let eventTime = getNextOccurrence(t);
+let h = t.times.find(x => x !== "ALL");
 
-// 🔥 force today instance (not next week)
-if(eventTime > now){
-  let diffDays = Math.floor((eventTime - now) / (1000*60*60*24));
-  if(diffDays >= 6){
-    eventTime.setDate(eventTime.getDate() - 7);
-  }
+if(typeof h === "string" && h.includes(":")){
+  h = Number(h.split(":")[0]);
+}else{
+  h = Number(h);
+}
+
+// 🔥 build TODAY UTC time properly
+let eventTime = new Date();
+eventTime.setUTCHours(h, 0, 0, 0);
+
+// 🔥 align to TODAY's local equivalent of task day
+let localToday = ["Sun","Mon","Tue","Wed","Thu","Fri","Sat"][new Date().getDay()];
+let taskLocalDay = getLocalDay(h, t.d);
+
+// if mismatch → shift date
+if(taskLocalDay !== localToday){
+  let diff = (["Sun","Mon","Tue","Wed","Thu","Fri","Sat"].indexOf(taskLocalDay)
+            - ["Sun","Mon","Tue","Wed","Thu","Fri","Sat"].indexOf(localToday));
+
+  eventTime.setDate(eventTime.getDate() + diff);
 }
 
 let start = new Date(eventTime.getTime() - 4 * 60 * 60 * 1000);
