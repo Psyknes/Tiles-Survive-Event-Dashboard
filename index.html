@@ -1500,6 +1500,62 @@ function getTaskWindow(task){
   });
 
   return bestWindow;
+}
+
+function getTaskState(task){
+
+  if(!task || !task.times || !task.times.length) return null;
+
+  let now = new Date();
+  let days = ["Sun","Mon","Tue","Wed","Thu","Fri","Sat"];
+  let targetDay = days.indexOf(task.d);
+
+  let best = null;
+
+  task.times.forEach(time => {
+
+    if(!time || time === "ALL") return;
+
+    let [h,m] = String(time).split(":").map(Number);
+
+    let base = new Date(Date.UTC(
+      now.getUTCFullYear(),
+      now.getUTCMonth(),
+      now.getUTCDate(),
+      h,
+      m
+    ));
+
+    let local = new Date(base);
+
+    let diff = targetDay - local.getDay();
+    if(diff < 0) diff += 7;
+
+    local.setDate(local.getDate() + diff);
+
+    let start = new Date(local.getTime() - 4 * 60 * 60 * 1000);
+
+    // ACTIVE
+    if(now >= start && now <= local){
+      best = {status: "ACTIVE", time: local};
+      return;
+    }
+
+    // UPCOMING
+    if(now < start){
+      if(!best || local < best.time){
+        best = {status: "UPCOMING", time: local};
+      }
+    }
+
+    // COMPLETED fallback
+    if(!best){
+      best = {status: "COMPLETED", time: local};
+    }
+
+  });
+
+  return best;
 }  
   
 function renderTriple(){
@@ -1876,36 +1932,46 @@ function updateDoubleTimer(){
   let container = document.getElementById("doubleTimer");
   if(!container) return;
 
-  function getBestTask(list){
+  // 🔥 build with unified state
+  let candidates = double
+    .map(t => {
+      let s = getTaskState(t);
+      return s ? {task: t, state: s} : null;
+    })
+    .filter(x => x);
 
-    let active = list.find(t=>{
-      let w = getTaskWindow(t);
-      return w && now >= w.start && now <= w.end;
-    });
-
-    if(active) return {task: active, type: "ACTIVE"};
-
-    let sorted = list.slice().sort((a,b)=>{
-      let ta = getNextOccurrence(a) || Infinity;
-      let tb = getNextOccurrence(b) || Infinity;
-      return ta - tb;
-    });
-
-    return {task: sorted[0], type: "NEXT"};
-  }
-
-  let best = getBestTask(double);
-
-  if(!best.task){
+  if(!candidates.length){
     container.innerHTML = "";
     return;
   }
 
-  let timeStr = formatToLocalTime(best.task.times?.[0], best.task.d);
+  // 🔥 PRIORITY: ACTIVE → UPCOMING → COMPLETED
+  candidates.sort((a,b) => {
+
+    let order = {ACTIVE: 0, UPCOMING: 1, COMPLETED: 2};
+
+    if(order[a.state.status] !== order[b.state.status]){
+      return order[a.state.status] - order[b.state.status];
+    }
+
+    return a.state.time - b.state.time;
+  });
+
+  let best = candidates[0];
+
+  let statusLabel =
+    best.state.status === "ACTIVE" ? "ACTIVE" :
+    best.state.status === "UPCOMING" ? "NEXT" :
+    "DONE";
+
+  let timeStr = formatToLocalTime(
+    best.state.time.toISOString().slice(11,16),
+    best.task.d
+  );
 
   let html = `
     <div style="text-align:center;">
-      <div>Double Chain - ${best.type}</div>
+      <div>Double Chain - ${statusLabel}</div>
       <div style="font-size:18px;"><b>${best.task.task}</b></div>
       <div>${timeStr}</div>
     </div>
