@@ -1444,18 +1444,63 @@ function getNextOccurrence(task){
 
   return best;
 }
+  
 function getTaskWindow(task){
 
-  let eventTime = getNextOccurrence(task);
-  if(!eventTime) return null;
+  if(!task || !task.times || !task.times.length) return null;
 
-  let startTime = new Date(eventTime.getTime() - 4 * 60 * 60 * 1000);
+  let now = new Date();
+  let days = ["Sun","Mon","Tue","Wed","Thu","Fri","Sat"];
+  let targetDay = days.indexOf(task.d);
 
-  return {
-    start: startTime,
-    end: eventTime
-  };
-}   
+  let bestWindow = null;
+
+  task.times.forEach(time => {
+
+    if(!time || time === "ALL") return;
+
+    let [h,m] = String(time).split(":").map(Number);
+
+    let base = new Date(Date.UTC(
+      now.getUTCFullYear(),
+      now.getUTCMonth(),
+      now.getUTCDate(),
+      h,
+      m
+    ));
+
+    let local = new Date(base);
+
+    let diff = targetDay - local.getDay();
+    if(diff < 0) diff += 7;
+
+    local.setDate(local.getDate() + diff);
+
+    let start = new Date(local.getTime() - 4 * 60 * 60 * 1000);
+
+    // 🔥 ACTIVE
+    if(now >= start && now <= local){
+      bestWindow = {start, end: local};
+      return;
+    }
+
+    // 🔥 JUST MISSED (within 1 hour grace)
+    let grace = new Date(local.getTime() + 60 * 60 * 1000);
+
+    if(now > local && now <= grace){
+      bestWindow = {start, end: local};
+      return;
+    }
+
+    // 🔥 FUTURE fallback
+    if(!bestWindow && now < start){
+      bestWindow = {start, end: local};
+    }
+
+  });
+
+  return bestWindow;
+}  
   
 function renderTriple(){
 
