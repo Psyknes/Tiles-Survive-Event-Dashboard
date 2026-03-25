@@ -830,19 +830,7 @@ height:80px;
 
 <script>
   
-function getTaskWindow(task){
-
-  if(task.utc === "ALL") return null;
-
-  let eventTime = getNextOccurrence(task);
-  let startTime = new Date(eventTime.getTime() - 4 * 60 * 60 * 1000);
-
-  return {
-    start: startTime,
-    end: eventTime
-  };
-} 
-  
+ 
 function getLocalDay(hourUTC, dayStr){
 
 if(hourUTC === "ALL" || hourUTC === undefined){
@@ -1321,64 +1309,55 @@ const eventIcons = {
 
 function buildTaskMap(){
 
-let map = {};
-  
-console.log("Sample task:", rawData[0]);  
+  let map = {};
 
-rawData.forEach(e => {
+  rawData.forEach(e => {
 
-let key = e.d + "|" + e.task;
+    let key = e.d + "|" + e.task;
 
-if(!map[key]){
-map[key] = {
-d: e.d,
-task: e.task,
-times: [],
-events: [],
-dayExclusive: e.dayExclusive === true  
-};
+    if(!map[key]){
+      map[key] = {
+        d: e.d,
+        task: e.task,
+        times: [],
+        events: [],
+        categories: []
+      };
+    }
+
+    map[key].times.push(e.utc);
+    map[key].events.push(e.event);
+    map[key].categories.push(e.category);
+
+  });
+
+  return Object.values(map);
 }
-
-map[key].times.push(e.utc);
-map[key].events.push(e.event);
-
-});
-
-return Object.values(map);
-
-}  
 
 function classifyTasks(){
 
-let tasks = buildTaskMap();
+  let tasks = buildTaskMap();
 
-let triple = [];
-let double = [];
-let dayExclusive = [];  
+  let triple = [];
+  let double = [];
+  let dayExclusive = [];
 
-tasks.forEach(t => {
+  tasks.forEach(t => {
 
-let related = rawData.filter(r => 
-  r.task === t.task && r.d === t.d
-);
+    if(t.categories.includes("Triple")){
+      triple.push(t);
+    }
+    else if(t.categories.includes("Double")){
+      double.push(t);
+    }
 
-let categories = related.map(r => r.category);
+    if(t.categories.includes("Exclusive")){
+      dayExclusive.push(t);
+    }
 
-if(categories.includes("Triple")){
-  triple.push({...t, type:"triple"});
-}
-else if(categories.includes("Double")){
-  double.push({...t, type:"double"});
-}
+  });
 
-if(categories.includes("Exclusive")){
-  dayExclusive.push(t);
-}
-
-});
-
-return {triple, double, dayExclusive};
-
+  return {triple, double, dayExclusive};
 }
 
 function formatToLocalTime(hourUTC, dayStr){
@@ -1414,16 +1393,23 @@ hour12:true
 
 function getNextOccurrence(task){
 
-  if(task.utc === "ALL") return null;
+  if(!task) return null;
 
-  let [h,m] = task.utc.split(":").map(Number);
+  // support BOTH rawData and mapped tasks
+  let time = task.utc || (task.times && task.times[0]);
+
+  if(!time || time === "ALL") return null;
+
+  let [h,m] = String(time).split(":").map(Number);
 
   let now = new Date();
 
   let days = ["Sun","Mon","Tue","Wed","Thu","Fri","Sat"];
   let targetDay = days.indexOf(task.d);
 
-  // base UTC time
+  if(targetDay === -1) return null;
+
+  // create base UTC time
   let base = new Date(Date.UTC(
     now.getUTCFullYear(),
     now.getUTCMonth(),
@@ -1434,32 +1420,46 @@ function getNextOccurrence(task){
 
   let local = new Date(base);
 
-  // align to correct weekday
+  // align weekday
   let diff = targetDay - local.getDay();
   if(diff < 0) diff += 7;
 
   local.setDate(local.getDate() + diff);
 
-  // 🔥 CRITICAL FIX — HANDLE ACTIVE WINDOW
+  // ACTIVE WINDOW
   let start = new Date(local.getTime() - 4 * 60 * 60 * 1000);
 
   if(now >= start && now <= local){
-    return local; // current active cycle
+    return local;
   }
 
-  // if fully passed → move to next cycle
   if(now > local){
     local.setDate(local.getDate() + 7);
   }
 
   return local;
 }
+
+function getTaskWindow(task){
+
+  let eventTime = getNextOccurrence(task);
+  if(!eventTime) return null;
+
+  let startTime = new Date(eventTime.getTime() - 4 * 60 * 60 * 1000);
+
+  return {
+    start: startTime,
+    end: eventTime
+  };
+}   
   
 function renderTriple(){
 
 let {triple} = getTasks();
 triple.sort((a,b)=>{
-  return getNextOccurrence(a) - getNextOccurrence(b);
+  let ta = getNextOccurrence(a) || Infinity;
+let tb = getNextOccurrence(b) || Infinity;
+return ta - tb;
 });
 let container = document.getElementById("tripleList");
 
@@ -1527,7 +1527,9 @@ let container = document.getElementById("doubleList");
 container.innerHTML = "";
 
 double.sort((a,b)=>{
-return getNextOccurrence(a) - getNextOccurrence(b);
+let ta = getNextOccurrence(a) || Infinity;
+let tb = getNextOccurrence(b) || Infinity;
+return ta - tb;
 });  
 
 double.forEach(t => {
@@ -2067,136 +2069,111 @@ Promise.all([
   
 function updateTodayPanel(){
 
-let now = new Date();
-let days = ["Sun","Mon","Tue","Wed","Thu","Fri","Sat"];
-let today = days[now.getDay()];
+  let now = new Date();
+  let days = ["Sun","Mon","Tue","Wed","Thu","Fri","Sat"];
+  let today = days[now.getDay()];
 
-let {triple, double, dayExclusive} = getTasks();
+  let {triple, double, dayExclusive} = getTasks();
 
-let container = document.getElementById("todayPanel");
+  let container = document.getElementById("todayPanel");
 
-let html = "";
+  let html = "";
 
-/* ---------- TRIPLE ---------- */
+  /* ---------- TRIPLE ---------- */
 
-let todayTriple = triple.filter(t => {
-console.log("CHECK TRIPLE:", t.d, t.times);  
-  let h = t.times.find(x => x !== "ALL");
-  return t.d === days[new Date().getDay()];
-});
-console.log("todayTriple result:", todayTriple);
-if(todayTriple.length){
+  let todayTriple = triple.filter(t => t.d === today);
 
-let t = todayTriple.find(x => {
+  if(todayTriple.length){
 
-  let eventTime = getNextOccurrence(x);
-  let start = new Date(eventTime.getTime() - 4 * 60 * 60 * 1000);
+    let t = todayTriple.find(x => {
+      let w = getTaskWindow(x);
+      return w && now >= w.start && now <= w.end;
+    }) || todayTriple[0];
 
-  return now >= start && now <= eventTime;
+    let p = prepMap[t.task];
+    let w = getTaskWindow(t);
 
-}) || todayTriple[0];
-  let p = prepMap[t.task]; 
+    let status = "";
 
-  let status = "";
-
-  if(t.events.includes("Power Play")){
-
-let w = getTaskWindow(t);
-
-if(w && now >= w.start && now <= w.end){
+    if(w && now >= w.start && now <= w.end){
       status = "⚡ ACTIVE";
     } else if(w && now < w.start){
       status = "⭐ Upcoming";
     } else{
       status = "✔ Completed • → Double Active";
     }
+
+    html += `
+    <div class="row ${status.includes('ACTIVE') ? 'activeRow' : ''}" style="font-size:13px; border-bottom:none;">
+      <span><b>◆ Triple</b> - ${t.task}</span>
+      <span style="font-size:12px;opacity:.85">${status}</span>
+    </div>
+    ${p?.tip ? `<div class="prepTip saveItem">${p.tip}</div>` : ""}
+    `;
   }
 
-  html += `
-  <div class="row ${status.includes('ACTIVE') ? 'activeRow' : ''}" style="font-size:13px; border-bottom:none;">
-    <span><b>◆ Triple</b> - ${t.task}</span>
-    <span style="font-size:12px;opacity:.85">${status}</span>
-  </div>
-  ${p?.tip ? `<div class="prepTip saveItem">${p.tip}</div>` : ""}
-  `;
-}
+  /* ---------- DOUBLE ---------- */
 
-/* ---------- DOUBLE ---------- */
+  let todayDouble = double.filter(t => t.d === today);
 
-let todayDouble = double.filter(t => {
-console.log("CHECK DOUBLE:", t.d, t.times);
-  let h = t.times.find(x => x !== "ALL");
-  let localDay = getLocalDay(h, t.d);
-  return localDay === days[new Date().getDay()];
-});
-console.log("todayDouble result:", todayDouble);
-if(todayDouble.length){
+  if(todayDouble.length){
 
-let t = todayDouble.find(x => {
+    let t = todayDouble.find(x => {
+      let w = getTaskWindow(x);
+      return w && now >= w.start && now <= w.end;
+    }) || todayDouble[0];
 
-  if(!x.events.includes("Power Play")) return true;
+    let p = prepMap[t.task];
+    let w = getTaskWindow(t);
 
-  let eventTime = getNextOccurrence(x);
-  let start = new Date(eventTime.getTime() - 4 * 60 * 60 * 1000);
+    let status = "";
 
-  return now >= start && now <= eventTime;
-
-}) || todayDouble[0];
-  let p = prepMap[t.task];
-
-  let status = "";
-
-  if(t.events.includes("Power Play")){
-    let eventTime = getNextOccurrence(t);
-    let start = new Date(eventTime.getTime() - 4 * 60 * 60 * 1000);
-
-    if(now >= start && now <= eventTime){
-      status = "🔹 ACTIVE";
-    } else if(now < start){
-      status = "⭐ Upcoming";
+    if(t.events.includes("Power Play") && w){
+      if(now >= w.start && now <= w.end){
+        status = "🔹 ACTIVE";
+      } else if(now < w.start){
+        status = "⭐ Upcoming";
+      } else{
+        status = "✔ Completed";
+      }
     } else{
-      status = "✔ Completed";
+      status = "🔹 ACTIVE";
     }
-  } else{
-    status = "🔹 ACTIVE";
+
+    html += `
+    <div class="row ${status.includes('ACTIVE') ? 'activeRow' : ''}" style="font-size:13px; border-bottom:none;">
+      <span><b>◆ Double</b> - ${t.task}</span>
+      <span style="font-size:12px;opacity:.85">${status}</span>
+    </div>
+    ${p?.tip ? `<div class="prepTip saveItem">${p.tip}</div>` : ""}
+    `;
   }
 
-  html += `
-  <div class="row ${status.includes('ACTIVE') ? 'activeRow' : ''}" style="font-size:13px; border-bottom:none;">
-    <span><b>◆ Double</b> - ${t.task}</span>
-    <span style="font-size:12px;opacity:.85">${status}</span>
-  </div>
-  ${p?.tip ? `<div class="prepTip saveItem">${p.tip}</div>` : ""}
-  `;
+  /* ---------- DAY EXCLUSIVE ---------- */
+
+  let todayExclusive = dayExclusive.filter(t => t.d === today);
+
+  if(todayExclusive.length){
+
+    let t = todayExclusive[0];
+    let p = prepMap[t.task];
+
+    html += `
+    <div class="row" style="font-size:13px; border-bottom:none;">
+      <span><b>◆ Exclusive</b> - ${t.task}</span>
+      <span style="font-size:12px;opacity:.85">📌 Today's Special</span>
+    </div>
+    ${p?.tip ? `<div class="prepTip" style="margin-left:6px;">${p.tip}</div>` : ""}
+    `;
+  }
+
+  if(!todayTriple.length && !todayDouble.length && !todayExclusive.length){
+    html = "<small>No priority tasks today</small>";
+  }
+
+  container.innerHTML = html;
 }
-
-/* ---------- DAY EXCLUSIVE ---------- */
-
-let todayExclusive = dayExclusive.filter(t => t.d === today);
-
-if(todayExclusive.length){
-
-  let t = todayExclusive[0];
-  let p = prepMap[t.task]; 
-
-  html += `
-  <div class="row" style="font-size:13px; border-bottom:none;">
-    <span><b>◆ Exclusive</b> - ${t.task}</span>
-    <span style="font-size:12px;opacity:.85">📌 Today's Special</span>
-  </div>
-  ${p?.tip ? `<div class="prepTip" style="margin-left:6px;">${p.tip}</div>` : ""}
-  `;
-}
-
-/* ---------- EMPTY ---------- */
-
-if(!todayTriple.length && !todayDouble.length && !todayExclusive.length){
-  html = "<small>No priority tasks today</small>";
-}
-
-container.innerHTML = html;
-
-}
+  
 updateTodayPanel();
 
   
