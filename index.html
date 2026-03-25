@@ -1245,14 +1245,25 @@ let nextDayTasks = [...triple, ...double].filter(t => t.d === nextDay);
 
 nextDayTasks
 .sort((a,b)=>{
-let ta = getNextOccurrence(a);
-let tb = getNextOccurrence(b);
-return ta - tb;
-})
+
+  let sa = getTaskState(a);
+  let sb = getTaskState(b);
+
+  if(!sa && !sb) return 0;
+  if(!sa) return 1;
+  if(!sb) return -1;
+
+  return sa.time - sb.time;
+});
+  
 .forEach(t => {
 
 let p = prepMap[t.task];
-let nextTime = getNextOccurrence(t);
+
+let state = getTaskState(t);
+if(!state) return;
+
+let nextTime = state.time;
 
 let diff = nextTime - new Date();
 
@@ -1495,10 +1506,22 @@ function renderDouble(){
 
   // SAFE SORT
   double.sort((a,b)=>{
-    let ta = getNextOccurrence(a) || Infinity;
-    let tb = getNextOccurrence(b) || Infinity;
-    return ta - tb;
-  });
+
+  let sa = getTaskState(a);
+  let sb = getTaskState(b);
+
+  if(!sa && !sb) return 0;
+  if(!sa) return 1;
+  if(!sb) return -1;
+
+  let order = {ACTIVE:0, UPCOMING:1};
+
+  if(order[sa.status] !== order[sb.status]){
+    return order[sa.status] - order[sb.status];
+  }
+
+  return sa.time - sb.time;
+})
 
   let html = "";
 
