@@ -829,7 +829,20 @@ height:80px;
 
 
 <script>
+  
+function getTaskWindow(task){
 
+  if(task.utc === "ALL") return null;
+
+  let eventTime = getNextOccurrence(task);
+  let startTime = new Date(eventTime.getTime() - 4 * 60 * 60 * 1000);
+
+  return {
+    start: startTime,
+    end: eventTime
+  };
+} 
+  
 function getLocalDay(hourUTC, dayStr){
 
 if(hourUTC === "ALL" || hourUTC === undefined){
@@ -2096,16 +2109,23 @@ let todayTriple = triple.filter(t => {
 
 if(todayTriple.length){
 
-  let t = todayTriple[0];
+let t = todayTriple.find(x => {
+
+  let eventTime = getNextOccurrence(x);
+  let start = new Date(eventTime.getTime() - 4 * 60 * 60 * 1000);
+
+  return now >= start && now <= eventTime;
+
+}) || todayTriple[0];
   let p = prepMap[t.task]; 
 
   let status = "";
 
   if(t.events.includes("Power Play")){
-    let eventTime = getNextOccurrence(t);
-    let start = new Date(eventTime.getTime() - 4 * 60 * 60 * 1000);
 
-    if(now >= start && now <= eventTime){
+let w = getTaskWindow(t);
+
+if(w && now >= w.start && now <= w.end){
       status = "⚡ ACTIVE";
     } else if(now < start){
       status = "⭐ Upcoming";
@@ -2133,7 +2153,16 @@ let todayDouble = double.filter(t => {
 
 if(todayDouble.length){
 
-  let t = todayDouble[0];
+let t = todayDouble.find(x => {
+
+  if(!x.events.includes("Power Play")) return true;
+
+  let eventTime = getNextOccurrence(x);
+  let start = new Date(eventTime.getTime() - 4 * 60 * 60 * 1000);
+
+  return now >= start && now <= eventTime;
+
+}) || todayDouble[0];
   let p = prepMap[t.task];
 
   let status = "";
