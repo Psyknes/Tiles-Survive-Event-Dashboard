@@ -1507,6 +1507,10 @@ function getTaskState(task){
   if(!task || !task.times || !task.times.length) return null;
 
   let now = new Date();
+
+  // 🔥 FORCE UTC
+  let nowUTC = new Date(now.toISOString());
+
   let days = ["Sun","Mon","Tue","Wed","Thu","Fri","Sat"];
   let targetDay = days.indexOf(task.d);
 
@@ -1521,47 +1525,45 @@ function getTaskState(task){
     let [h,m] = String(time).split(":").map(Number);
 
     let base = new Date(Date.UTC(
-      now.getUTCFullYear(),
-      now.getUTCMonth(),
-      now.getUTCDate(),
+      nowUTC.getUTCFullYear(),
+      nowUTC.getUTCMonth(),
+      nowUTC.getUTCDate(),
       h,
       m
     ));
 
-    let local = new Date(base);
-
-    let diff = targetDay - local.getDay();
+    let diff = targetDay - base.getUTCDay();
     if(diff < 0) diff += 7;
 
-    local.setDate(local.getDate() + diff);
+    base.setUTCDate(base.getUTCDate() + diff);
 
-    let start = new Date(local.getTime() - 4 * 60 * 60 * 1000);
+    let start = new Date(base.getTime() - 4 * 60 * 60 * 1000);
 
-    // 🔥 ACTIVE WINDOW
-    if(now >= start && now <= local){
-      best = {status: "ACTIVE", time: local};
+    // ACTIVE
+    if(nowUTC >= start && nowUTC <= base){
+      best = {status: "ACTIVE", time: base};
       return;
     }
 
-    // 🔥 FUTURE (NEXT)
-    if(now < start){
-      if(!best || local < best.time){
-        best = {status: "UPCOMING", time: local};
+    // FUTURE
+    if(nowUTC < start){
+      if(!best || base < best.time){
+        best = {status: "UPCOMING", time: base};
       }
       return;
     }
 
-    // 🔥 PAST → MOVE TO NEXT CYCLE
-    local.setDate(local.getDate() + 7);
+    // PAST → NEXT CYCLE
+    base.setUTCDate(base.getUTCDate() + 7);
 
-    if(!best || local < best.time){
-      best = {status: "UPCOMING", time: local};
+    if(!best || base < best.time){
+      best = {status: "UPCOMING", time: base};
     }
 
   });
 
   return best;
-}  
+}
   
 function renderTriple(){
 
