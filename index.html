@@ -2112,8 +2112,8 @@ if(typeof h === "string" && h.includes(":")){
   h = Number(h);
 }
 
-let eventTime = new Date();
-eventTime.setHours(h,0,0,0);
+let occ = getCurrentOrNextOccurrence(t);
+let eventTime = occ.time;
 
 let start = new Date(eventTime.getTime() - 4 * 60 * 60 * 1000);
 
