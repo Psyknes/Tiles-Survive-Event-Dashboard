@@ -1896,10 +1896,6 @@ Promise.all([
   
 function updateTodayPanel(){
 
-  let now = new Date();
-  let days = ["Sun","Mon","Tue","Wed","Thu","Fri","Sat"];
-  let today = days[now.getDay()];
-
   let {triple, double, dayExclusive} = getTasks();
 
   let container = document.getElementById("todayPanel");
@@ -1910,7 +1906,7 @@ function updateTodayPanel(){
   let todayTriple = triple
     .map(t => {
       let s = getTaskState(t);
-      return (t.d === today && s) ? {task:t, state:s} : null;
+      return s ? {task:t, state:s} : null;
     })
     .filter(x => x)
     .sort((a,b)=>{
@@ -1945,7 +1941,7 @@ function updateTodayPanel(){
   let todayDouble = double
     .map(t => {
       let s = getTaskState(t);
-      return (t.d === today && s) ? {task:t, state:s} : null;
+      return s ? {task:t, state:s} : null;
     })
     .filter(x => x)
     .sort((a,b)=>{
@@ -1976,6 +1972,10 @@ function updateTodayPanel(){
   }
 
   /* ---------- EXCLUSIVE ---------- */
+
+  let now = new Date();
+  let days = ["Sun","Mon","Tue","Wed","Thu","Fri","Sat"];
+  let today = days[now.getDay()];
 
   let todayExclusive = dayExclusive.filter(t => t.d === today);
 
