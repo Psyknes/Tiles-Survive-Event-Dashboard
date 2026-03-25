@@ -2142,42 +2142,43 @@ let todayDouble = double.filter(t => {
 
 if(todayDouble.length){
 
-let t = todayDouble[0];
-let p = prepMap[t.task];
+  let t = todayDouble[0];
+  let p = prepMap[t.task];
 
-let status = "";
+  let status = "";
 
-let occ = getCurrentOrNextOccurrence(t);
+  let occ = getCurrentOrNextOccurrence(t);
+  let eventTime = occ.time;
+  let start = new Date(eventTime.getTime() - 4 * 60 * 60 * 1000);
 
-let eventTime = occ.time;
-let start = new Date(eventTime.getTime() - 4 * 60 * 60 * 1000);
+  if(t.events.includes("Power Play")){
 
-if(now >= start && now <= eventTime){
-  status = "🔹 ACTIVE";
-}
-else if(now < start){
-  status = "⭐ Upcoming";
-}
-else{
-  status = "✔ Completed";
-}
+    if(now >= start && now <= eventTime){
+      status = "🔹 ACTIVE";
+    }
+    else if(now < start){
+      status = "⭐ Upcoming";
+    }
+    else{
+      status = "✔ Completed";
+    }
 
-}else{
+  }else{
 
-// 🔥 no power play → active all day
-status = "🔹 ACTIVE";
+    // 🔥 non-power-play double = all day
+    status = "🔹 ACTIVE";
 
-}
+  }
 
-html += `
-<div class="row ${status.includes('ACTIVE') ? 'activeRow' : ''}" style="font-size:13px; border-bottom:none;">
-  <span><b>◆ Double</b> - ${t.task}</span>
-  <span style="font-size:12px;opacity:.85">${status}</span>
-</div>
+  html += `
+  <div class="row ${status.includes('ACTIVE') ? 'activeRow' : ''}" style="font-size:13px; border-bottom:none;">
+    <span><b>◆ Double</b> - ${t.task}</span>
+    <span style="font-size:12px;opacity:.85">${status}</span>
+  </div>
 
-${p?.tip ? `<div class="prepTip saveItem" style="margin-left:6px;">${p.tip}</div>` : ""}
-`;  
-  
+  ${p?.tip ? `<div class="prepTip saveItem" style="margin-left:6px;">${p.tip}</div>` : ""}
+  `;
+
 }
 
 
