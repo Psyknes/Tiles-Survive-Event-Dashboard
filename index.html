@@ -792,6 +792,21 @@ height:80px;
     filter: drop-shadow(0 0 2px rgba(255,213,74,0.4));
   }
 }  
+
+/* 🔽 Bottom Collapse Bar */
+.collapseBar{
+  text-align:center;
+  margin-top:6px;
+  padding:6px;
+  background:rgba(255,255,255,0.05);
+  border-radius:6px;
+  cursor:pointer;
+}
+
+/* arrow already exists */
+.collapseBar .collapseArrow{
+  margin:0 auto;
+}
   
 </style>
 </head>
@@ -873,7 +888,7 @@ height:80px;
 </div>
   
 <div class="card triple">
-<h2 onclick="toggleList('triple')" id="tripleHeader">
+<h2>◆ Triple Chain List</h2>
   ◆ Triple Chain List <span class="collapseArrow"></span>
 </h2>
 
@@ -882,7 +897,7 @@ height:80px;
 
 
 <div class="card double">
-<h2 onclick="toggleList('double')" id="doubleHeader">
+<h2>◆ Double Chain List</h2>
   ◆ Double Chain List <span class="collapseArrow"></span>
 </h2>
 
@@ -1324,7 +1339,10 @@ let html = "";
 // 🔥 get next day
 let now = new Date();
 let days = ["Sun","Mon","Tue","Wed","Thu","Fri","Sat"];
-let nextDay = days[(now.getUTCDay() + 1) % 7];
+let tomorrowUTC = new Date();
+tomorrowUTC.setUTCDate(tomorrowUTC.getUTCDate() + 1);
+
+let nextDay = days[tomorrowUTC.getUTCDay()];
 
 let {triple, double, dayExclusive} = getTasks();
 
@@ -1555,28 +1573,23 @@ function renderTriple(){
     })
     .filter(x => x);
 
-  // 🔥 SORT (UNCHANGED LOGIC)
   list.sort((a,b)=>{
 
-    let sa = a.state;
-    let sb = b.state;
-
-    if(sa.status !== sb.status){
-      return sa.status === "ACTIVE" ? -1 : 1;
+    if(a.state.status !== b.state.status){
+      return a.state.status === "ACTIVE" ? -1 : 1;
     }
 
     if(a.task.priority !== b.task.priority){
       return a.task.priority - b.task.priority;
     }
 
-    return sa.time - sb.time;
+    return a.state.time - b.state.time;
   });
 
-  // 🔥 FIND NEXT UPCOMING (ONLY ONE)
   let nextUpcomingIndex = list.findIndex(x => x.state.status === "UPCOMING");
 
-let limit = collapseState.triple ? 4 : list.length;
-  
+  let limit = collapseState.triple ? 4 : list.length;
+
   let html = "";
 
   list.slice(0, limit).forEach((x, index) => {
@@ -1602,6 +1615,13 @@ let limit = collapseState.triple ? 4 : list.length;
       </div>
     `;
   });
+
+  // 🔽 ADD COLLAPSE BAR AT BOTTOM
+  html += `
+    <div class="collapseBar" onclick="toggleList('triple')">
+      <span class="collapseArrow ${collapseState.triple ? '' : 'up'}"></span>
+    </div>
+  `;
 
   container.innerHTML = html;
 }
@@ -1620,7 +1640,6 @@ function renderDouble(){
     })
     .filter(x => x);
 
-  // 🔥 SORT (UNCHANGED LOGIC)
   list.sort((a,b)=>{
 
     let order = {ACTIVE:0, UPCOMING:1, COMPLETED:2};
@@ -1636,13 +1655,10 @@ function renderDouble(){
     return a.state.time - b.state.time;
   });
 
-
-  
-  // 🔥 FIND NEXT UPCOMING (ONLY ONE)
   let nextUpcomingIndex = list.findIndex(x => x.state.status === "UPCOMING");
 
-let limit = collapseState.double ? 4 : list.length;
-  
+  let limit = collapseState.double ? 4 : list.length;
+
   let html = "";
 
   list.slice(0, limit).forEach((x, index) => {
@@ -1668,6 +1684,12 @@ let limit = collapseState.double ? 4 : list.length;
       </div>
     `;
   });
+
+  html += `
+    <div class="collapseBar" onclick="toggleList('double')">
+      <span class="collapseArrow ${collapseState.double ? '' : 'up'}"></span>
+    </div>
+  `;
 
   container.innerHTML = html;
 }
@@ -1967,7 +1989,7 @@ function updateTimer(){
   let hrs = Math.floor(mins / 60);
   mins = mins % 60;
 
-  let timerStr = `${String(hrs).padStart(2,"0")}:${String(mins).padStart(2,"0")}`;
+  let timerStr = `${hrs}h ${mins}m`;
 
   let statusEl = document.getElementById("tripleStatus");
   let taskEl = document.getElementById("tripleTask");
@@ -2043,7 +2065,7 @@ function updateDoubleTimer(){
   let hrs = Math.floor(mins / 60);
   mins = mins % 60;
 
-  let timerStr = `${String(hrs).padStart(2,"0")}:${String(mins).padStart(2,"0")}`;
+  let timerStr = `${hrs}h ${mins}m`;
 
   let statusEl = document.getElementById("doubleStatus");
   let taskEl = document.getElementById("doubleTask");
