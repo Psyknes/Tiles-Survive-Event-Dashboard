@@ -1266,7 +1266,8 @@ if(!state) return;
 
 let nextTime = state.time;
 
-let diff = nextTime - new Date();
+let now = new Date();
+let diff = nextTime - now;
 
 let h = Math.floor(diff/1000/60/60);
 let m = Math.floor((diff/1000/60)%60);
