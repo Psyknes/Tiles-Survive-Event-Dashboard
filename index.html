@@ -1439,52 +1439,53 @@ function renderTriple(){
 
   let {triple} = getTasks();
 
+  let list = triple
+    .map(t => {
+      let state = getTaskState(t);
+      return state ? {task:t, state} : null;
+    })
+    .filter(x => x);
+
+  // 🔥 SORT (UNCHANGED LOGIC)
+  list.sort((a,b)=>{
+
+    let sa = a.state;
+    let sb = b.state;
+
+    if(sa.status !== sb.status){
+      return sa.status === "ACTIVE" ? -1 : 1;
+    }
+
+    if(a.task.priority !== b.task.priority){
+      return a.task.priority - b.task.priority;
+    }
+
+    return sa.time - sb.time;
+  });
+
+  // 🔥 FIND NEXT UPCOMING (ONLY ONE)
+  let nextUpcomingIndex = list.findIndex(x => x.state.status === "UPCOMING");
+
   let html = "";
 
-  triple
-  .map(t => {
-    let state = getTaskState(t);
-    return state ? {task: t, state} : null;
-  })
-  .filter(x => x)
-  .sort((a,b)=>{
-
-  let sa = a.state;
-  let sb = b.state;
-
-  if(!sa && !sb) return 0;
-  if(!sa) return 1;
-  if(!sb) return -1;
-
-  // ACTIVE first
-  if(sa.status !== sb.status){
-    return sa.status === "ACTIVE" ? -1 : 1;
-  }
-
-  // 🔥 PRIORITY (LOWER = HIGHER PRIORITY)
-  if(a.task.priority !== b.task.priority){
-    return a.task.priority - b.task.priority;
-  }
-
-  // TIME
-  return sa.time - sb.time;
-})
-  .forEach(x => {
+  list.forEach((x, index) => {
 
     let t = x.task;
     let state = x.state;
 
-    let status =
-      state.status === "ACTIVE" ? "⚡ ACTIVE" :
-      "⭐ Upcoming";
+    let rowClass = "";
+
+    if(state.status === "ACTIVE"){
+      rowClass = "activeRow";
+    }
+    else if(index === nextUpcomingIndex){
+      rowClass = "nextRow";
+    }
 
     let timeStr = formatToLocalTimeFromDate(state.time);
 
     html += `
-      <div class="row ${
-  state.status === 'ACTIVE' ? 'activeRow' :
-  state.status === 'UPCOMING' ? 'nextRow' : ''
-}">
+      <div class="row ${rowClass}">
         <span>${t.d}</span>
         <span>${timeStr} — ${t.task}</span>
       </div>
@@ -1501,56 +1502,55 @@ function renderDouble(){
 
   let {double} = getTasks();
 
-  let now = new Date();
+  let list = double
+    .map(t => {
+      let state = getTaskState(t);
+      return state ? {task:t, state} : null;
+    })
+    .filter(x => x);
 
-  // SAFE SORT
-  double.sort((a,b)=>{
+  // 🔥 SORT (UNCHANGED LOGIC)
+  list.sort((a,b)=>{
 
-  let sa = getTaskState(a);
-  let sb = getTaskState(b);
+    let order = {ACTIVE:0, UPCOMING:1, COMPLETED:2};
 
-  if(!sa && !sb) return 0;
-  if(!sa) return 1;
-  if(!sb) return -1;
+    if(order[a.state.status] !== order[b.state.status]){
+      return order[a.state.status] - order[b.state.status];
+    }
 
-  let order = {ACTIVE:0, UPCOMING:1, COMPLETED:2};
+    if(a.task.priority !== b.task.priority){
+      return a.task.priority - b.task.priority;
+    }
 
-  // 1️⃣ STATE (this creates cycling effect)
-  if(order[sa.status] !== order[sb.status]){
-    return order[sa.status] - order[sb.status];
-  }
+    return a.state.time - b.state.time;
+  });
 
-  // 2️⃣ PRIORITY
-  if(a.priority !== b.priority){
-    return a.priority - b.priority;
-  }
-
-  // 3️⃣ TIME
-  return sa.time - sb.time;
-});
+  // 🔥 FIND NEXT UPCOMING (ONLY ONE)
+  let nextUpcomingIndex = list.findIndex(x => x.state.status === "UPCOMING");
 
   let html = "";
 
-  double.forEach(t => {
+  list.forEach((x, index) => {
 
-  let state = getTaskState(t);
-  if(!state) return;
+    let t = x.task;
+    let state = x.state;
 
-  let status =
-    state.status === "ACTIVE" ? "🔹 ACTIVE" :
-    state.status === "UPCOMING" ? "⭐ Upcoming" :
-    "✔ Completed";
+    let rowClass = "";
 
-let timeStr = formatToLocalTimeFromDate(state.time);
+    if(state.status === "ACTIVE"){
+      rowClass = "activeRow";
+    }
+    else if(index === nextUpcomingIndex){
+      rowClass = "nextRow";
+    }
+
+    let timeStr = formatToLocalTimeFromDate(state.time);
 
     html += `
-    <div class="row ${
-  state.status === 'ACTIVE' ? 'activeRow' :
-  state.status === 'UPCOMING' ? 'nextRow' : ''
-}">
-      <span>${t.d}</span>
-      <span>${timeStr} — ${t.task}</span>
-    </div>
+      <div class="row ${rowClass}">
+        <span>${t.d}</span>
+        <span>${timeStr} — ${t.task}</span>
+      </div>
     `;
   });
 
