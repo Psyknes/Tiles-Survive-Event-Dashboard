@@ -830,6 +830,23 @@ height:80px;
   }
 
 }
+
+.feedbackBar{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:8px;
+  font-size:12px;
+  color:#aaa;
+  margin-top:6px;
+  opacity:0.85;
+}
+
+.feedbackAvatar{
+  width:18px;
+  height:18px;
+  border-radius:50%;
+}
   
 </style>
 </head>
@@ -937,9 +954,9 @@ height:80px;
 
 </div>
 
-<div class="card">
-<h2>🔔 Event Reminder</h2>
-<button onclick="enableNotifications()">Enable Notifications</button>
+<div class="feedbackBar">
+  <img src="psyknes.png" class="feedbackAvatar">
+  <span>For feedback, suggestions or bug reports contact <strong>[CHI]Pysknes</strong></span>
 </div>
 
 
