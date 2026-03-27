@@ -21,7 +21,7 @@
   "emergency": {
     "active": true,
     "startTime": "2026-03-22T08:30:00Z",
-    "endTime": "2026-03-27T09:30:00Z"
+    "endTime": "2026-03-27T18:30:00Z"
   },
 
   "message": "<b style='color:#ff4d4d'>WAR ALERT</b> — Rally at <span class='highlight'>Marker</span>",
