@@ -21,7 +21,7 @@
   "emergency": {
     "active": true,
     "startTime": "2026-03-22T08:30:00Z",
-    "endTime": "2026-03-27T18:30:00Z"
+    "endTime": "2026-03-27T15:30:00Z"
   },
 
   "message": "<b style='color:#ff4d4d'>WAR ALERT</b> — Gather for defense at  <span class='highlight'>Metropolis 4</span>",
