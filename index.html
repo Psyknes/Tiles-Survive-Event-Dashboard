@@ -2116,11 +2116,12 @@ setInterval(loadTicker, 60000); // every 1 min
 // 🔹 LOAD ALL CORE DATA FIRST (CRITICAL FIX)
 Promise.all([
   loadTasks(),
+  loadPrep(),
   loadSpecialEvents()
 ]).then(() => {
 
   // 🔹 INITIAL RENDER (after data is ready)
-  loadPrep(),
+  
   renderTriple();
   renderDouble();
   renderDayExclusive();
