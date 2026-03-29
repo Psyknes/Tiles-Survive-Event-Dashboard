@@ -21,7 +21,7 @@
   "emergency": {
     "active": true,
     "startTime": "2026-03-22T08:30:00Z",
-    "endTime": "2026-03-29T23:59:00Z"
+    "endTime": "2026-03-28T23:59:00Z"
   },
 
   "message": "🚨 <b style='color:#ff4d4d'>WAR ALERT</b> — <b style='color:#7DF9FF'>Shield up</b> for defense, its <span class='highlight'>Alliance Duel </span><b style='color:#ff4d4d'> Kill Event</b>",
