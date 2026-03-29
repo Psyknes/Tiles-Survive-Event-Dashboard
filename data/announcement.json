@@ -21,10 +21,10 @@
   "emergency": {
     "active": true,
     "startTime": "2026-03-22T08:30:00Z",
-    "endTime": "2026-03-29T12:00:00Z"
+    "endTime": "2026-03-29T14:00:00Z"
   },
 
-  "message": "🚨 <b style='color:#ff4d4d'>WAR ALERT</b> — <b>Prepare for </b> <b style='color:#7DF9FF'>Reservoir Raid </b> <b style='color:#FFD700'> ACTIVE </b>",
+  "message": "🚨 <b style='color:#ff4d4d'>WAR ALERT</b> —  <b style='color:#FFD700'>🏆 CONGRATULATIONS</b> everyone for <b> Winning </b> <b style='color:#7DF9FF'>Reservoir Raid </b> Kudos to top rankers <b style='color:#FFD700'>[CHI]kreon</b> | <b style='color:#7DF9FF'>[CHI]DontJoinMyRally</b>  |  <b style='color:#CD7F32'>[CHI]Milo</b>",
 
   "normalMessage":  "🏆 Kudos to <b style='color:#FFD700'>[CHI]陳嫚嫚</b>  |  <b style='color:#7DF9FF'>[CHI]SaphireJess</b>  |  <b style='color:#CD7F32'>[CHI]Milo</b> for Top Ranks in <b style='color:#ff4d4d'>Ghoulion Pursuit</b> — Keep pushing team!",
 
