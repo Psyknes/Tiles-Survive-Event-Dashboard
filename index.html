@@ -1049,10 +1049,274 @@ height:80px;
   pointer-events:none;
 }
 
+/* 🦇 TEMP TEST — Terror bats */
+/* 🦇 Terror bats FIXED */
+/* 🦇 Terror bats — CLEAN VERSION */
+/* 🦇 Terror bats FIXED */
+.seItem.terrorActive .seCircle::before{
+  content:"";
+  position:absolute;
+
+  top:-30%;
+  left:-30%;
+  width:160%;
+  height:160%;
+
+  transform-origin:center;
+
+  background:url("images/effects/bats.gif") center/contain no-repeat;
+
+  pointer-events:none;
+
+  /* 🔥 removes white dominance */
+  mix-blend-mode:multiply;
+
+  opacity:0.75;
+
+  z-index:3;
+
+  animation: batBurst 1.2s cubic-bezier(.2,.8,.2,1);
+}
+  
 .seItem.active .seCircle img{
   animation: microShift 3s ease-in-out infinite;
 }
 
+@keyframes batBurst{
+  0%{
+    transform: scale(0.4) translateY(10%);
+    opacity:0;
+  }
+
+  30%{
+    transform: scale(1.3) translateY(-5%);
+    opacity:1;
+  }
+
+  60%{
+    transform: scale(1.1) translateY(0%);
+    opacity:0.9;
+  }
+
+  100%{
+    transform: scale(1) translateY(0%);
+    opacity:0.85;
+  }
+}
+/* 🔥 Ghoulion fire animation */
+.seItem.ghoulionActive .seCircle{
+  position:relative;
+  overflow:hidden;
+}
+
+.seItem.ghoulionActive .seCircle::before{
+  content:"";
+  position:absolute;
+
+  top:-35%;
+  left:-35%;
+  width:170%;
+  height:170%;
+
+  background:url("images/effects/lion.gif") center/contain no-repeat;
+
+  pointer-events:none;
+  z-index:3;
+
+  transform-origin:center;
+
+  animation: ghoulionCycle 8s infinite;
+}  
+
+.seItem.ghoulionActive .seCircle::after{
+  content:"";
+  position:absolute;
+  inset:0;
+  border-radius:50%;
+
+  box-shadow:0 0 20px rgba(255,80,0,0.6);
+
+  pointer-events:none;
+  z-index:2;
+
+  animation: ghoulionGlow 2s ease-in-out infinite;
+}
+
+@keyframes ghoulionGlow{
+  0%,100%{ opacity:0.5; }
+  50%{ opacity:1; }
+}  
+  
+@keyframes ghoulionCycle{
+
+  /* idle */
+  0%, 85%, 100%{
+    transform: scale(1);
+    opacity:0.85;
+  }
+
+  /* start roar */
+  88%{
+    transform: scale(1.4) rotate(3deg);
+    opacity:1;
+  }
+
+  /* peak */
+  92%{
+    transform: scale(1.2) rotate(-2deg);
+    opacity:1;
+  }
+
+  /* settle */
+  96%{
+    transform: scale(1);
+    opacity:0.85;
+  }
+}  
+/* ⚔️ Arcadian charge effect */
+.seItem.arcadianActive .seCircle{
+  position:relative;
+  overflow:hidden;
+}
+
+.seItem.arcadianActive .seCircle::before{
+  content:"";
+  position:absolute;
+
+  top:-30%;
+  left:-30%;
+  width:160%;
+  height:160%;
+
+  background:url("images/effects/arcadian.gif") center/contain no-repeat;
+
+  pointer-events:none;
+  z-index:3;
+
+  transform-origin:center;
+
+  animation: arcadianCharge 10s infinite;
+}  
+
+@keyframes arcadianCharge{
+
+  /* idle */
+  0%, 85%, 100%{
+    transform: scale(1);
+    opacity:0.85;
+  }
+
+  /* charge forward */
+  88%{
+    transform: scale(1.2) translateY(-2%);
+    opacity:1;
+  }
+
+  /* impact */
+  91%{
+    transform: scale(1.3) translateY(1%);
+  }
+
+  /* recoil */
+  94%{
+    transform: scale(1.1);
+  }
+
+  /* settle */
+  97%{
+    transform: scale(1);
+  }
+}
+
+.seItem.arcadianActive .seCircle::after{
+  content:"";
+  position:absolute;
+  inset:0;
+  border-radius:50%;
+
+  background:radial-gradient(circle, rgba(200,230,255,0.5), transparent 70%);
+
+  opacity:0;
+
+  pointer-events:none;
+  z-index:2;
+
+  animation: arcadianFlash 10s infinite;
+}
+
+@keyframes arcadianFlash{
+  0%, 85%, 100%{ opacity:0; }
+
+  90%{ opacity:0.6; }
+
+  93%{ opacity:0; }
+}
+
+/* 🌊 Reservoir Raid — glass ripple */
+.seItem.rrActive .seCircle{
+  position:relative;
+  overflow:hidden;
+}
+
+.seItem.rrActive .seCircle::before{
+  content:"";
+  position:absolute;
+
+  inset:-20%;
+
+  background:url("images/effects/rr.gif") center/cover no-repeat;
+
+  pointer-events:none;
+  z-index:2;
+
+  /* 🔥 KEY: very subtle */
+  opacity:0.8;
+
+  /* glass feel */
+  mix-blend-mode:overlay;
+
+  animation: rrRipple 8s linear infinite;
+}
+
+@keyframes rrRipple{
+  0%{
+    transform: scale(1) translateY(0);
+  }
+
+  50%{
+    transform: scale(1.05) translateY(-2%);
+  }
+
+  100%{
+    transform: scale(1) translateY(0);
+  }
+}
+
+.seItem.rrActive .seCircle::after{
+  content:"";
+  position:absolute;
+  inset:0;
+  border-radius:50%;
+
+  background:radial-gradient(
+    circle at 30% 30%,
+    rgba(255,255,255,0.25),
+    transparent 60%
+  );
+
+  opacity:0.4;
+
+  pointer-events:none;
+  z-index:3;
+
+  animation: rrShimmer 6s ease-in-out infinite;
+}
+
+@keyframes rrShimmer{
+  0%,100%{ opacity:0.2; }
+  50%{ opacity:0.5; }
+}
+  
 @keyframes microShift{
   0%{ transform:translateX(0); }
   50%{ transform:translateX(1px); }
@@ -1311,7 +1575,43 @@ height:80px;
   color:#4cff88;
   display:none;
 }
- 
+
+/* 🔥 Terror bats overlay (FIXED) */
+.seItem.terrorActive .seCircle{
+  position:relative;
+  /* keep clipping intact */
+  overflow:hidden;
+}
+
+/* 🦇 Bats layer */
+.seItem.terrorActive .seCircle::after{
+  content:"";
+  position:absolute;
+  inset:0;                 /* stay INSIDE circle */
+  border-radius:50%;       /* 🔥 keeps it circular */
+
+  background:url("images/effects/bats.gif") center/cover no-repeat;
+
+  pointer-events:none;
+
+  mix-blend-mode:screen;
+  opacity:0.85;
+
+  animation:batFade 1s ease;
+}
+
+/* soft appearance */
+@keyframes batFade{
+  from{
+    opacity:0;
+    transform:scale(0.9);
+  }
+  to{
+    opacity:0.85;
+    transform:scale(1);
+  }
+}
+  
 </style>
 </head>
 
@@ -3087,6 +3387,20 @@ function renderAllShortEvents(){
         timeRef = start;
       }
 
+      let extraClass = "";
+if(e.name.toLowerCase().includes("terror") && state === "active"){
+  extraClass = "terrorActive";
+}
+if(e.name.toLowerCase().includes("ghoulion") && state === "active"){
+  extraClass = "ghoulionActive";
+}
+if(e.name.toLowerCase().includes("arcadian") && state === "active"){
+  extraClass = "arcadianActive";
+}      
+if(e.name.toLowerCase().includes("reservoir") && state === "active"){
+  extraClass = "rrActive";
+}
+      
 let timerColor = "#aaa";  // default cooldown
 
 if(state === "alert") timerColor = "#4cff88";   // green
@@ -3106,7 +3420,7 @@ if(state === "active") timerColor = "#ff6b6b";  // red
       let imgName = e.name.toLowerCase().replace(/\s+/g,"_");
 
       return `
-        <div class="seItem ${state}">
+        <div class="seItem ${state} ${extraClass}">
           <div class="seName" style="color:${e.color}">
             ${e.name}
           </div>
