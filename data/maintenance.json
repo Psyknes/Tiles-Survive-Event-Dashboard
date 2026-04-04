@@ -1,0 +1,25 @@
+{
+  "emergency": {
+    "main": false
+  },
+
+  "scheduled": {
+    "main": true,
+    "day": 1,
+    "hour": 0,
+    "duration": 120
+  },
+
+  "messages": {
+    "mode": "rotate",
+    "static": "🚧 Maintenance in progress. We'll be back shortly.",
+
+    "rotate": [
+      "💡 Tip: Save speedups for high-priority events",
+      "⚔️ Hint: Sync attacks with alliance members",
+      "😂 Joke: Why did the gamer cross the road? To respawn!"
+    ],
+
+    "interval": 5
+  }
+}

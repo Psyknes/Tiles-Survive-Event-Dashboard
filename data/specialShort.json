@@ -1,0 +1,42 @@
+[
+  {
+    "name": "Arcadian Conquest",
+    "active": true,
+    "color": "#fed342",
+    "alertStart": "2026-04-04T09:00:00Z",
+    "start": "2026-04-04T09:30:00Z",
+    "end": "2026-04-04T12:30:00Z",
+    "repeat": 168,
+    "priority": 4
+  },
+  {
+    "name": "Ghoulion Pursuit",
+    "active": true,
+    "color": "#ff4d4d",
+    "alertStart": "2026-04-05T09:30:00Z",
+    "start": "2026-04-05T10:00:00Z",
+    "end": "2026-04-05T10:30:00Z",
+    "repeat": 48,
+    "priority": 1
+  },
+  {
+    "name": "Reservoir Raid",
+    "active": true,
+    "color": "#43fcff",
+    "alertStart": "2026-04-05T10:30:00Z",
+    "start": "2026-04-05T11:00:00Z",
+    "end": "2026-04-05T12:00:00Z",
+    "repeat": 168,
+    "priority": 2
+  },
+  {
+    "name": "Terror Purge",
+    "active": true,
+    "color": "#7b45d1",
+    "alertStart": "2026-03-23T23:30:00Z",
+    "start": "2026-03-24T00:00:00Z",
+    "end": "2026-03-24T03:00:00Z",
+    "repeat": 6,
+    "priority": 3
+  }
+]
