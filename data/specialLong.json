@@ -2,7 +2,7 @@
   {
     "name": "Alliance Siege",
     "active": true,
-    "end": "2026-04-18T23:59:00Z"
+    "end": "2026-04-25T23:59:00Z"
   },
   {
     "name": "Future Tycoon",
@@ -12,7 +12,7 @@
   {
     "name": "Gourmet Rush",
     "active": true,
-    "end": "2026-04-14T23:59:00Z"
+    "end": "2026-04-21T23:59:00Z"
   },
   {
     "name": "Leprechaun",
@@ -27,7 +27,7 @@
   {
     "name": "Lost Frontier",
     "active": false,
-    "end": "2026-03-20T23:59:00Z"
+    "end": "2026-04-23T23:59:00Z"
   },
   {
     "name": "Partner Paradise",
@@ -47,7 +47,7 @@
   {
     "name": "Underground Goldmine",
     "active": true,
-    "end": "2026-04-19T23:59:00Z"
+    "end": "2026-04-26T23:59:00Z"
   },
   {
     "name": "Wasteland Album",
