@@ -13,9 +13,9 @@
     "name": "Ghoulion Pursuit",
     "active": true,
     "color": "#ff4d4d",
-    "alertStart": "2026-04-03T12:30:00Z",
-    "start": "2026-04-03T13:00:00Z",
-    "end": "2026-04-03T13:30:00Z",
+    "alertStart": "2026-04-02T12:30:00Z",
+    "start": "2026-04-02T13:00:00Z",
+    "end": "2026-04-02T13:30:00Z",
     "repeat": 48,
     "priority": 1
   },
