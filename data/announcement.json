@@ -21,10 +21,10 @@
   "emergency": {
     "active": true,
     "startTime": "2026-03-22T08:30:00Z",
-    "endTime": "2026-05-10T13:00:00Z"
+    "endTime": "2026-05-16T23:59:59Z"
   },
 
-  "message": "🚨 <b style='color:#ff4d4d'>WAR ALERT</b> — <b style='color:#abc32f'>ATTACK 'L-RIG' </b> <b style='color:#FFD700'>LEFT Crane and CENTER Drums</b> <b> in  </b> <b style='color:#7DF9FF'> OIL CLASH</b>",
+  "message": "🚨 <b style='color:#ff4d4d'>WAR ALERT</b> — <b style='color:#FF0000'>SHEILD UP EVERYONE - We are under ATTACK !!!</b>",
 
   "normalMessage":  " 🏆 <b style='color:#FFD700'> CONGRATULATIONS</b> for acheiving <b> RANK 1 </b> in <b style='color:#FFD700'> OIL CLASH </b> !!! <b style='color:#7DF9FF'> Great Job !</b> <b style='color:#bf77f6'>Everyone !!</b>",
 
