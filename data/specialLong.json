@@ -30,6 +30,11 @@
     "end": "2026-05-07T23:59:00Z"
   },
   {
+    "name": "Ocean Album",
+    "active": true,
+    "end": "2026-06-14T23:59:00Z"
+  },
+  {
     "name": "Partner Paradise",
     "active": true,
     "end": "2026-04-14T23:59:00Z"
