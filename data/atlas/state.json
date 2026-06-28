@@ -1,59 +1,77 @@
 {
-  "stateNumber": 312,
-
+  "stateNumber": 541,
   "season": 8,
 
   "governor": {
-    "player": "Psyknes",
+    "player": "SaphireJess",
     "alliance": "CHI"
   },
 
   "tiles": {
 
-    "AR-01": {
-      "owner": "CHI",
-      "protectedUntil": null
-    },
+    "AR-01": { "owner": null, "protectedUntil": null },
 
-    "MB-01": {
-      "owner": "CHI",
-      "protectedUntil": null
-    },
+    "MB-01": { "owner": null, "protectedUntil": null },
+    "MB-02": { "owner": null, "protectedUntil": null },
+    "MB-03": { "owner": null, "protectedUntil": null },
 
-    "MB-02": {
-      "owner": "ABC",
-      "protectedUntil": null
-    },
+    "RC-01": { "owner": null, "protectedUntil": null },
+    "RC-02": { "owner": null, "protectedUntil": null },
+    "RC-03": { "owner": null, "protectedUntil": null },
+    "RC-04": { "owner": null, "protectedUntil": null },
+    "RC-05": { "owner": null, "protectedUntil": null },
 
-    "MB-03": {
-      "owner": null,
-      "protectedUntil": null
-    },
+    "MP-01": { "owner": null, "protectedUntil": null },
+    "MP-02": { "owner": null, "protectedUntil": null },
+    "MP-03": { "owner": null, "protectedUntil": null },
+    "MP-04": { "owner": null, "protectedUntil": null },
+    "MP-05": { "owner": null, "protectedUntil": null },
+    "MP-06": { "owner": null, "protectedUntil": null },
+    "MP-07": { "owner": null, "protectedUntil": null },
+    "MP-08": { "owner": null, "protectedUntil": null },
 
-    "RC-01": {
-      "owner": null,
-      "protectedUntil": null
-    },
+    "TW-01": { "owner": null, "protectedUntil": null },
+    "TW-02": { "owner": null, "protectedUntil": null },
+    "TW-03": { "owner": null, "protectedUntil": null },
+    "TW-04": { "owner": null, "protectedUntil": null },
+    "TW-05": { "owner": null, "protectedUntil": null },
+    "TW-06": { "owner": null, "protectedUntil": null },
+    "TW-07": { "owner": null, "protectedUntil": null },
+    "TW-08": { "owner": null, "protectedUntil": null },
+    "TW-09": { "owner": null, "protectedUntil": null },
+    "TW-10": { "owner": null, "protectedUntil": null },
 
-    "RC-02": {
-      "owner": null,
-      "protectedUntil": null
-    },
+    "FT-01": { "owner": null, "protectedUntil": null },
+    "FT-02": { "owner": null, "protectedUntil": null },
+    "FT-03": { "owner": null, "protectedUntil": null },
+    "FT-04": { "owner": null, "protectedUntil": null },
+    "FT-05": { "owner": null, "protectedUntil": null },
+    "FT-06": { "owner": null, "protectedUntil": null },
+    "FT-07": { "owner": null, "protectedUntil": null },
+    "FT-08": { "owner": null, "protectedUntil": null },
+    "FT-09": { "owner": null, "protectedUntil": null },
+    "FT-10": { "owner": null, "protectedUntil": null },
+    "FT-11": { "owner": null, "protectedUntil": null },
+    "FT-12": { "owner": null, "protectedUntil": null },
+    "FT-13": { "owner": null, "protectedUntil": null },
+    "FT-14": { "owner": null, "protectedUntil": null },
 
-    "RC-03": {
-      "owner": null,
-      "protectedUntil": null
-    },
-
-    "RC-04": {
-      "owner": null,
-      "protectedUntil": null
-    },
-
-    "RC-05": {
-      "owner": null,
-      "protectedUntil": null
-    }
+    "VG-01": { "owner": null, "protectedUntil": null },
+    "VG-02": { "owner": null, "protectedUntil": null },
+    "VG-03": { "owner": null, "protectedUntil": null },
+    "VG-04": { "owner": null, "protectedUntil": null },
+    "VG-05": { "owner": null, "protectedUntil": null },
+    "VG-06": { "owner": null, "protectedUntil": null },
+    "VG-07": { "owner": null, "protectedUntil": null },
+    "VG-08": { "owner": null, "protectedUntil": null },
+    "VG-09": { "owner": null, "protectedUntil": null },
+    "VG-10": { "owner": null, "protectedUntil": null },
+    "VG-11": { "owner": null, "protectedUntil": null },
+    "VG-12": { "owner": null, "protectedUntil": null },
+    "VG-13": { "owner": null, "protectedUntil": null },
+    "VG-14": { "owner": null, "protectedUntil": null },
+    "VG-15": { "owner": null, "protectedUntil": null },
+    "VG-16": { "owner": null, "protectedUntil": null }
 
   }
 }
