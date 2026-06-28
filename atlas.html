@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Project Atlas - Tiles Survive Dashboard</title>
+
+    <style>
+        *{
+            margin:0;
+            padding:0;
+            box-sizing:border-box;
+        }
+
+        body{
+            background:#101010;
+            color:white;
+            font-family:Arial,Helvetica,sans-serif;
+        }
+
+        header{
+            background:#1d1d1d;
+            padding:18px;
+            text-align:center;
+            border-bottom:2px solid #2d2d2d;
+        }
+
+        header h1{
+            font-size:30px;
+            letter-spacing:1px;
+        }
+
+        #mapContainer{
+            width:100%;
+            height:calc(100vh - 70px);
+            display:flex;
+            justify-content:center;
+            align-items:center;
+            overflow:auto;
+            padding:20px;
+        }
+
+        #svgHolder{
+            width:100%;
+            max-width:1400px;
+        }
+
+        #svgHolder svg{
+            width:100%;
+            height:auto;
+            display:block;
+        }
+    </style>
+
+</head>
+
+<body>
+
+<header>
+    <h1>Project Atlas</h1>
+</header>
+
+<div id="mapContainer">
+
+    <div id="svgHolder">
+
+    </div>
+
+</div>
+
+<script src="core/atlas.js"></script>
+
+</body>
+</html>
