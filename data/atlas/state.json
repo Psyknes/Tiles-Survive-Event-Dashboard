@@ -1,0 +1,59 @@
+{
+  "stateNumber": 312,
+
+  "season": 8,
+
+  "governor": {
+    "player": "Psyknes",
+    "alliance": "CHI"
+  },
+
+  "tiles": {
+
+    "AR-01": {
+      "owner": "CHI",
+      "protectedUntil": null
+    },
+
+    "MB-01": {
+      "owner": "CHI",
+      "protectedUntil": null
+    },
+
+    "MB-02": {
+      "owner": "ABC",
+      "protectedUntil": null
+    },
+
+    "MB-03": {
+      "owner": null,
+      "protectedUntil": null
+    },
+
+    "RC-01": {
+      "owner": null,
+      "protectedUntil": null
+    },
+
+    "RC-02": {
+      "owner": null,
+      "protectedUntil": null
+    },
+
+    "RC-03": {
+      "owner": null,
+      "protectedUntil": null
+    },
+
+    "RC-04": {
+      "owner": null,
+      "protectedUntil": null
+    },
+
+    "RC-05": {
+      "owner": null,
+      "protectedUntil": null
+    }
+
+  }
+}
