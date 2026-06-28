@@ -1,0 +1,80 @@
+{
+  "AR": {
+    "name": "Arcadia",
+    "level": 0,
+    "buff": null,
+    "contestPoints": 0
+  },
+
+  "MB": {
+    "name": "Military Base",
+    "level": 6,
+    "buff": {
+      "key": "troop_attack",
+      "display": "Troop Attack",
+      "value": 5,
+      "unit": "%"
+    },
+    "contestPoints": 100
+  },
+
+  "RC": {
+    "name": "Research Center",
+    "level": 5,
+    "buff": {
+      "key": "training_speed",
+      "display": "Training Speed",
+      "value": 10,
+      "unit": "%"
+    },
+    "contestPoints": 50
+  },
+
+  "MP": {
+    "name": "Metropolis",
+    "level": 4,
+    "buff": {
+      "key": "basic_resource_production",
+      "display": "Basic Resource Production",
+      "value": 20,
+      "unit": "%"
+    },
+    "contestPoints": 20
+  },
+
+  "TW": {
+    "name": "Town",
+    "level": 3,
+    "buff": {
+      "key": "troop_attack",
+      "display": "Troop Attack",
+      "value": 2,
+      "unit": "%"
+    },
+    "contestPoints": 10
+  },
+
+  "FT": {
+    "name": "Factory",
+    "level": 2,
+    "buff": {
+      "key": "construction_speed",
+      "display": "Construction Speed",
+      "value": 5,
+      "unit": "%"
+    },
+    "contestPoints": 3
+  },
+
+  "VG": {
+    "name": "Village",
+    "level": 1,
+    "buff": {
+      "key": "basic_resource_production",
+      "display": "Basic Resource Production",
+      "value": 5,
+      "unit": "%"
+    },
+    "contestPoints": 1
+  }
+}
