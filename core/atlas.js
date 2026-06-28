@@ -4,9 +4,7 @@ async function loadAtlasMap() {
 
         const response = await fetch("images/atlas/ProjectAtlas_Master_v1.4.svg");
 
-        if (!response.ok) {
-            throw new Error("Unable to load SVG");
-        }
+        if (!response.ok) throw new Error("Unable to load SVG");
 
         const svg = await response.text();
 
@@ -14,19 +12,17 @@ async function loadAtlasMap() {
 
         console.log("Atlas SVG Loaded");
 
-    }
-    catch(error){
+        // --------------------------------------------------
+        // First test
+        // --------------------------------------------------
 
-        document.getElementById("svgHolder").innerHTML =
-        `
-            <div style="
-                text-align:center;
-                color:#ff6666;
-                font-size:22px;
-                padding:40px;">
-                Failed to load Project Atlas SVG
-            </div>
-        `;
+        const arcadia = document.getElementById("AR-01");
+
+        arcadia.style.fill = "#FFD54A";
+
+    }
+
+    catch(error){
 
         console.error(error);
 
