@@ -1,74 +1,196 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Project Atlas - Tiles Survive Dashboard</title>
 
-    <style>
-        *{
-            margin:0;
-            padding:0;
-            box-sizing:border-box;
-        }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-        body{
-            background:#101010;
-            color:white;
-            font-family:Arial,Helvetica,sans-serif;
-        }
+<title>Project Atlas</title>
 
-        header{
-            background:#1d1d1d;
-            padding:18px;
-            text-align:center;
-            border-bottom:2px solid #2d2d2d;
-        }
-
-        header h1{
-            font-size:30px;
-            letter-spacing:1px;
-        }
-
-        #mapContainer{
-            width:100%;
-            height:calc(100vh - 70px);
-            display:flex;
-            justify-content:center;
-            align-items:center;
-            overflow:auto;
-            padding:20px;
-        }
-
-        #svgHolder{
-            width:100%;
-            max-width:1400px;
-        }
-
-        #svgHolder svg{
-            width:100%;
-            height:auto;
-            display:block;
-        }
-    </style>
+<link rel="stylesheet" href="css/atlas.css">
 
 </head>
 
 <body>
 
-<header>
-    <h1>Project Atlas</h1>
-</header>
+<header class="topbar">
 
-<div id="mapContainer">
-
-    <div id="svgHolder">
-
+    <div class="topbar-left">
+        <a href="index.html" class="backButton">← Dashboard</a>
     </div>
 
-</div>
+    <div class="topbar-center">
+        <h1>Project Atlas</h1>
+    </div>
+
+    <div class="topbar-right">
+        <span id="atlasVersion">v1.0</span>
+    </div>
+
+</header>
+
+
+<main class="atlasLayout">
+
+    <!-- ================= MAP ================= -->
+
+    <section class="mapPanel">
+
+        <div class="panelTitle">
+            State Map
+        </div>
+
+        <div id="mapContainer">
+
+            <div id="svgHolder">
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- ================ RIGHT PANEL ================= -->
+
+    <aside class="sidePanel">
+
+        <!-- Territory -->
+
+        <section class="card">
+
+            <div class="cardTitle">
+                Territory Details
+            </div>
+
+            <table class="infoTable">
+
+                <tr>
+                    <td>ID</td>
+                    <td id="territoryID">—</td>
+                </tr>
+
+                <tr>
+                    <td>Type</td>
+                    <td id="territoryType">—</td>
+                </tr>
+
+                <tr>
+                    <td>Level</td>
+                    <td id="territoryLevel">—</td>
+                </tr>
+
+                <tr>
+                    <td>Owner</td>
+                    <td id="territoryOwner">—</td>
+                </tr>
+
+                <tr>
+                    <td>Status</td>
+                    <td id="territoryStatus">—</td>
+                </tr>
+
+                <tr>
+                    <td>Buff</td>
+                    <td id="territoryBuff">—</td>
+                </tr>
+
+                <tr>
+                    <td>DNA / hr</td>
+                    <td id="territoryDNA">—</td>
+                </tr>
+
+                <tr>
+                    <td>Contest</td>
+                    <td id="territoryPoints">—</td>
+                </tr>
+
+            </table>
+
+        </section>
+
+
+        <!-- Alliance Summary -->
+
+        <section class="card">
+
+            <div class="cardTitle">
+
+                Alliance Summary
+
+            </div>
+
+            <table class="infoTable">
+
+                <tr>
+
+                    <td>Alliance</td>
+
+                    <td id="sumAlliance">—</td>
+
+                </tr>
+
+                <tr>
+
+                    <td>Tiles</td>
+
+                    <td id="sumTiles">—</td>
+
+                </tr>
+
+                <tr>
+
+                    <td>Buffs</td>
+
+                    <td id="sumBuffs">—</td>
+
+                </tr>
+
+                <tr>
+
+                    <td>DNA/hr</td>
+
+                    <td id="sumDNA">—</td>
+
+                </tr>
+
+                <tr>
+
+                    <td>Points</td>
+
+                    <td id="sumPoints">—</td>
+
+                </tr>
+
+            </table>
+
+        </section>
+
+
+        <!-- Future Card -->
+
+        <section class="card">
+
+            <div class="cardTitle">
+
+                Selected Alliance
+
+            </div>
+
+            <div id="futureArea">
+
+                (Coming Soon)
+
+            </div>
+
+        </section>
+
+    </aside>
+
+</main>
 
 <script src="core/atlas.js"></script>
 
 </body>
+
 </html>
