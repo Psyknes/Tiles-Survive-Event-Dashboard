@@ -437,6 +437,40 @@ function createLabelLayer() {
 }
 
 // ======================================================
+// LABEL RENDERER CONFIGURATION
+// ======================================================
+
+const LABEL = {
+
+    badgeSize: 18,
+
+    plateHeight: 18,
+
+    cornerRadius: 5,
+
+    platePadding: 6,
+
+    plateGap: 2,
+
+    tileIdGap: 4,
+
+    fontFamily: "Segoe UI",
+
+    fontSize: 11,
+
+    tileIdSize: 10,
+
+    textColor: "#F6F6F6",
+
+    shadowId: "atlasLabelShadow",
+
+    borderWidth: 1,
+
+    badgeBorderWidth: 1
+
+};
+
+// ======================================================
 // BUILD SVG LABEL OBJECTS
 // ======================================================
 
