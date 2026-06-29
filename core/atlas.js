@@ -1,14 +1,45 @@
 let selectedTile = null;
 
-const territoryTypes = {
-    "AR": { name: "Arcadia", level: "Center" },
-    "MB": { name: "Military Base", level: "1" },
-    "RC": { name: "Research Center", level: "2" },
-    "FT": { name: "Factory", level: "2" },
-    "TW": { name: "Town", level: "3" },
-    "MP": { name: "Metropolis", level: "4" },
-    "VG": { name: "Village", level: "1" }
-};
+// ----------------------------
+// Atlas Data
+// ----------------------------
+
+let tilesData = {};
+let stateData = {};
+let alliancesData = {};
+let seasonData = {};
+
+// ----------------------------
+// Load JSON Files
+// ----------------------------
+
+async function loadGameData() {
+
+    const [
+        tiles,
+        state,
+        alliances,
+        season
+    ] = await Promise.all([
+
+        fetch("data/atlas/tiles.json").then(r => r.json()),
+
+        fetch("data/atlas/state.json").then(r => r.json()),
+
+        fetch("data/atlas/alliances.json").then(r => r.json()),
+
+        fetch("data/atlas/season.json").then(r => r.json())
+
+    ]);
+
+    tilesData = tiles;
+    stateData = state;
+    alliancesData = alliances;
+    seasonData = season;
+
+    console.log("Atlas JSON Loaded");
+
+}
 
 async function loadAtlasMap() {
 
