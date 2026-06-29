@@ -29,7 +29,7 @@
 
       "resource": {
         "name": "DNA",
-        "icon": "dna.png",
+        "icon": "images/atlas/seasons/dna.png",
         "unit": "/hr"
       },
 
