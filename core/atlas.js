@@ -132,6 +132,8 @@ function initialiseAtlas() {
 
     });
 
+    generateLabels();
+
 }
 
 function hoverTile(tile) {
