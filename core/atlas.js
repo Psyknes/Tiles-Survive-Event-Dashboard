@@ -517,17 +517,17 @@ const LABEL = {
 
     cornerRadius: 5,
 
-    platePadding: 6,
+    platePadding: 4,
 
-    plateGap: 2,
+    plateGap: 1,
 
-    tileIdGap: 8,
+    tileIdGap: 6,
 
     fontFamily: "Segoe UI",
 
     fontSize: 8,
 
-    tileIdSize: 10,
+    tileIdSize: 8,
 
     textColor: "#F6F6F6",
 
