@@ -511,9 +511,9 @@ if (metroLayer) {
 
 const LABEL = {
 
-    badgeSize: 18,
+    badgeSize: 14,
 
-    plateHeight: 16,
+    plateHeight: 14,
 
     cornerRadius: 5,
 
@@ -525,7 +525,7 @@ const LABEL = {
 
     fontFamily: "Segoe UI",
 
-    fontSize: 11,
+    fontSize: 8,
 
     tileIdSize: 10,
 
