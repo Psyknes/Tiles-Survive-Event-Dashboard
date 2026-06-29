@@ -837,14 +837,28 @@ function drawLabel(tileId) {
 
     const box = tile.getBBox();
 
-    const centerX = box.x + (box.width / 2);
+const centerX = box.x + (box.width / 2);
 
-    const centerY = box.y + (box.height / 2);
+const centerY = box.y + (box.height / 2);
 
-    label.setAttribute(
-        "transform",
-        `translate(${centerX}, ${centerY})`
-    );
+// Draw a small red dot at the calculated centre
+
+const dot = document.createElementNS(
+    "http://www.w3.org/2000/svg",
+    "circle"
+);
+
+dot.setAttribute("cx", centerX);
+dot.setAttribute("cy", centerY);
+dot.setAttribute("r", 3);
+dot.setAttribute("fill", "red");
+
+document.getElementById("atlasLabels").appendChild(dot);
+
+label.setAttribute(
+    "transform",
+    `translate(${centerX}, ${centerY})`
+);
 
     console.log("Renderer OK :", tileId);
 
