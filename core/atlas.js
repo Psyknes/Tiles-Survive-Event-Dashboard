@@ -519,9 +519,9 @@ const LABEL = {
 
     platePadding: 4,
 
-    plateGap: 1,
+    plateGap: 5,
 
-    tileIdGap: 6,
+    tileIdGap: 5,
 
     fontFamily: "Segoe UI",
 
