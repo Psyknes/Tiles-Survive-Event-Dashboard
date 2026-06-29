@@ -831,6 +831,21 @@ function drawLabel(tileId) {
 
     label.appendChild(plateLabel);
 
+        // --------------------------------------------------
+    // Position
+    // --------------------------------------------------
+
+    const box = tile.getBBox();
+
+    const centerX = box.x + (box.width / 2);
+
+    const centerY = box.y + (box.height / 2);
+
+    label.setAttribute(
+        "transform",
+        `translate(${centerX}, ${centerY})`
+    );
+
     console.log("Renderer OK :", tileId);
 
 }
