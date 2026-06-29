@@ -411,30 +411,60 @@ function generateLabels() {
 
 function createLabelLayer() {
 
-    const svg =
-        document.querySelector("#svgHolder svg");
+    const svg = document.querySelector("#svgHolder svg");
 
-    if (!svg)
-        return;
+    if (!svg) return;
 
-    let layer =
-        document.getElementById("atlasLabels");
+    let layer = document.getElementById("atlasLabels");
 
-    if (layer)
+    if (layer) {
+
         layer.remove();
 
-    layer =
-        document.createElementNS(
+    }
+
+    layer = document.createElementNS(
+        "http://www.w3.org/2000/svg",
+        "g"
+    );
+
+    layer.setAttribute("id", "atlasLabels");
+
+    svg.appendChild(layer);
+
+    buildLabels();
+
+}
+
+// ======================================================
+// BUILD SVG LABEL OBJECTS
+// ======================================================
+
+function buildLabels() {
+
+    const layer = document.getElementById("atlasLabels");
+
+    if (!layer) return;
+
+    layer.innerHTML = "";
+
+    Object.keys(stateData.tiles).forEach(tileId => {
+
+        const group = document.createElementNS(
             "http://www.w3.org/2000/svg",
             "g"
         );
 
-    layer.setAttribute(
-        "id",
-        "atlasLabels"
-    );
+        group.setAttribute(
+            "id",
+            `label-${tileId}`
+        );
 
-    svg.appendChild(layer);
+        group.classList.add("atlasLabel");
+
+        layer.appendChild(group);
+
+    });
 
 }
 
