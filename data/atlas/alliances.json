@@ -8,6 +8,96 @@
       "discord": "",
       "color": "#00B8FF",
       "logo": "chi.png"
+     },
+
+    "DDS": {
+      "name": "Da Dark Side",
+      "tag": "DDS",
+      "leader": "Demon Smoke",
+      "discord": "",
+      "color": "#808080",
+      "logo": "dds.png"      
+    },
+
+    "ARK": {
+      "name": "KOR",
+      "tag": "ARK",
+      "leader": "불e새",
+      "discord": "",
+      "color": "#808080",
+      "logo": "ark.png"
+    },
+
+    "MSL": {
+      "name": "マッスル",
+      "tag": "MSL",
+      "leader": "オクラ904",
+      "discord": "",
+      "color": "#808080",
+      "logo": "msl.png"
+    },
+
+    "Rus": {
+      "name": "Легион",
+      "tag": "Rus",
+      "leader": "весьмиртруху",
+      "discord": "",
+      "color": "#808080",
+      "logo": "rus.png"
+    },
+
+    "PNY": {
+      "name": "MaharLikaN",
+      "tag": "PNY",
+      "leader": "Eisa",
+      "discord": "",
+      "color": "#808080",
+      "logo": "pny.png"
+    },
+
+    "OKP": {
+      "name": "のんびり旅団",
+      "tag": "OKP",
+      "leader": "Survivor.50d1e",
+      "discord": "",
+      "color": "#808080",
+      "logo": "okp.png"
+    },
+    
+    "RUS": {
+      "name": "Эмеральд",
+      "tag": "RUS",
+      "leader": "_Spy_World_",
+      "discord": "",
+      "color": "#808080",
+      "logo": "rus1.png"
+    },
+
+    "TXD": {
+      "name": "MilkTea",
+      "tag": "TXD",
+      "leader": "Boba",
+      "discord": "",
+      "color": "#808080",
+      "logo": "txd.png"
+    },
+
+    "00U": {
+      "name": "OurOwnUnion",
+      "tag": "00U",
+      "leader": "Aranya555",
+      "discord": "",
+      "color": "#808080",
+      "logo": "00u.png"
+    },
+
+    "AAA": {
+      "name": "",
+      "tag": "AAA",
+      "leader": "",
+      "discord": "",
+      "color": "#808080",
+      "logo": ""
     },
 
     "AAA": {
