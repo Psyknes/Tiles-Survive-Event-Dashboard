@@ -877,7 +877,7 @@ label.setAttribute(
     "transform",
     `
     translate(${svgPoint.x + offsetX}, ${svgPoint.y + offsetY})
-    rotate(${angle})
+    rotate(${angle + 90})
     `
 );
 
