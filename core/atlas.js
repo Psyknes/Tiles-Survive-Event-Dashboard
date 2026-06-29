@@ -391,4 +391,75 @@ async function startAtlas() {
 
 }
 
+// ======================================================
+// LABEL ENGINE
+// ======================================================
+
+function generateLabels() {
+
+    const labelLayer =
+        document.getElementById("labelLayer");
+
+    labelLayer.innerHTML = "";
+
+    Object.entries(stateData.tiles).forEach(([tileId, tile]) => {
+
+        const prefix = tileId.split("-")[0];
+
+        const tileInfo = tilesData[prefix];
+
+        const label = document.createElement("div");
+
+        label.className = "atlasLabel";
+
+        label.dataset.tile = tileId;
+
+        let allianceTag = "";
+
+        if (
+            tile.owner &&
+            alliancesData.alliances[tile.owner]
+        ) {
+
+            allianceTag =
+                alliancesData.alliances[tile.owner].tag;
+
+        }
+
+        const tileText = allianceTag
+            ? `${allianceTag} | ${tileInfo.displayName}`
+            : tileInfo.displayName;
+
+        label.innerHTML = `
+
+            <div class="tileID">
+
+                ${tileId}
+
+            </div>
+
+            <div class="namePlate">
+
+                <div class="levelBox">
+
+                    ${tileInfo.level}
+
+                </div>
+
+                <div class="plateText">
+
+                    ${tileText}
+
+                </div>
+
+            </div>
+
+        `;
+
+        labelLayer.appendChild(label);
+
+    });
+
+}
+
 startAtlas();
