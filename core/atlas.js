@@ -255,7 +255,69 @@ function updateTerritoryPanel(id) {
         tileInfo
             ? tileInfo.contestPoints
             : "-";
+// -------------------------
+// Alliance Summary
+// -------------------------
 
+document.getElementById("allianceName").textContent =
+    alliance
+        ? `${alliance.tag} - ${alliance.name}`
+        : "-";
+
+if (alliance) {
+
+    const ownedTiles = Object.values(stateData.tiles)
+        .filter(tile => tile.owner === alliance.tag);
+
+    document.getElementById("allianceTiles").textContent =
+        ownedTiles.length;
+
+    let totalProduction = 0;
+    let totalPoints = 0;
+    let buffs = [];
+
+    ownedTiles.forEach(tile => {
+
+        const tileId = Object.keys(stateData.tiles)
+            .find(key => stateData.tiles[key] === tile);
+
+        const prefix = tileId.split("-")[0];
+
+        const tileType = tilesData[prefix];
+
+        totalProduction += currentSeason.production[prefix] || 0;
+        totalPoints += tileType.contestPoints || 0;
+
+        if (tileType.buff) {
+
+            buffs.push(
+                `${tileType.buff.display} +${tileType.buff.value}${tileType.buff.unit}`
+            );
+
+        }
+
+    });
+
+    document.getElementById("allianceProduction").textContent =
+        `${totalProduction}${currentSeason.resource.unit}`;
+
+    document.getElementById("alliancePoints").textContent =
+        totalPoints;
+
+    document.getElementById("allianceBuffs").textContent =
+        buffs.length
+            ? buffs.join(", ")
+            : "-";
+
+}
+else {
+
+    document.getElementById("allianceTiles").textContent = "-";
+    document.getElementById("allianceProduction").textContent = "-";
+    document.getElementById("alliancePoints").textContent = "-";
+    document.getElementById("allianceBuffs").textContent = "-";
+
+}
 }
 
 async function startAtlas() {
