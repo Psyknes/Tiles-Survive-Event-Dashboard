@@ -311,3 +311,71 @@ body{
     overflow:visible;
 
 }
+
+/* ==========================================
+   LABEL ENGINE
+========================================== */
+
+.atlasLabel{
+
+    position:absolute;
+
+    top:0;
+
+    left:0;
+
+    font-family:Segoe UI,sans-serif;
+
+    color:white;
+
+    font-size:11px;
+
+    user-select:none;
+
+}
+
+.tileID{
+
+    text-align:center;
+
+    font-weight:700;
+
+    margin-bottom:3px;
+
+}
+
+.namePlate{
+
+    display:flex;
+
+    align-items:center;
+
+    border-radius:5px;
+
+    overflow:hidden;
+
+    background:#666;
+
+    border:1px solid #888;
+
+}
+
+.levelBox{
+
+    background:#444;
+
+    border-right:1px solid #999;
+
+    padding:2px 6px;
+
+    font-weight:700;
+
+}
+
+.plateText{
+
+    padding:2px 8px;
+
+    white-space:nowrap;
+
+}
