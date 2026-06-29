@@ -489,7 +489,17 @@ function createLabelLayer() {
         "atlasLabels"
     );
 
+    const metroLayer = document.getElementById("layer4");
+
+if (metroLayer) {
+
+    metroLayer.appendChild(layer);
+
+} else {
+
     svg.appendChild(layer);
+
+}
 
     buildLabels();
 
