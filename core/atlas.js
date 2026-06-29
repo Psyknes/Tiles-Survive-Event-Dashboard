@@ -180,4 +180,12 @@ function updateTerritoryPanel(id) {
 
 }
 
-loadAtlasMap();
+async function startAtlas() {
+
+    await loadGameData();
+
+    await loadAtlasMap();
+
+}
+
+startAtlas();
