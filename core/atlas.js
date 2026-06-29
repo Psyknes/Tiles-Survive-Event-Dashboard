@@ -87,12 +87,40 @@ async function loadAtlasMap() {
 
 function initialiseAtlas() {
 
-    const territories = document.querySelectorAll("#svgHolder svg path, #svgHolder svg rect");
+    const territories = document.querySelectorAll(
+        "#svgHolder svg path, #svgHolder svg rect"
+    );
 
     territories.forEach(tile => {
 
         if (!tile.id)
             return;
+
+        // -------------------------
+        // Paint Territory
+        // -------------------------
+
+        const tileState = stateData.tiles[tile.id];
+
+        if (
+            tileState &&
+            tileState.owner
+        ) {
+
+            const alliance =
+                alliancesData.alliances[tileState.owner];
+
+            if (alliance) {
+
+                tile.style.fill = alliance.color;
+
+            }
+
+        }
+
+        // -------------------------
+        // Interaction
+        // -------------------------
 
         tile.style.cursor = "pointer";
 
