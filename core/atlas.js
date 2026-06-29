@@ -511,9 +511,9 @@ if (metroLayer) {
 
 const LABEL = {
 
-    badgeSize: 14,
+    badgeSize: 10,
 
-    plateHeight: 14,
+    plateHeight: 10,
 
     cornerRadius: 5,
 
