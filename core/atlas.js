@@ -845,29 +845,20 @@ function drawLabel(tileId) {
     // Position
     // --------------------------------------------------
 
-    const box = tile.getBBox();
+   const box = tile.getBBox();
 
-const centerX = box.x + (box.width / 2);
+const ctm = tile.getCTM();
 
-const centerY = box.y + (box.height / 2);
+const pt = tile.ownerSVGElement.createSVGPoint();
 
-// Draw a small red dot at the calculated centre
+pt.x = box.x + (box.width / 2);
+pt.y = box.y + (box.height / 2);
 
-const dot = document.createElementNS(
-    "http://www.w3.org/2000/svg",
-    "circle"
-);
-
-dot.setAttribute("cx", centerX);
-dot.setAttribute("cy", centerY);
-dot.setAttribute("r", 3);
-dot.setAttribute("fill", "red");
-
-document.getElementById("atlasLabels").appendChild(dot);
+const screenPoint = pt.matrixTransform(ctm);
 
 label.setAttribute(
     "transform",
-    `translate(${centerX}, ${centerY})`
+    `translate(${screenPoint.x}, ${screenPoint.y})`
 );
 
     console.log("Renderer OK :", tileId);
