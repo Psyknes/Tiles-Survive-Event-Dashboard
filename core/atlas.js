@@ -876,8 +876,9 @@ const angle = match ? Number(match[1]) : 0;
 label.setAttribute(
     "transform",
     `
-    translate(${svgPoint.x + offsetX}, ${svgPoint.y + offsetY})
+    translate(${svgPoint.x}, ${svgPoint.y})
     rotate(${angle + 90})
+    translate(${offsetX}, ${offsetY})
     `
 );
 
