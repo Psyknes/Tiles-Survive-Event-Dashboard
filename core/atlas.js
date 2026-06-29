@@ -867,9 +867,18 @@ const offsetX = -(labelWidth / 2);
 
 const offsetY = -(LABEL.plateHeight / 2);
 
+const transform = tile.getAttribute("transform") || "";
+
+const match = transform.match(/rotate\(([-\d.]+)/);
+
+const angle = match ? Number(match[1]) : 0;
+
 label.setAttribute(
     "transform",
-    `translate(${svgPoint.x + offsetX}, ${svgPoint.y + offsetY})`
+    `
+    translate(${svgPoint.x + offsetX}, ${svgPoint.y + offsetY})
+    rotate(${angle})
+    `
 );
 
     console.log("Renderer OK :", tileId);
