@@ -1,6 +1,8 @@
 {
   "AR": {
     "name": "Arcadia",
+    "displayName": "Arcadia",
+    "shortDisplay": "AR",
     "level": 0,
     "buff": null,
     "contestPoints": 0
@@ -8,6 +10,8 @@
 
   "MB": {
     "name": "Military Base",
+    "displayName": "Military",
+    "shortDisplay": "MB",
     "level": 6,
     "buff": {
       "key": "troop_attack",
@@ -20,6 +24,8 @@
 
   "RC": {
     "name": "Research Center",
+    "displayName": "Research",
+    "shortDisplay": "RC",
     "level": 5,
     "buff": {
       "key": "training_speed",
@@ -32,6 +38,8 @@
 
   "MP": {
     "name": "Metropolis",
+    "displayName": "Metro",
+    "shortDisplay": "MP",
     "level": 4,
     "buff": {
       "key": "basic_resource_production",
@@ -44,6 +52,8 @@
 
   "TW": {
     "name": "Town",
+    "displayName": "Town",
+    "shortDisplay": "TW",
     "level": 3,
     "buff": {
       "key": "troop_attack",
@@ -56,6 +66,8 @@
 
   "FT": {
     "name": "Factory",
+    "displayName": "Factory",
+    "shortDisplay": "FT",
     "level": 2,
     "buff": {
       "key": "construction_speed",
@@ -68,6 +80,8 @@
 
   "VG": {
     "name": "Village",
+    "displayName": "Village",
+    "shortDisplay": "VG",
     "level": 1,
     "buff": {
       "key": "basic_resource_production",
