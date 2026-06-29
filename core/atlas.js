@@ -39,6 +39,23 @@ async function loadGameData() {
 
     console.log("Atlas JSON Loaded");
 
+    // ----------------------------
+// Governor
+// ----------------------------
+
+const governorAlliance =
+    alliancesData.alliances[
+        stateData.governor.alliance
+    ];
+
+document.getElementById("govAlliance").textContent =
+    governorAlliance
+        ? `${governorAlliance.tag} - ${governorAlliance.name}`
+        : "-";
+
+document.getElementById("govLeader").textContent =
+    stateData.governor.player || "-";
+
 }
 
 async function loadAtlasMap() {
@@ -170,24 +187,7 @@ function updateTerritoryPanel(id) {
             ? alliancesData.alliances[tileState.owner]
             : null;
 
-   // -------------------------
-// Governor
-// -------------------------
-
-const governorAlliance =
-    alliancesData.alliances[
-        stateData.governor.alliance
-    ];
-
-document.getElementById("govAlliance").textContent =
-    governorAlliance
-        ? `${governorAlliance.tag} - ${governorAlliance.name}`
-        : "-";
-
-document.getElementById("govLeader").textContent =
-    stateData.governor.player || "-";
-
-    // -------------------------
+     // -------------------------
     // Territory
     // -------------------------
 
