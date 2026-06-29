@@ -466,6 +466,93 @@ function buildLabels() {
 
     });
 
+drawTestLabel();
+    
+}
+
+// ======================================================
+// DRAW TEST LABEL
+// ======================================================
+
+function drawTestLabel() {
+
+    const label = document.getElementById("label-MP-03");
+
+    if (!label) return;
+
+    label.innerHTML = "";
+
+    // Plate Background
+    const plate = document.createElementNS(
+        "http://www.w3.org/2000/svg",
+        "rect"
+    );
+
+    plate.setAttribute("x", 20);
+    plate.setAttribute("y", 0);
+    plate.setAttribute("width", 95);
+    plate.setAttribute("height", 18);
+    plate.setAttribute("rx", 5);
+
+    plate.setAttribute("fill", "#2E86C1");
+
+    label.appendChild(plate);
+
+    // Level Box
+
+    const level = document.createElementNS(
+        "http://www.w3.org/2000/svg",
+        "rect"
+    );
+
+    level.setAttribute("x", 0);
+    level.setAttribute("y", 0);
+    level.setAttribute("width", 20);
+    level.setAttribute("height", 18);
+    level.setAttribute("rx", 5);
+
+    level.setAttribute("fill", "#1B4F72");
+
+    label.appendChild(level);
+
+    // Level Text
+
+    const lvlText = document.createElementNS(
+        "http://www.w3.org/2000/svg",
+        "text"
+    );
+
+    lvlText.setAttribute("x", 10);
+    lvlText.setAttribute("y", 13);
+
+    lvlText.setAttribute("fill", "white");
+
+    lvlText.setAttribute("font-size", "11");
+
+    lvlText.setAttribute("text-anchor", "middle");
+
+    lvlText.textContent = "4";
+
+    label.appendChild(lvlText);
+
+    // Plate Text
+
+    const text = document.createElementNS(
+        "http://www.w3.org/2000/svg",
+        "text"
+    );
+
+    text.setAttribute("x", 26);
+    text.setAttribute("y", 13);
+
+    text.setAttribute("fill", "white");
+
+    text.setAttribute("font-size", "11");
+
+    text.textContent = "CHI | Metro";
+
+    label.appendChild(text);
+
 }
 
 startAtlas();
