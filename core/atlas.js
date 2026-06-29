@@ -860,9 +860,16 @@ const svgCTM = tile.ownerSVGElement.getScreenCTM().inverse();
 
 const svgPoint = screenPoint.matrixTransform(svgCTM);
 
+const labelWidth =
+    LABEL.badgeSize - 2 + plateWidth;
+
+const offsetX = -(labelWidth / 2);
+
+const offsetY = -(LABEL.plateHeight / 2);
+
 label.setAttribute(
     "transform",
-    `translate(${svgPoint.x}, ${svgPoint.y})`
+    `translate(${svgPoint.x + offsetX}, ${svgPoint.y + offsetY})`
 );
 
     console.log("Renderer OK :", tileId);
