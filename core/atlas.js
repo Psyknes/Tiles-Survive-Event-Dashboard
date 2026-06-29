@@ -266,20 +266,19 @@ document.getElementById("sumAlliance").textContent =
 
 if (alliance) {
 
-    const ownedTiles = Object.values(stateData.tiles)
-        .filter(tile => tile.owner === alliance.tag);
+    const ownedTiles = Object.entries(stateData.tiles)
+        .filter(([id, tile]) => tile.owner === alliance.tag);
 
     document.getElementById("sumTiles").textContent =
         ownedTiles.length;
 
     let totalProduction = 0;
     let totalPoints = 0;
-    let buffs = [];
 
-    ownedTiles.forEach(tile => {
+    // Highest buff of each type
+    const buffMap = {};
 
-        const tileId = Object.keys(stateData.tiles)
-            .find(key => stateData.tiles[key] === tile);
+    ownedTiles.forEach(([tileId]) => {
 
         const prefix = tileId.split("-")[0];
 
@@ -289,9 +288,18 @@ if (alliance) {
         totalPoints += tileType.contestPoints || 0;
 
         if (tileType.buff) {
-            buffs.push(
-                `${tileType.buff.display} +${tileType.buff.value}${tileType.buff.unit}`
-            );
+
+            const key = tileType.buff.display;
+
+            if (
+                !buffMap[key] ||
+                tileType.buff.value > buffMap[key].value
+            ) {
+
+                buffMap[key] = tileType.buff;
+
+            }
+
         }
 
     });
@@ -302,10 +310,23 @@ if (alliance) {
     document.getElementById("sumPoints").textContent =
         totalPoints;
 
-    document.getElementById("sumBuffs").textContent =
-        buffs.length
-            ? buffs.join(", ")
-            : "-";
+    const buffList = Object.values(buffMap);
+
+    if (buffList.length) {
+
+        document.getElementById("sumBuffs").innerHTML =
+            "<ul style='margin:0;padding-left:18px'>" +
+            buffList.map(buff =>
+                `<li>${buff.display} +${buff.value}${buff.unit}</li>`
+            ).join("") +
+            "</ul>";
+
+    }
+    else {
+
+        document.getElementById("sumBuffs").textContent = "-";
+
+    }
 
 }
 else {
