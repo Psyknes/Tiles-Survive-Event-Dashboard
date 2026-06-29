@@ -170,12 +170,14 @@ function updateTerritoryPanel(id) {
             ? alliancesData.alliances[tileState.owner]
             : null;
 
-    // -------------------------
+   // -------------------------
 // Governor
 // -------------------------
 
 const governorAlliance =
-    alliancesData.alliances[stateData.governor];
+    alliancesData.alliances[
+        stateData.governor.alliance
+    ];
 
 document.getElementById("govAlliance").textContent =
     governorAlliance
@@ -183,9 +185,7 @@ document.getElementById("govAlliance").textContent =
         : "-";
 
 document.getElementById("govLeader").textContent =
-    governorAlliance
-        ? governorAlliance.leader
-        : "-";
+    stateData.governor.player || "-";
 
     // -------------------------
     // Territory
