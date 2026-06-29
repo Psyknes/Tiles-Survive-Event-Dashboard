@@ -73,9 +73,11 @@ async function loadAtlasMap() {
 
         console.log("Atlas SVG Loaded");
 
-        initialiseAtlas();
+        createLabelLayer();
 
-    }
+initialiseAtlas();
+
+}
 
     catch (err) {
 
@@ -461,6 +463,39 @@ function generateLabels() {
         labelLayer.appendChild(label);
 
     });
+
+}
+
+// =====================================================
+// SVG LABEL LAYER
+// =====================================================
+
+function createLabelLayer() {
+
+    const svg =
+        document.querySelector("#svgHolder svg");
+
+    if (!svg)
+        return;
+
+    let layer =
+        document.getElementById("atlasLabels");
+
+    if (layer)
+        layer.remove();
+
+    layer =
+        document.createElementNS(
+            "http://www.w3.org/2000/svg",
+            "g"
+        );
+
+    layer.setAttribute(
+        "id",
+        "atlasLabels"
+    );
+
+    svg.appendChild(layer);
 
 }
 
