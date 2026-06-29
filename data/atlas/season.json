@@ -1,0 +1,67 @@
+{
+  "currentSeason": "S02",
+
+  "seasons": {
+
+    "S01": {
+      "number": 1,
+      "name": "Season 1",
+
+      "resource": {
+        "name": "",
+        "icon": "",
+        "unit": "/hr"
+      },
+
+      "production": {
+        "MB": 20,
+        "RC": 10,
+        "MP": 6,
+        "TW": 4,
+        "FT": 2,
+        "VG": 1
+      }
+    },
+
+    "S02": {
+      "number": 2,
+      "name": "Awakening of Dragons",
+
+      "resource": {
+        "name": "DNA",
+        "icon": "dna.png",
+        "unit": "/hr"
+      },
+
+      "production": {
+        "MB": 20,
+        "RC": 10,
+        "MP": 6,
+        "TW": 4,
+        "FT": 2,
+        "VG": 1
+      }
+    },
+
+    "S03": {
+      "number": 3,
+      "name": "Season 3",
+
+      "resource": {
+        "name": "",
+        "icon": "",
+        "unit": "/hr"
+      },
+
+      "production": {
+        "MB": 20,
+        "RC": 10,
+        "MP": 6,
+        "TW": 4,
+        "FT": 2,
+        "VG": 1
+      }
+    }
+
+  }
+}
