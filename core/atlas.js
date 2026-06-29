@@ -559,7 +559,7 @@ function buildLabels() {
 
     });
 
-drawTestLabel();
+drawLabel("MP-03");
     
 }
 
@@ -567,84 +567,147 @@ drawTestLabel();
 // DRAW TEST LABEL
 // ======================================================
 
-function drawTestLabel() {
+// ======================================================
+// DRAW LABEL
+// ======================================================
 
-    const label = document.getElementById("label-MP-03");
+function drawLabel(tileId) {
+
+    const label = document.getElementById(`label-${tileId}`);
 
     if (!label) return;
 
     label.innerHTML = "";
 
-    // Plate Background
-    const plate = document.createElementNS(
+    const tile = document.getElementById(tileId);
+
+    if (!tile) return;
+
+    const prefix = tileId.split("-")[0];
+
+    const tileInfo = tilesData[prefix];
+
+    const tileState = stateData.tiles[tileId];
+
+    const alliance =
+        tileState.owner &&
+        alliancesData.alliances[tileState.owner]
+            ? alliancesData.alliances[tileState.owner]
+            : null;
+
+    const level = tileInfo.level;
+
+    const displayName = tileInfo.displayName;
+
+    const allianceTag =
+        alliance ? alliance.tag : "";
+
+    const plateText =
+        alliance
+            ? `${allianceTag} | ${displayName}`
+            : displayName;
+
+    // --------------------------------------------------
+    // Temporary colours
+    // (next block will derive light/dark shades)
+    // --------------------------------------------------
+
+    const plateColor =
+        alliance
+            ? alliance.color
+            : "#7A7A7A";
+
+    const badgeColor = "#4A4A4A";
+
+    // --------------------------------------------------
+    // Draw badge
+    // --------------------------------------------------
+
+    const badge = document.createElementNS(
         "http://www.w3.org/2000/svg",
         "rect"
     );
 
-    plate.setAttribute("x", 20);
-    plate.setAttribute("y", 0);
-    plate.setAttribute("width", 95);
-    plate.setAttribute("height", 18);
-    plate.setAttribute("rx", 5);
+    badge.setAttribute("x", 0);
 
-    plate.setAttribute("fill", "#2E86C1");
+    badge.setAttribute("y", 0);
 
-    label.appendChild(plate);
-
-    // Level Box
-
-    const level = document.createElementNS(
-        "http://www.w3.org/2000/svg",
-        "rect"
+    badge.setAttribute(
+        "width",
+        LABEL.badgeSize
     );
 
-    level.setAttribute("x", 0);
-    level.setAttribute("y", 0);
-    level.setAttribute("width", 20);
-    level.setAttribute("height", 18);
-    level.setAttribute("rx", 5);
-
-    level.setAttribute("fill", "#1B4F72");
-
-    label.appendChild(level);
-
-    // Level Text
-
-    const lvlText = document.createElementNS(
-        "http://www.w3.org/2000/svg",
-        "text"
+    badge.setAttribute(
+        "height",
+        LABEL.badgeSize
     );
 
-    lvlText.setAttribute("x", 10);
-    lvlText.setAttribute("y", 13);
+    badge.setAttribute(
+        "rx",
+        LABEL.cornerRadius
+    );
 
-    lvlText.setAttribute("fill", "white");
+    badge.setAttribute(
+        "fill",
+        badgeColor
+    );
 
-    lvlText.setAttribute("font-size", "11");
+    badge.setAttribute(
+        "filter",
+        `url(#${LABEL.shadowId})`
+    );
 
-    lvlText.setAttribute("text-anchor", "middle");
+    label.appendChild(badge);
 
-    lvlText.textContent = "4";
+    // --------------------------------------------------
+    // Badge text
+    // --------------------------------------------------
 
-    label.appendChild(lvlText);
-
-    // Plate Text
-
-    const text = document.createElementNS(
+    const lvl = document.createElementNS(
         "http://www.w3.org/2000/svg",
         "text"
     );
 
-    text.setAttribute("x", 26);
-    text.setAttribute("y", 13);
+    lvl.textContent = level;
 
-    text.setAttribute("fill", "white");
+    lvl.setAttribute(
+        "x",
+        LABEL.badgeSize / 2
+    );
 
-    text.setAttribute("font-size", "11");
+    lvl.setAttribute(
+        "y",
+        13
+    );
 
-    text.textContent = "CHI | Metro";
+    lvl.setAttribute(
+        "fill",
+        LABEL.textColor
+    );
 
-    label.appendChild(text);
+    lvl.setAttribute(
+        "font-size",
+        LABEL.fontSize
+    );
+
+    lvl.setAttribute(
+        "font-family",
+        LABEL.fontFamily
+    );
+
+    lvl.setAttribute(
+        "text-anchor",
+        "middle"
+    );
+
+    lvl.setAttribute(
+        "filter",
+        `url(#${LABEL.shadowId})`
+    );
+
+    label.appendChild(lvl);
+
+    console.log("Renderer OK :", tileId);
 
 }
 
