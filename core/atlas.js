@@ -158,25 +158,103 @@ function updateTerritoryPanel(id) {
 
     const prefix = id.split("-")[0];
 
-    const territory = territoryTypes[prefix];
+    const tileInfo = tilesData[prefix];
+
+    const tileState = stateData.tiles[id];
+
+    const currentSeason =
+        seasonData.seasons[seasonData.currentSeason];
+
+    const alliance =
+        tileState && tileState.owner
+            ? alliancesData.alliances[tileState.owner]
+            : null;
+
+
+    // -------------------------
+    // Territory
+    // -------------------------
 
     document.getElementById("territoryID").textContent = id;
 
     document.getElementById("territoryType").textContent =
-        territory ? territory.name : "Unknown";
+        tileInfo ? tileInfo.name : "-";
 
     document.getElementById("territoryLevel").textContent =
-        territory ? territory.level : "-";
+        tileInfo ? tileInfo.level : "-";
 
-    document.getElementById("territoryOwner").textContent = "Unassigned";
 
-    document.getElementById("territoryStatus").textContent = "Normal";
+    // -------------------------
+    // Owner
+    // -------------------------
 
-    document.getElementById("territoryBuff").textContent = "-";
+    document.getElementById("territoryOwner").textContent =
+        alliance
+            ? `${alliance.tag} - ${alliance.name}`
+            : "Unclaimed";
 
-    document.getElementById("territoryDNA").textContent = "-";
 
-    document.getElementById("territoryPoints").textContent = "-";
+    // -------------------------
+    // Status
+    // -------------------------
+
+    if (
+        tileState &&
+        tileState.protectedUntil
+    ) {
+
+        document.getElementById("territoryStatus").textContent =
+            "Protected";
+
+    } else {
+
+        document.getElementById("territoryStatus").textContent =
+            "Open";
+
+    }
+
+
+    // -------------------------
+    // Buff
+    // -------------------------
+
+    if (
+        tileInfo &&
+        tileInfo.buff
+    ) {
+
+        document.getElementById("territoryBuff").textContent =
+            `${tileInfo.buff.display} +${tileInfo.buff.value}${tileInfo.buff.unit}`;
+
+    } else {
+
+        document.getElementById("territoryBuff").textContent =
+            "-";
+
+    }
+
+
+    // -------------------------
+    // Production
+    // -------------------------
+
+    const production =
+        currentSeason.production[prefix];
+
+    document.getElementById("territoryDNA").textContent =
+        production
+            ? `${production}${currentSeason.resource.unit}`
+            : "-";
+
+
+    // -------------------------
+    // Contest Points
+    // -------------------------
+
+    document.getElementById("territoryPoints").textContent =
+        tileInfo
+            ? tileInfo.contestPoints
+            : "-";
 
 }
 
