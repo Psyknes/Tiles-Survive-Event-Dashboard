@@ -511,23 +511,23 @@ if (metroLayer) {
 
 const LABEL = {
 
-    badgeSize: 10,
+    badgeSize: 18,
 
-    plateHeight: 10,
+    plateHeight: 16,
 
     cornerRadius: 5,
 
-    platePadding: 4,
+    platePadding: 6,
 
-    plateGap: 5,
+    plateGap: 2,
 
-    tileIdGap: 5,
+    tileIdGap: 8,
 
     fontFamily: "Segoe UI",
 
-    fontSize: 8,
+    fontSize: 11,
 
-    tileIdSize: 8,
+    tileIdSize: 10,
 
     textColor: "#F6F6F6",
 
