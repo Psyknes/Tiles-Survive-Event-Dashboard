@@ -707,6 +707,130 @@ function drawLabel(tileId) {
 
     label.appendChild(lvl);
 
+        // --------------------------------------------------
+    // Measure plate text
+    // --------------------------------------------------
+
+    const measure = document.createElementNS(
+        "http://www.w3.org/2000/svg",
+        "text"
+    );
+
+    measure.setAttribute(
+        "font-size",
+        LABEL.fontSize
+    );
+
+    measure.setAttribute(
+        "font-family",
+        LABEL.fontFamily
+    );
+
+    measure.textContent = plateText;
+
+    label.appendChild(measure);
+
+    const textWidth =
+        measure.getComputedTextLength();
+
+    measure.remove();
+
+    const plateWidth =
+        textWidth +
+        (LABEL.platePadding * 2);
+
+    // --------------------------------------------------
+    // Plate
+    // --------------------------------------------------
+
+    const plate = document.createElementNS(
+        "http://www.w3.org/2000/svg",
+        "rect"
+    );
+
+    plate.setAttribute(
+        "x",
+        LABEL.badgeSize - 2
+    );
+
+    plate.setAttribute(
+        "y",
+        0
+    );
+
+    plate.setAttribute(
+        "width",
+        plateWidth
+    );
+
+    plate.setAttribute(
+        "height",
+        LABEL.plateHeight
+    );
+
+    plate.setAttribute(
+        "rx",
+        LABEL.cornerRadius
+    );
+
+    plate.setAttribute(
+        "fill",
+        plateColor
+    );
+
+    plate.setAttribute(
+        "filter",
+        `url(#${LABEL.shadowId})`
+    );
+
+    label.insertBefore(
+        plate,
+        lvl
+    );
+
+        // --------------------------------------------------
+    // Plate Text
+    // --------------------------------------------------
+
+    const plateLabel = document.createElementNS(
+        "http://www.w3.org/2000/svg",
+        "text"
+    );
+
+    plateLabel.textContent = plateText;
+
+    plateLabel.setAttribute(
+        "x",
+        LABEL.badgeSize + LABEL.platePadding
+    );
+
+    plateLabel.setAttribute(
+        "y",
+        13
+    );
+
+    plateLabel.setAttribute(
+        "fill",
+        LABEL.textColor
+    );
+
+    plateLabel.setAttribute(
+        "font-size",
+        LABEL.fontSize
+    );
+
+    plateLabel.setAttribute(
+        "font-family",
+        LABEL.fontFamily
+    );
+
+    plateLabel.setAttribute(
+        "filter",
+        `url(#${LABEL.shadowId})`
+    );
+
+    label.appendChild(plateLabel);
+
     console.log("Renderer OK :", tileId);
 
 }
