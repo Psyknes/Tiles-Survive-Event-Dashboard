@@ -847,7 +847,7 @@ function drawLabel(tileId) {
 
    const box = tile.getBBox();
 
-const ctm = tile.getCTM();
+const ctm = tile.getScreenCTM();
 
 const pt = tile.ownerSVGElement.createSVGPoint();
 
@@ -856,9 +856,13 @@ pt.y = box.y + (box.height / 2);
 
 const screenPoint = pt.matrixTransform(ctm);
 
+const svgCTM = tile.ownerSVGElement.getScreenCTM().inverse();
+
+const svgPoint = screenPoint.matrixTransform(svgCTM);
+
 label.setAttribute(
     "transform",
-    `translate(${screenPoint.x}, ${screenPoint.y})`
+    `translate(${svgPoint.x}, ${svgPoint.y})`
 );
 
     console.log("Renderer OK :", tileId);
