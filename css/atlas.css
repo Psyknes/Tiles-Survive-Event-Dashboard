@@ -121,6 +121,8 @@ body{
 
 #mapContainer{
 
+    position:relative;
+
     flex:1;
 
     overflow:auto;
@@ -288,11 +290,6 @@ body{
    LABEL LAYER
 ========================================== */
 
-#mapContainer{
-
-    position:relative;
-
-}
 
 #svgHolder{
 
