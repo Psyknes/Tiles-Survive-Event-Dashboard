@@ -259,7 +259,7 @@ function updateTerritoryPanel(id) {
 // Alliance Summary
 // -------------------------
 
-document.getElementById("allianceName").textContent =
+document.getElementById("sumAlliance").textContent =
     alliance
         ? `${alliance.tag} - ${alliance.name}`
         : "-";
@@ -269,7 +269,7 @@ if (alliance) {
     const ownedTiles = Object.values(stateData.tiles)
         .filter(tile => tile.owner === alliance.tag);
 
-    document.getElementById("allianceTiles").textContent =
+    document.getElementById("sumTiles").textContent =
         ownedTiles.length;
 
     let totalProduction = 0;
@@ -289,22 +289,20 @@ if (alliance) {
         totalPoints += tileType.contestPoints || 0;
 
         if (tileType.buff) {
-
             buffs.push(
                 `${tileType.buff.display} +${tileType.buff.value}${tileType.buff.unit}`
             );
-
         }
 
     });
 
-    document.getElementById("allianceProduction").textContent =
+    document.getElementById("sumDNA").textContent =
         `${totalProduction}${currentSeason.resource.unit}`;
 
-    document.getElementById("alliancePoints").textContent =
+    document.getElementById("sumPoints").textContent =
         totalPoints;
 
-    document.getElementById("allianceBuffs").textContent =
+    document.getElementById("sumBuffs").textContent =
         buffs.length
             ? buffs.join(", ")
             : "-";
@@ -312,10 +310,10 @@ if (alliance) {
 }
 else {
 
-    document.getElementById("allianceTiles").textContent = "-";
-    document.getElementById("allianceProduction").textContent = "-";
-    document.getElementById("alliancePoints").textContent = "-";
-    document.getElementById("allianceBuffs").textContent = "-";
+    document.getElementById("sumTiles").textContent = "-";
+    document.getElementById("sumDNA").textContent = "-";
+    document.getElementById("sumPoints").textContent = "-";
+    document.getElementById("sumBuffs").textContent = "-";
 
 }
 }
