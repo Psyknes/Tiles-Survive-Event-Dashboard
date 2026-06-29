@@ -423,12 +423,71 @@ function createLabelLayer() {
 
     }
 
+    const oldDefs = document.getElementById("atlasLabelDefs");
+
+    if (oldDefs) {
+
+        oldDefs.remove();
+
+    }
+
+    // ----------------------------------
+    // SVG Definitions
+    // ----------------------------------
+
+    const defs = document.createElementNS(
+        "http://www.w3.org/2000/svg",
+        "defs"
+    );
+
+    defs.setAttribute("id", "atlasLabelDefs");
+
+    // Shadow Filter
+
+    const filter = document.createElementNS(
+        "http://www.w3.org/2000/svg",
+        "filter"
+    );
+
+    filter.setAttribute("id", LABEL.shadowId);
+
+    filter.setAttribute("x", "-30%");
+    filter.setAttribute("y", "-30%");
+    filter.setAttribute("width", "160%");
+    filter.setAttribute("height", "160%");
+
+    const shadow = document.createElementNS(
+        "http://www.w3.org/2000/svg",
+        "feDropShadow"
+    );
+
+    shadow.setAttribute("dx", "0.6");
+
+    shadow.setAttribute("dy", "0.8");
+
+    shadow.setAttribute("stdDeviation", "0.8");
+
+    shadow.setAttribute("flood-opacity", "0.35");
+
+    defs.appendChild(filter);
+
+    filter.appendChild(shadow);
+
+    svg.appendChild(defs);
+
+    // ----------------------------------
+    // Label Layer
+    // ----------------------------------
+
     layer = document.createElementNS(
         "http://www.w3.org/2000/svg",
         "g"
     );
 
-    layer.setAttribute("id", "atlasLabels");
+    layer.setAttribute(
+        "id",
+        "atlasLabels"
+    );
 
     svg.appendChild(layer);
 
