@@ -1,0 +1,29 @@
+{
+  "alliances": {
+
+    "CHI": {
+      "name": "Chillin",
+      "tag": "CHI",
+      "leader": "Psyknes",
+      "color": "#00B8FF",
+      "logo": "chi.png"
+    },
+
+    "AAA": {
+      "name": "",
+      "tag": "AAA",
+      "leader": "",
+      "color": "#808080",
+      "logo": ""
+    },
+
+    "BBB": {
+      "name": "",
+      "tag": "BBB",
+      "leader": "",
+      "color": "#808080",
+      "logo": ""
+    }
+
+  }
+}
