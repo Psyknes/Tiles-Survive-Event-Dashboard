@@ -513,7 +513,7 @@ const LABEL = {
 
     badgeSize: 18,
 
-    plateHeight: 18,
+    plateHeight: 16,
 
     cornerRadius: 5,
 
@@ -521,7 +521,7 @@ const LABEL = {
 
     plateGap: 2,
 
-    tileIdGap: 4,
+    tileIdGap: 8,
 
     fontFamily: "Segoe UI",
 
