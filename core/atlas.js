@@ -863,13 +863,18 @@ const transform = tile.getAttribute("transform") || "";
 
 const match = transform.match(/rotate\(([-\d.]+)/);
 
-const angle = match ? Number(match[1]) : 0;
+let angle = match ? Number(match[1]) : 0;
+
+// SVG tiles are exported at -45.
+// Nameplates need an additional 90°.
+
+angle += 90;
 
 label.setAttribute(
     "transform",
     `
     translate(${svgPoint.x}, ${svgPoint.y})
-    rotate(${angle + 90})
+    rotate(${angle})
     translate(${offsetX}, ${offsetY})
     `
 );
