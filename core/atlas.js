@@ -907,5 +907,4 @@ function getTileCenter(tile) {
 
 }
 
-}
 startAtlas();
