@@ -858,6 +858,7 @@ function drawLabel(tileId) {
 // --------------------------------------------------
 
 const guide = getGuideData(tileId);
+    console.log(tileId, tileId + "p", guide);
 
 if (!guide) return;
 
@@ -928,6 +929,13 @@ function getGuideData(tileId) {
         mid,
         angle
     };
-
+    
+console.log(
+    "Guide:",
+    guide.id,
+    "for tile:",
+    tileId
+);
+    
 }
 startAtlas();
