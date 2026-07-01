@@ -877,8 +877,8 @@ if (center.x < 442) {
     angle = -45;
 }
 
-const dx = 70;
-const dy = 90;
+const dx = 0;
+const dy = 0;
 
 label.setAttribute(
     "transform",
