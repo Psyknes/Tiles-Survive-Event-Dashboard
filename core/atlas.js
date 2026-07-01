@@ -845,20 +845,7 @@ function drawLabel(tileId) {
     // Position
     // --------------------------------------------------
 
-   const box = tile.getBBox();
-
-const ctm = tile.getScreenCTM();
-
-const pt = tile.ownerSVGElement.createSVGPoint();
-
-pt.x = box.x + (box.width / 2);
-pt.y = box.y + (box.height / 2);
-
-const screenPoint = pt.matrixTransform(ctm);
-
-const svgCTM = tile.ownerSVGElement.getScreenCTM().inverse();
-
-const svgPoint = screenPoint.matrixTransform(svgCTM);
+   const svgPoint = getTileCenter(tile);
 
 const labelWidth =
     LABEL.badgeSize - 2 + plateWidth;
@@ -886,4 +873,22 @@ label.setAttribute(
 
 }
 
+function getTileCenter(tile){
+
+    const box = tile.getBBox();
+
+    const pt = tile.ownerSVGElement.createSVGPoint();
+
+    pt.x = box.x + box.width / 2;
+    pt.y = box.y + box.height / 2;
+
+    return pt.matrixTransform(
+        tile.getScreenCTM()
+    ).matrixTransform(
+        tile.ownerSVGElement
+            .getScreenCTM()
+            .inverse()
+    );
+
+}
 startAtlas();
