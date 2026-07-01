@@ -8,6 +8,7 @@ let tilesData = {};
 let stateData = {};
 let alliancesData = {};
 let seasonData = {};
+let layoutData = {};
 
 // ----------------------------
 // Load JSON Files
@@ -30,12 +31,15 @@ async function loadGameData() {
 
         fetch("data/atlas/season.json").then(r => r.json())
 
+        fetch("data/atlas/layout.json").then(r => r.json())
+
     ]);
 
     tilesData = tiles;
     stateData = state;
     alliancesData = alliances;
     seasonData = season;
+    layoutData = layout;
 
     console.log("Atlas JSON Loaded");
 
@@ -859,11 +863,13 @@ const offsetX = -(labelWidth / 2);
 
 const offsetY = -(LABEL.plateHeight / 2);
 
-const transform = tile.getAttribute("transform") || "";
+const layout =
+    layoutData[tileId];
 
-const match = transform.match(/rotate\(([-\d.]+)/);
-
-let angle = match ? Number(match[1]) : 0;
+const angle =
+    layout
+        ? layout.rotation
+        : 0;
 
 // SVG tiles are exported at -45.
 // Nameplates need an additional 90°.
@@ -873,7 +879,16 @@ angle += 90;
 label.setAttribute(
     "transform",
     `
-    translate(${svgPoint.x}, ${svgPoint.y})
+    const dx =
+    layout ? layout.offsetX : 0;
+
+const dy =
+    layout ? layout.offsetY : 0;
+
+label.setAttribute(
+    "transform",
+    `
+    translate(${svgPoint.x + dx}, ${svgPoint.y + dy})
     rotate(${angle})
     translate(${offsetX}, ${offsetY})
     `
