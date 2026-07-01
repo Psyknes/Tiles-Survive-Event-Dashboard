@@ -893,22 +893,19 @@ label.setAttribute(
 
 }
 
-function getTileCenter(tile){
+function getTileCenter(tile) {
 
     const box = tile.getBBox();
 
-    const pt = tile.ownerSVGElement.createSVGPoint();
+    return {
 
-    pt.x = box.x + box.width / 2;
-    pt.y = box.y + box.height / 2;
+        x: box.x + (box.width / 2),
 
-    return pt.matrixTransform(
-        tile.getScreenCTM()
-    ).matrixTransform(
-        tile.ownerSVGElement
-            .getScreenCTM()
-            .inverse()
-    );
+        y: box.y + (box.height / 2)
+
+    };
+
+}
 
 }
 startAtlas();
