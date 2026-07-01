@@ -1,0 +1,24 @@
+{
+  "AR-01": { "rotation": 0, "offsetX": 0, "offsetY": 0 },
+
+  "MB-01": { "rotation": -45, "offsetX": 0, "offsetY": 0 },
+  "MB-02": { "rotation": -45, "offsetX": 0, "offsetY": 0 },
+  "MB-03": { "rotation": 45, "offsetX": 0, "offsetY": 0 },
+
+  "RC-01": { "rotation": -45, "offsetX": 0, "offsetY": 0 },
+  "RC-02": { "rotation": -45, "offsetX": 0, "offsetY": 0 },
+  "RC-03": { "rotation": 45, "offsetX": 0, "offsetY": 0 },
+  "RC-04": { "rotation": 45, "offsetX": 0, "offsetY": 0 },
+  "RC-05": { "rotation": -45, "offsetX": 0, "offsetY": 0 },
+
+  "MP-01": { "rotation": -45, "offsetX": 0, "offsetY": 0 },
+  "MP-02": { "rotation": -45, "offsetX": 0, "offsetY": 0 },
+  "MP-03": { "rotation": 45, "offsetX": 0, "offsetY": 0 },
+  "MP-04": { "rotation": 45, "offsetX": 0, "offsetY": 0 },
+  "MP-05": { "rotation": 45, "offsetX": 0, "offsetY": 0 },
+  "MP-06": { "rotation": 45, "offsetX": 0, "offsetY": 0 },
+  "MP-07": { "rotation": -45, "offsetX": 0, "offsetY": 0 },
+  "MP-08": { "rotation": -45, "offsetX": 0, "offsetY": 0 }
+
+  // We'll complete TW / FT / VG after validating MB/RC/MP.
+}
