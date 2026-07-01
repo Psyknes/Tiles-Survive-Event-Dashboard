@@ -629,94 +629,7 @@ function drawLabel(tileId) {
 
     const badgeColor = "#4A4A4A";
 
-    // --------------------------------------------------
-    // Draw badge
-    // --------------------------------------------------
-
-    const badge = document.createElementNS(
-        "http://www.w3.org/2000/svg",
-        "rect"
-    );
-
-    badge.setAttribute("x", 0);
-
-    badge.setAttribute("y", 0);
-
-    badge.setAttribute(
-        "width",
-        LABEL.badgeSize
-    );
-
-    badge.setAttribute(
-        "height",
-        LABEL.badgeSize
-    );
-
-    badge.setAttribute(
-        "rx",
-        LABEL.cornerRadius
-    );
-
-    badge.setAttribute(
-        "fill",
-        badgeColor
-    );
-
-    badge.setAttribute(
-        "filter",
-        `url(#${LABEL.shadowId})`
-    );
-
-    label.appendChild(badge);
-
-    // --------------------------------------------------
-    // Badge text
-    // --------------------------------------------------
-
-    const lvl = document.createElementNS(
-        "http://www.w3.org/2000/svg",
-        "text"
-    );
-
-    lvl.textContent = level;
-
-    lvl.setAttribute(
-        "x",
-        LABEL.badgeSize / 2
-    );
-
-    lvl.setAttribute(
-        "y",
-        13
-    );
-
-    lvl.setAttribute(
-        "fill",
-        LABEL.textColor
-    );
-
-    lvl.setAttribute(
-        "font-size",
-        LABEL.fontSize
-    );
-
-    lvl.setAttribute(
-        "font-family",
-        LABEL.fontFamily
-    );
-
-    lvl.setAttribute(
-        "text-anchor",
-        "middle"
-    );
-
-    lvl.setAttribute(
-        "filter",
-        `url(#${LABEL.shadowId})`
-    );
-
-    label.appendChild(lvl);
-
+   
         // --------------------------------------------------
     // Measure plate text
     // --------------------------------------------------
@@ -841,7 +754,94 @@ function drawLabel(tileId) {
 
     label.appendChild(plateLabel);
 
- 
+  // --------------------------------------------------
+    // Draw badge
+    // --------------------------------------------------
+
+    const badge = document.createElementNS(
+        "http://www.w3.org/2000/svg",
+        "rect"
+    );
+
+    badge.setAttribute("x", 0);
+
+    badge.setAttribute("y", 0);
+
+    badge.setAttribute(
+        "width",
+        LABEL.badgeSize
+    );
+
+    badge.setAttribute(
+        "height",
+        LABEL.badgeSize
+    );
+
+    badge.setAttribute(
+        "rx",
+        LABEL.cornerRadius
+    );
+
+    badge.setAttribute(
+        "fill",
+        badgeColor
+    );
+
+    badge.setAttribute(
+        "filter",
+        `url(#${LABEL.shadowId})`
+    );
+
+    label.appendChild(badge);
+
+    // --------------------------------------------------
+    // Badge text
+    // --------------------------------------------------
+
+    const lvl = document.createElementNS(
+        "http://www.w3.org/2000/svg",
+        "text"
+    );
+
+    lvl.textContent = level;
+
+    lvl.setAttribute(
+        "x",
+        LABEL.badgeSize / 2
+    );
+
+    lvl.setAttribute(
+        "y",
+        13
+    );
+
+    lvl.setAttribute(
+        "fill",
+        LABEL.textColor
+    );
+
+    lvl.setAttribute(
+        "font-size",
+        LABEL.fontSize
+    );
+
+    lvl.setAttribute(
+        "font-family",
+        LABEL.fontFamily
+    );
+
+    lvl.setAttribute(
+        "text-anchor",
+        "middle"
+    );
+
+    lvl.setAttribute(
+        "filter",
+        `url(#${LABEL.shadowId})`
+    );
+
+    label.appendChild(lvl);
+
 
    // --------------------------------------------------
 // Position from SVG Guide
