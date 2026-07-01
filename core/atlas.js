@@ -569,7 +569,12 @@ function buildLabels() {
 
     });
 
-drawLabel("MP-03");
+Object.keys(stateData.tiles)
+    .forEach(tileId => {
+
+        drawLabel(tileId);
+
+    });
     
 }
 
