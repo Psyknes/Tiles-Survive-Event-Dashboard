@@ -688,7 +688,7 @@ function drawLabel(tileId) {
 
     lvl.setAttribute(
         "y",
-        13
+        11
     );
 
     lvl.setAttribute(
@@ -819,7 +819,7 @@ function drawLabel(tileId) {
 
     plateLabel.setAttribute(
         "y",
-        13
+        11
     );
 
     plateLabel.setAttribute(
