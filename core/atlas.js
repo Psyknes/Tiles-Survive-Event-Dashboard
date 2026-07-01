@@ -794,9 +794,7 @@ function drawLabel(tileId) {
         `url(#${LABEL.shadowId})`
     );
 
-       label.appendChild(badge);
-    label.appendChild(badge);
-label.appendChild(lvl);
+       label.appendChild(plate);
 
         // --------------------------------------------------
     // Plate Text
@@ -840,6 +838,8 @@ label.appendChild(lvl);
     );
 
     label.appendChild(plateLabel);
+    label.appendChild(badge);
+label.appendChild(lvl);
 
   
    // --------------------------------------------------
