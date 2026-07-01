@@ -860,22 +860,15 @@ function drawLabel(tileId) {
 const labelWidth =
     LABEL.badgeSize - 2 + plateWidth;
 
-const offsetX = -(labelWidth / 2);
+// Center the PLATE, not the whole label
+const offsetX =
+    -(LABEL.badgeSize + (plateWidth / 2));
 
-const offsetY = -(LABEL.plateHeight / 2);
+const offsetY =
+    -(LABEL.plateHeight / 2);
 
-const layout =
-    layoutData[tileId];
-
+// Temporary
 let angle = 45;
-
-const box = tile.getBBox();
-const center = getTileCenter(tile);
-
-// Left half of map
-if (center.x < 442) {
-    angle = -45;
-}
 
 const dx = 70;
 const dy = 90;
