@@ -862,7 +862,7 @@ const labelWidth =
 
 // Center the PLATE, not the whole label
 const offsetX =
-    -(LABEL.badgeSize + (plateWidth / 2));
+    -(labelWidth / 2);
 
 const offsetY =
     -(LABEL.plateHeight / 2);
