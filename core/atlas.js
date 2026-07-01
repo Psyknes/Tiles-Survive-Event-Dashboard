@@ -922,7 +922,15 @@ function getGuideData(tileId) {
 
     const end = guide.getPointAtLength(len);
 
-    const mid = guide.getPointAtLength(len / 2);
+    const pt = guide.getPointAtLength(len / 2);
+
+const svg = guide.ownerSVGElement;
+
+const mid = pt.matrixTransform(
+    guide.getScreenCTM()
+).matrixTransform(
+    svg.getScreenCTM().inverse()
+);
 
     const angle =
         Math.atan2(
