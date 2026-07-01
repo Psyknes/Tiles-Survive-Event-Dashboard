@@ -140,16 +140,20 @@ body{
 #svgHolder{
 
     width:100%;
+    height:100%;
 
-    max-width:1200px;
+    display:flex;
+    justify-content:center;
+    align-items:center;
 
 }
 
 #svgHolder svg{
 
     width:100%;
+    height:100%;
 
-    height:auto;
+    object-fit:contain;
 
     display:block;
 
