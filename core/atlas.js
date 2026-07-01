@@ -908,32 +908,25 @@ function getGuideData(tileId) {
 
     const len = guide.getTotalLength();
 
-    const start = guide.getPointAtLength(0);
-
-    const end = guide.getPointAtLength(len);
-
-    const pt = guide.getPointAtLength(len / 2);
-
 const svg = guide.ownerSVGElement;
 
-const mid = pt.matrixTransform(
-    guide.getScreenCTM()
-).matrixTransform(
-    svg.getScreenCTM().inverse()
-);
+const start = guide.getPointAtLength(0)
+    .matrixTransform(guide.getScreenCTM())
+    .matrixTransform(svg.getScreenCTM().inverse());
 
-    const angle =
-        Math.atan2(
-            end.y - start.y,
-            end.x - start.x
-        ) * 180 / Math.PI;
+const end = guide.getPointAtLength(len)
+    .matrixTransform(guide.getScreenCTM())
+    .matrixTransform(svg.getScreenCTM().inverse());
 
-    console.log(
-        "Guide:",
-        guide.id,
-        "for tile:",
-        tileId
-    );
+const mid = guide.getPointAtLength(len / 2)
+    .matrixTransform(guide.getScreenCTM())
+    .matrixTransform(svg.getScreenCTM().inverse());
+
+const angle =
+    Math.atan2(
+        end.y - start.y,
+        end.x - start.x
+    ) * 180 / Math.PI;
 
     return {
         start,
