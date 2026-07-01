@@ -794,7 +794,12 @@ function drawLabel(tileId) {
         `url(#${LABEL.shadowId})`
     );
 
-       label.appendChild(plate);
+      label.insertBefore(
+    plate,
+    lvl
+);
+
+    label.appendChild(plate);
 
         // --------------------------------------------------
     // Plate Text
