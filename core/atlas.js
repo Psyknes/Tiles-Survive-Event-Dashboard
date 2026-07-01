@@ -877,7 +877,7 @@ if (center.x < 442) {
     angle = -45;
 }
 
-const dx = 18;
+const dx = 30;
 const dy = 18;
 
 label.setAttribute(
