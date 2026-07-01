@@ -851,33 +851,30 @@ function drawLabel(tileId) {
 
     label.appendChild(plateLabel);
 
-        // --------------------------------------------------
-    // Position
-    // --------------------------------------------------
+ 
 
-   const svgPoint = getTileCenter(tile);
+   // --------------------------------------------------
+// Position from SVG Guide
+// --------------------------------------------------
+
+const guide = getGuideData(tileId);
+
+if (!guide) return;
 
 const labelWidth =
     LABEL.badgeSize - 2 + plateWidth;
 
-// Center the PLATE, not the whole label
 const offsetX =
     -(labelWidth / 2);
 
 const offsetY =
     -(LABEL.plateHeight / 2);
 
-// Temporary
-let angle = 45;
-
-const dx = 70;
-const dy = 90;
-
 label.setAttribute(
     "transform",
     `
-    translate(${svgPoint.x + dx}, ${svgPoint.y + dy})
-    rotate(${angle})
+    translate(${guide.mid.x}, ${guide.mid.y})
+    rotate(${guide.angle})
     translate(${offsetX}, ${offsetY})
     `
 );
@@ -905,4 +902,32 @@ function getTileCenter(tile){
 
 }
 
+function getGuideData(tileId) {
+
+    const guide = document.getElementById(tileId + "p");
+
+    if (!guide) return null;
+
+    const len = guide.getTotalLength();
+
+    const start = guide.getPointAtLength(0);
+
+    const end = guide.getPointAtLength(len);
+
+    const mid = guide.getPointAtLength(len / 2);
+
+    const angle =
+        Math.atan2(
+            end.y - start.y,
+            end.x - start.x
+        ) * 180 / Math.PI;
+
+    return {
+        start,
+        end,
+        mid,
+        angle
+    };
+
+}
 startAtlas();
