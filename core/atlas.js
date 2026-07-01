@@ -17,11 +17,12 @@ let layoutData = {};
 async function loadGameData() {
 
     const [
-        tiles,
-        state,
-        alliances,
-        season
-    ] = await Promise.all([
+    tiles,
+    state,
+    alliances,
+    season,
+    layout
+] = await Promise.all([
 
         fetch("data/atlas/tiles.json").then(r => r.json()),
 
@@ -29,7 +30,7 @@ async function loadGameData() {
 
         fetch("data/atlas/alliances.json").then(r => r.json()),
 
-        fetch("data/atlas/season.json").then(r => r.json())
+        fetch("data/atlas/season.json").then(r => r.json()),
 
         fetch("data/atlas/layout.json").then(r => r.json())
 
@@ -866,24 +867,11 @@ const offsetY = -(LABEL.plateHeight / 2);
 const layout =
     layoutData[tileId];
 
-const angle =
-    layout
-        ? layout.rotation
-        : 0;
+let angle = 45;
 
-// SVG tiles are exported at -45.
-// Nameplates need an additional 90°.
+const dx = 0;
 
-angle += 90;
-
-label.setAttribute(
-    "transform",
-    `
-    const dx =
-    layout ? layout.offsetX : 0;
-
-const dy =
-    layout ? layout.offsetY : 0;
+const dy = 0;
 
 label.setAttribute(
     "transform",
