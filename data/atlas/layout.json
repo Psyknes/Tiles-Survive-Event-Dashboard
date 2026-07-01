@@ -20,5 +20,4 @@
   "MP-07": { "rotation": -45, "offsetX": 0, "offsetY": 0 },
   "MP-08": { "rotation": -45, "offsetX": 0, "offsetY": 0 }
 
-  // We'll complete TW / FT / VG after validating MB/RC/MP.
-}
+ }
