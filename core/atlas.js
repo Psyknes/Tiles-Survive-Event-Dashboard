@@ -877,8 +877,8 @@ if (center.x < 442) {
     angle = -45;
 }
 
-const dx = 0;
-const dy = 0;
+const dx = 70;
+const dy = 90;
 
 label.setAttribute(
     "transform",
@@ -893,17 +893,22 @@ label.setAttribute(
 
 }
 
-function getTileCenter(tile) {
+function getTileCenter(tile){
 
     const box = tile.getBBox();
 
-    return {
+    const pt = tile.ownerSVGElement.createSVGPoint();
 
-        x: box.x + (box.width / 2),
+    pt.x = box.x + box.width / 2;
+    pt.y = box.y + box.height / 2;
 
-        y: box.y + (box.height / 2)
-
-    };
+    return pt.matrixTransform(
+        tile.getScreenCTM()
+    ).matrixTransform(
+        tile.ownerSVGElement
+            .getScreenCTM()
+            .inverse()
+    );
 
 }
 
