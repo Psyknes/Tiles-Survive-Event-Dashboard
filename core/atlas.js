@@ -860,6 +860,13 @@ function drawLabel(tileId) {
 const guide = getGuideData(tileId);
     console.log(tileId, tileId + "p", guide);
 
+    console.log(
+    "Drawing:",
+    tileId,
+    "using",
+    guide
+);
+
 if (!guide) return;
 
 const labelWidth =
@@ -923,19 +930,20 @@ function getGuideData(tileId) {
             end.x - start.x
         ) * 180 / Math.PI;
 
+    console.log(
+        "Guide:",
+        guide.id,
+        "for tile:",
+        tileId
+    );
+
     return {
         start,
         end,
         mid,
         angle
     };
-    
-console.log(
-    "Guide:",
-    guide.id,
-    "for tile:",
-    tileId
-);
-    
+
 }
+
 startAtlas();
