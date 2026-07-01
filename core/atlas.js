@@ -878,7 +878,7 @@ if (center.x < 442) {
 }
 
 const dx = 60;
-const dy = 90;
+const dy = 100;
 
 label.setAttribute(
     "transform",
