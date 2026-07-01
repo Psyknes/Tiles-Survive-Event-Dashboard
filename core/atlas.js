@@ -869,6 +869,14 @@ const layout =
 
 let angle = 45;
 
+const box = tile.getBBox();
+const center = getTileCenter(tile);
+
+// Left half of map
+if (center.x < 442) {
+    angle = -45;
+}
+
 const dx = 0;
 
 const dy = 0;
