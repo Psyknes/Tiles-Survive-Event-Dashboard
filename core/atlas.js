@@ -859,7 +859,7 @@ tileLabel.setAttribute(
 
 tileLabel.setAttribute(
     "fill",
-    "#222222"
+    "#2C2C2"
 );
 
 tileLabel.setAttribute(
@@ -870,6 +870,11 @@ tileLabel.setAttribute(
 tileLabel.setAttribute(
     "font-family",
     LABEL.fontFamily
+);
+
+    tileLabel.setAttribute(
+    "font-weight",
+    "600"
 );
 
 tileLabel.setAttribute(
