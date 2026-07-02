@@ -504,7 +504,26 @@ V5 Z"/>
 
 defs.appendChild(shieldSymbol);
 
-    svg.appendChild(defs);
+   const battleSymbol = document.createElementNS(
+    "http://www.w3.org/2000/svg",
+    "symbol"
+);
+
+battleSymbol.setAttribute("id", "atlasBattle");
+battleSymbol.setAttribute("viewBox", "0 0 24 24");
+
+battleSymbol.innerHTML = `
+<path fill="currentColor"
+d="M7 2 L10 5 L8 7 L12 11 L16 7 L14 5 L17 2
+L22 7 L20 9 L16 5 L12 9 L16 13 L18 11 L22 15
+L17 20 L15 18 L11 22 L7 18 L9 16 L5 12 L2 15
+L0 13 L4 9 L2 7 Z"/>
+`;
+
+defs.appendChild(battleSymbol);
+
+svg.appendChild(defs);
+
 
     // ----------------------------------
     // Label Layer
@@ -1145,26 +1164,7 @@ if (timerText) {
 
     timerGroup.appendChild(shield);
 }
-
-const battleSymbol = document.createElementNS(
-    "http://www.w3.org/2000/svg",
-    "symbol"
-);
-
-battleSymbol.setAttribute("id", "atlasBattle");
-battleSymbol.setAttribute("viewBox", "0 0 24 24");
-
-battleSymbol.innerHTML = `
-<path fill="currentColor"
-d="M7 2 L10 5 L8 7 L12 11 L16 7 L14 5 L17 2
-L22 7 L20 9 L16 5 L12 9 L16 13 L18 11 L22 15
-L17 20 L15 18 L11 22 L7 18 L9 16 L5 12 L2 15
-L0 13 L4 9 L2 7 Z"/>
-`;
-
-defs.appendChild(battleSymbol);
-    
-
+ 
 timerGroup.appendChild(timerLabel);
     timerGroup.setAttribute(
     "transform",
