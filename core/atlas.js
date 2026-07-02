@@ -874,7 +874,7 @@ tileLabel.setAttribute(
 
     tileLabel.setAttribute(
     "font-weight",
-    "600"
+    "bold"
 );
 
 tileLabel.setAttribute(
