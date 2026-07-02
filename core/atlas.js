@@ -47,8 +47,6 @@ async function loadGameData() {
     layoutData = layout;
     specialShortData = specialShort;
     
-console.log("specialShort loaded:", specialShort);
-console.log("specialShortData:", specialShortData);
     console.log("Atlas JSON Loaded");
 
     // ----------------------------
@@ -677,14 +675,6 @@ if (now > end) {
             )
         };
 
-console.log({
-    start: new Date(start),
-    end: new Date(end),
-    now: new Date(),
-    countdown: formatCountdown(
-        new Date(start).toISOString()
-    )
-});
         
     }
 
@@ -1043,8 +1033,7 @@ if (tileId === "AR-01") {
 
     const arcadia = getArcadiaTimer();
 
-    console.log("Arcadia Timer:", arcadia);
-
+    
     if (arcadia) {
 
         timerText = arcadia.countdown;
