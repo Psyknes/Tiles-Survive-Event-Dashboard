@@ -525,6 +525,7 @@ const LABEL = {
     tileIdSize: 10,
 
     textColor: "#F6F6F6",
+    starColor: "#F4C542",
 
     shadowId: "atlasLabelShadow",
 
@@ -697,7 +698,7 @@ function drawLabel(tileId) {
     lvl.setAttribute(
     "fill",
     tileId === "AR-01"
-        ? "#FFD700"   // Gold
+        ? LABEL.starColor
         : LABEL.textColor
 );
 
