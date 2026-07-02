@@ -974,12 +974,12 @@ timerLabel.textContent = timerText;
 
 timerLabel.setAttribute(
     "x",
-    LABEL.badgeSize + (plateWidth / 2) - 2
+    timerX
 );
 
 timerLabel.setAttribute(
     "y",
-    LABEL.plateHeight + 10
+    timerY
 );
 
 timerLabel.setAttribute(
@@ -1014,32 +1014,49 @@ timerLabel.setAttribute(
     "middle"
 );
 
-const shield = document.createElementNS(
-    "http://www.w3.org/2000/svg",
-    "use"
+    const timerX =
+    LABEL.badgeSize + (plateWidth / 2) - 2;
+
+const timerY =
+    LABEL.plateHeight + 10;
+
+if (timerText) {
+
+    const shield = document.createElementNS(
+        "http://www.w3.org/2000/svg",
+        "use"
+    );
+
+    shield.setAttributeNS(
+        "http://www.w3.org/1999/xlink",
+        "href",
+        "#atlasShield"
+    );
+
+    shield.setAttribute("width", 7);
+    shield.setAttribute("height", 7);
+
+    shield.setAttribute("fill", "#FFFFFF");
+
+    shield.setAttribute(
+        "filter",
+        `url(#${LABEL.shadowId})`
+    );
+
+    // We'll adjust these in a minute
+    shield.setAttribute(
+    "x",
+    timerX - 12
 );
-
-shield.setAttributeNS(
-    "http://www.w3.org/1999/xlink",
-    "href",
-    "#atlasShield"
-);
-
-shield.setAttribute("x", LABEL.badgeSize + 12);
-shield.setAttribute("y", LABEL.plateHeight + 4);
-
-shield.setAttribute("width", 7);
-shield.setAttribute("height", 7);
-
-shield.setAttribute("fill", "#FFFFFF");
 
 shield.setAttribute(
-    "filter",
-    `url(#${LABEL.shadowId})`
+    "y",
+    timerY - 6
 );
 
-label.appendChild(shield);
-    
+    label.appendChild(shield);
+}
+
 label.appendChild(timerLabel);
     
     label.appendChild(badge);
