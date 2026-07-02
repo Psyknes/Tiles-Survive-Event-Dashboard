@@ -653,8 +653,17 @@ function getArcadiaTimer() {
         start += repeatMs;
     }
 
-    const end =
-        start + durationMs;
+    let end =
+    start + durationMs;
+
+// If the event has already finished,
+// move to the next weekly occurrence.
+if (now > end) {
+
+    start += repeatMs;
+    end += repeatMs;
+
+}
 
     if (now >= start && now < end) {
 
