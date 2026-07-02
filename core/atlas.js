@@ -631,45 +631,47 @@ function formatCountdown(targetTime) {
 
 function getArcadiaTimer() {
 
-    const event = specialShortData.events.find(
-        e => e.id === "arcadianConquest"
+    const event = specialShortData.find(
+        e => e.name === "Arcadian Conquest"
     );
 
-    if (!event) return "";
+    if (!event) return null;
 
-    const now = new Date();
+    const repeatMs =
+        event.repeat * 60 * 60 * 1000;
 
-    const start = new Date(event.start);
-    const end = new Date(event.end);
+    const durationMs =
+        new Date(event.end) -
+        new Date(event.start);
 
-    // First occurrence
-    let currentStart = start;
-    let currentEnd = end;
+    const now = Date.now();
 
-    // Weekly repeat
-    while (currentEnd < now) {
+    let start =
+        new Date(event.start).getTime();
 
-        currentStart = new Date(
-            currentStart.getTime() + 7 * 24 * 60 * 60 * 1000
-        );
-
-        currentEnd = new Date(
-            currentEnd.getTime() + 7 * 24 * 60 * 60 * 1000
-        );
+    while (start + repeatMs <= now) {
+        start += repeatMs;
     }
 
-    if (now < currentStart) {
+    const end =
+        start + durationMs;
+
+    if (now >= start && now < end) {
 
         return {
-            icon: "shield",
-            text: formatCountdown(currentStart)
+            icon: "battle",
+            countdown: formatCountdown(
+                new Date(end).toISOString()
+            )
         };
 
     }
 
     return {
-        icon: "swords",
-        text: formatCountdown(currentEnd)
+        icon: "shield",
+        countdown: formatCountdown(
+            new Date(start).toISOString()
+        )
     };
 
 }
