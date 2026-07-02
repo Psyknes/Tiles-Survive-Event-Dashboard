@@ -8,17 +8,17 @@
 
   "tiles": {
 
-    "AR-01": { "owner": "CHI", "protectedUntil": "2026-07-04T15:30:00Z" },
+    "AR-01": { "owner": "CHI", "protectedUntil": "" },
 
-    "MB-01": { "owner": null, "protectedUntil": "2026-07-05T14:30:00Z" },
-    "MB-02": { "owner": null, "protectedUntil": "2026-07-05T14:30:00Z" },
-    "MB-03": { "owner": null, "protectedUntil": "2026-07-05T14:30:00Z" },
+    "MB-01": { "owner": null, "protectedUntil": "2026-07-05T09:00:00Z" },
+    "MB-02": { "owner": null, "protectedUntil": "2026-07-05T09:00:00Z" },
+    "MB-03": { "owner": null, "protectedUntil": "2026-07-05T09:00:00Z" },
 
-    "RC-01": { "owner": null, "protectedUntil": "2026-07-02T14:30:00Z" },
-    "RC-02": { "owner": null, "protectedUntil": "2026-07-02T14:30:00Z" },
-    "RC-03": { "owner": null, "protectedUntil": "2026-07-02T14:30:00Z" },
-    "RC-04": { "owner": null, "protectedUntil": "2026-07-02T14:30:00Z" },
-    "RC-05": { "owner": null, "protectedUntil": "2026-07-02T14:30:00Z" },
+    "RC-01": { "owner": null, "protectedUntil": "2026-07-02T09:00:00Z" },
+    "RC-02": { "owner": null, "protectedUntil": "2026-07-02T09:00:00Z" },
+    "RC-03": { "owner": null, "protectedUntil": "2026-07-02T09:00:00Z" },
+    "RC-04": { "owner": null, "protectedUntil": "2026-07-02T09:00:00Z" },
+    "RC-05": { "owner": null, "protectedUntil": "2026-07-02T09:00:00Z" },
 
     "MP-01": { "owner": "DDS", "protectedUntil": null },
     "MP-02": { "owner": "PNY", "protectedUntil": null },
