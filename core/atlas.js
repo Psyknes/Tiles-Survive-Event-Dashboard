@@ -47,7 +47,8 @@ async function loadGameData() {
     layoutData = layout;
     specialShortData = specialShort;
     
-
+console.log("specialShort loaded:", specialShort);
+console.log("specialShortData:", specialShortData);
     console.log("Atlas JSON Loaded");
 
     // ----------------------------
