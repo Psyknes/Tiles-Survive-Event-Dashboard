@@ -878,7 +878,7 @@ tileLabel.setAttribute(
 
 tileLabel.setAttribute(
     "fill",
-    "#2C2C2"
+    "#2C2C2C"
 );
 
 tileLabel.setAttribute(
@@ -972,6 +972,12 @@ if (tileId !== "AR-01") {
 
 timerLabel.textContent = timerText;
 
+    const timerX =
+    LABEL.badgeSize + (plateWidth / 2) - 2;
+
+const timerY =
+    LABEL.plateHeight + 10;
+
 timerLabel.setAttribute(
     "x",
     timerX
@@ -1014,11 +1020,7 @@ timerLabel.setAttribute(
     "middle"
 );
 
-    const timerX =
-    LABEL.badgeSize + (plateWidth / 2) - 2;
-
-const timerY =
-    LABEL.plateHeight + 10;
+    
 
 if (timerText) {
 
