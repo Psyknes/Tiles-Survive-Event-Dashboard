@@ -695,9 +695,11 @@ function drawLabel(tileId) {
     );
 
     lvl.setAttribute(
-        "fill",
-        LABEL.textColor
-    );
+    "fill",
+    tileId === "AR-01"
+        ? "#FFD700"   // Gold
+        : LABEL.textColor
+);
 
     lvl.setAttribute(
         "font-size",
