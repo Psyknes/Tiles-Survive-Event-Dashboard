@@ -955,6 +955,11 @@ const timerLabel = document.createElementNS(
     "text"
 );
 
+    const timerGroup = document.createElementNS(
+    "http://www.w3.org/2000/svg",
+    "g"
+);
+
 // Protection timer
 let timerText = "";
 
@@ -983,12 +988,12 @@ const timerY =
 
 timerLabel.setAttribute(
     "x",
-    timerX
+    9
 );
 
 timerLabel.setAttribute(
     "y",
-    timerY
+    0
 );
 
 timerLabel.setAttribute(
@@ -1024,7 +1029,6 @@ timerLabel.setAttribute(
 );
 
     
-
 if (timerText) {
 
     const shield = document.createElementNS(
@@ -1038,8 +1042,11 @@ if (timerText) {
         "#atlasShield"
     );
 
-    shield.setAttribute("width", 7);
-    shield.setAttribute("height", 7);
+    shield.setAttribute("width", 6);
+    shield.setAttribute("height", 6);
+
+    shield.setAttribute("x", 0);
+    shield.setAttribute("y", -5);
 
     shield.setAttribute("fill", "#FFFFFF");
 
@@ -1048,21 +1055,17 @@ if (timerText) {
         `url(#${LABEL.shadowId})`
     );
 
-    // We'll adjust these in a minute
-    shield.setAttribute(
-    "x",
-    shieldX
-);
-
-shield.setAttribute(
-    "y",
-    timerY - 6
-);
-
-    label.appendChild(shield);
+    timerGroup.appendChild(shield);
 }
 
-label.appendChild(timerLabel);
+
+timerGroup.appendChild(timerLabel);
+    timerGroup.setAttribute(
+    "transform",
+    `translate(${LABEL.badgeSize + (plateWidth / 2) - 10}, ${LABEL.plateHeight + 10})`
+);
+
+label.appendChild(timerGroup);
     
     label.appendChild(badge);
 label.appendChild(lvl);
