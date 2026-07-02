@@ -1180,7 +1180,8 @@ timerGroup.appendChild(timerLabel);
 );
 
 label.appendChild(timerGroup);
-    
+
+}    
     label.appendChild(badge);
 label.appendChild(lvl);
 
