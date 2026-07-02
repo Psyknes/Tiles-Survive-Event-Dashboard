@@ -807,6 +807,49 @@ function drawLabel(tileId) {
 
     label.appendChild(plate);
 
+    // --------------------------------------------------
+// Tile ID
+// --------------------------------------------------
+
+const tileLabel = document.createElementNS(
+    "http://www.w3.org/2000/svg",
+    "text"
+);
+
+tileLabel.textContent = tileId;
+
+tileLabel.setAttribute(
+    "x",
+    LABEL.badgeSize + (plateWidth / 2) - 2
+);
+
+tileLabel.setAttribute(
+    "y",
+    -2
+);
+
+tileLabel.setAttribute(
+    "fill",
+    LABEL.textColor
+);
+
+tileLabel.setAttribute(
+    "font-size",
+    7
+);
+
+tileLabel.setAttribute(
+    "font-family",
+    LABEL.fontFamily
+);
+
+tileLabel.setAttribute(
+    "text-anchor",
+    "middle"
+);
+
+label.appendChild(tileLabel);
+
         // --------------------------------------------------
     // Plate Text
     // --------------------------------------------------
@@ -849,6 +892,51 @@ function drawLabel(tileId) {
     );
 
     label.appendChild(plateLabel);
+
+// --------------------------------------------------
+// Protection Timer
+// --------------------------------------------------
+
+const timerLabel = document.createElementNS(
+    "http://www.w3.org/2000/svg",
+    "text"
+);
+
+// Temporary
+timerLabel.textContent = "🛡 12:48";
+
+timerLabel.setAttribute(
+    "x",
+    LABEL.badgeSize + (plateWidth / 2) - 2
+);
+
+timerLabel.setAttribute(
+    "y",
+    LABEL.plateHeight + 10
+);
+
+timerLabel.setAttribute(
+    "fill",
+    LABEL.textColor
+);
+
+timerLabel.setAttribute(
+    "font-size",
+    7
+);
+
+timerLabel.setAttribute(
+    "font-family",
+    LABEL.fontFamily
+);
+
+timerLabel.setAttribute(
+    "text-anchor",
+    "middle"
+);
+
+label.appendChild(timerLabel);
+    
     label.appendChild(badge);
 label.appendChild(lvl);
 
