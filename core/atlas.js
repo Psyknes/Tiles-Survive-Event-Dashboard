@@ -1048,7 +1048,7 @@ if (timerText) {
     // We'll adjust these in a minute
     shield.setAttribute(
     "x",
-    timerX - 0
+    timerX - 18
 );
 
 shield.setAttribute(
