@@ -1048,12 +1048,12 @@ if (timerText) {
     // We'll adjust these in a minute
     shield.setAttribute(
     "x",
-    timerX - 9
+    timerX - 0
 );
 
 shield.setAttribute(
     "y",
-    timerY - 5
+    timerY - 6
 );
 
     label.appendChild(shield);
