@@ -688,7 +688,7 @@ function drawLabel(tileId) {
 
     lvl.setAttribute(
         "y",
-        11
+        10
     );
 
     lvl.setAttribute(
