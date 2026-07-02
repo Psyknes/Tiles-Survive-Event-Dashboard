@@ -1136,18 +1136,41 @@ timerLabel.setAttribute(
     
 if (timerText) {
 
+    if (timerIcon === "battle") {
+
+    const battle = document.createElementNS(
+        "http://www.w3.org/2000/svg",
+        "text"
+    );
+
+    battle.textContent = "⚔";
+
+    battle.setAttribute("x", 0);
+    battle.setAttribute("y", 0);
+
+    battle.setAttribute("font-size", 8);
+    battle.setAttribute("font-family", LABEL.fontFamily);
+    battle.setAttribute("fill", "#FFD700");
+
+    battle.setAttribute(
+        "filter",
+        `url(#${LABEL.shadowId})`
+    );
+
+    timerGroup.appendChild(battle);
+
+} else {
+
     const shield = document.createElementNS(
         "http://www.w3.org/2000/svg",
         "use"
     );
 
     shield.setAttributeNS(
-    "http://www.w3.org/1999/xlink",
-    "href",
-    timerIcon === "battle"
-        ? "#atlasBattle"
-        : "#atlasShield"
-);
+        "http://www.w3.org/1999/xlink",
+        "href",
+        "#atlasShield"
+    );
 
     shield.setAttribute("width", 8);
     shield.setAttribute("height", 8);
@@ -1163,6 +1186,7 @@ if (timerText) {
     );
 
     timerGroup.appendChild(shield);
+
 }
  
 timerGroup.appendChild(timerLabel);
