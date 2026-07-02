@@ -973,10 +973,10 @@ if (tileId !== "AR-01") {
 timerLabel.textContent = timerText;
 
     const shieldX =
-    LABEL.badgeSize + 6;
+    LABEL.badgeSize + LABEL.platePadding;
 
 const timerX =
-    shieldX + 9;
+    shieldX + 10;
 
 const timerY =
     LABEL.plateHeight + 10;
