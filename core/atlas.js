@@ -478,6 +478,25 @@ function createLabelLayer() {
 
     filter.appendChild(shadow);
 
+
+    const shieldSymbol = document.createElementNS(
+    "http://www.w3.org/2000/svg",
+    "symbol"
+);
+
+shieldSymbol.setAttribute("id", "atlasShield");
+shieldSymbol.setAttribute("viewBox", "0 0 24 24");
+
+shieldSymbol.innerHTML = `
+<path fill="currentColor"
+d="M12 2 L19 5 V10
+C19 15 15.5 19 12 22
+C8.5 19 5 15 5 10
+V5 Z"/>
+`;
+
+defs.appendChild(shieldSymbol);
+
     svg.appendChild(defs);
 
     // ----------------------------------
@@ -948,7 +967,7 @@ if (tileId !== "AR-01") {
         formatCountdown(protectedUntil);
 
     if (countdown)
-        timerText = `🛡 ${countdown}`;
+        timerText = countdown;
 }
 
 timerLabel.textContent = timerText;
@@ -988,11 +1007,39 @@ timerLabel.setAttribute(
     `url(#${LABEL.shadowId})`
 );
 
+    
+
 timerLabel.setAttribute(
     "text-anchor",
     "middle"
 );
 
+const shield = document.createElementNS(
+    "http://www.w3.org/2000/svg",
+    "use"
+);
+
+shield.setAttributeNS(
+    "http://www.w3.org/1999/xlink",
+    "href",
+    "#atlasShield"
+);
+
+shield.setAttribute("x", LABEL.badgeSize + 12);
+shield.setAttribute("y", LABEL.plateHeight + 4);
+
+shield.setAttribute("width", 7);
+shield.setAttribute("height", 7);
+
+shield.setAttribute("fill", "#FFFFFF");
+
+shield.setAttribute(
+    "filter",
+    `url(#${LABEL.shadowId})`
+);
+
+label.appendChild(shield);
+    
 label.appendChild(timerLabel);
     
     label.appendChild(badge);
