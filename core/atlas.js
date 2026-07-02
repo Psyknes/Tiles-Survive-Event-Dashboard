@@ -679,7 +679,10 @@ function drawLabel(tileId) {
         "text"
     );
 
-    lvl.textContent = level;
+    lvl.textContent =
+    tileId === "AR-01"
+        ? "★"
+        : level;
 
     lvl.setAttribute(
         "x",
