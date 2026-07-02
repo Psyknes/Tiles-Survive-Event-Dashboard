@@ -970,12 +970,17 @@ timerLabel.setAttribute(
 
 timerLabel.setAttribute(
     "font-size",
-    7
+    7.5
 );
 
 timerLabel.setAttribute(
     "font-family",
     LABEL.fontFamily
+);
+
+    timerLabel.setAttribute(
+    "font-weight",
+    "bold"
 );
 
 timerLabel.setAttribute(
