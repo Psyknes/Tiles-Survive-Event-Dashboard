@@ -9,6 +9,7 @@ let stateData = {};
 let alliancesData = {};
 let seasonData = {};
 let layoutData = {};
+let specialShortData = {};
 
 // ----------------------------
 // Load JSON Files
@@ -21,7 +22,8 @@ async function loadGameData() {
     state,
     alliances,
     season,
-    layout
+    layout,
+    specialShort    
 ] = await Promise.all([
 
         fetch("data/atlas/tiles.json").then(r => r.json()),
@@ -32,7 +34,9 @@ async function loadGameData() {
 
         fetch("data/atlas/season.json").then(r => r.json()),
 
-        fetch("data/atlas/layout.json").then(r => r.json())
+        fetch("data/atlas/layout.json").then(r => r.json()),
+        
+        fetch("data/specialShort.json").then(r => r.json())
 
     ]);
 
@@ -41,6 +45,8 @@ async function loadGameData() {
     alliancesData = alliances;
     seasonData = season;
     layoutData = layout;
+    specialShortData = specialShort;
+    
 
     console.log("Atlas JSON Loaded");
 
@@ -620,6 +626,51 @@ function formatCountdown(targetTime) {
         return `${hours}h ${mins}m`;
 
     return `${mins}m`;
+}
+
+function getArcadiaTimer() {
+
+    const event = specialShortData.events.find(
+        e => e.id === "arcadianConquest"
+    );
+
+    if (!event) return "";
+
+    const now = new Date();
+
+    const start = new Date(event.start);
+    const end = new Date(event.end);
+
+    // First occurrence
+    let currentStart = start;
+    let currentEnd = end;
+
+    // Weekly repeat
+    while (currentEnd < now) {
+
+        currentStart = new Date(
+            currentStart.getTime() + 7 * 24 * 60 * 60 * 1000
+        );
+
+        currentEnd = new Date(
+            currentEnd.getTime() + 7 * 24 * 60 * 60 * 1000
+        );
+    }
+
+    if (now < currentStart) {
+
+        return {
+            icon: "shield",
+            text: formatCountdown(currentStart)
+        };
+
+    }
+
+    return {
+        icon: "swords",
+        text: formatCountdown(currentEnd)
+    };
+
 }
 
 // ======================================================
