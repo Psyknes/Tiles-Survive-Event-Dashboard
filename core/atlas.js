@@ -965,7 +965,7 @@ timerLabel.setAttribute(
 
 timerLabel.setAttribute(
     "fill",
-    LABEL.textColor
+    "#0000ff"
 );
 
 timerLabel.setAttribute(
