@@ -1046,7 +1046,7 @@ if (timerText) {
     shield.setAttribute("height", 8);
 
     shield.setAttribute("x", 0);
-    shield.setAttribute("y", -6);
+    shield.setAttribute("y", -7);
 
     shield.setAttribute("fill", "#FFFFFF");
 
