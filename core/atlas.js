@@ -630,6 +630,22 @@ function formatCountdown(targetTime) {
     return `${mins}m`;
 }
 
+function getTimerColor(targetTime) {
+
+    if (!targetTime)
+        return "#0000ff";
+
+    const diff =
+        new Date(targetTime) - new Date();
+
+    // 1 hour or less
+    if (diff <= 3600000)
+        return "#ff2b2b";
+
+    return "#0000ff";
+
+}
+
 function getArcadiaTimer() {
 
     const event = specialShortData.find(
@@ -682,7 +698,8 @@ if (now > end) {
         icon: "shield",
         countdown: formatCountdown(
             new Date(start).toISOString()
-        )
+        ),
+        target: new Date(start).toISOString()
     };
 
 }
@@ -1029,6 +1046,8 @@ const timerLabel = document.createElementNS(
 let timerText = "";
 let timerIcon = "shield";
 
+let timerTarget = null;    
+
 if (tileId === "AR-01") {
 
     const arcadia = getArcadiaTimer();
@@ -1037,20 +1056,21 @@ if (tileId === "AR-01") {
     if (arcadia) {
 
         timerText = arcadia.countdown;
+timerTarget = arcadia.target;
         timerIcon = arcadia.icon;
 
     }
 
 } else {
 
-    const protectedUntil =
-        tileState?.protectedUntil;
+    timerTarget =
+    tileState?.protectedUntil;
 
-    const countdown =
-        formatCountdown(protectedUntil);
+const countdown =
+    formatCountdown(timerTarget);
 
-    if (countdown)
-        timerText = countdown;
+if (countdown)
+    timerText = countdown;
 }
 
 timerLabel.textContent = timerText;
@@ -1076,7 +1096,7 @@ timerLabel.setAttribute(
 
 timerLabel.setAttribute(
     "fill",
-    "#0000ff"
+    getTimerColor(timerTarget)
 );
 
 timerLabel.setAttribute(
@@ -1270,3 +1290,17 @@ const angle =
 }
 
 startAtlas();
+
+// ----------------------------------------
+// Refresh countdown timers every minute
+// ----------------------------------------
+
+setInterval(() => {
+
+    Object.keys(stateData.tiles).forEach(tileId => {
+
+        drawLabel(tileId);
+
+    });
+
+}, 60000);
