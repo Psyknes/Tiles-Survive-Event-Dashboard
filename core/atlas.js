@@ -689,7 +689,7 @@ console.log({
     }
 
     return {
-        icon: "battle",
+        icon: "shield",
         countdown: formatCountdown(
             new Date(start).toISOString()
         )
