@@ -972,8 +972,11 @@ if (tileId !== "AR-01") {
 
 timerLabel.textContent = timerText;
 
-    const timerX =
-    LABEL.badgeSize + (plateWidth / 2) - 2;
+    const shieldX =
+    LABEL.badgeSize + 6;
+
+const timerX =
+    shieldX + 9;
 
 const timerY =
     LABEL.plateHeight + 10;
@@ -1017,7 +1020,7 @@ timerLabel.setAttribute(
 
 timerLabel.setAttribute(
     "text-anchor",
-    "middle"
+    "start"
 );
 
     
@@ -1048,7 +1051,7 @@ if (timerText) {
     // We'll adjust these in a minute
     shield.setAttribute(
     "x",
-    timerX - 18
+    shieldX
 );
 
 shield.setAttribute(
