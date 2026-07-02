@@ -8,7 +8,7 @@
 
   "tiles": {
 
-    "AR-01": { "owner": "CHI", "protectedUntil": "" },
+    "AR-01": { "owner": "CHI", "protectedUntil": null },
 
     "MB-01": { "owner": null, "protectedUntil": "2026-07-05T09:00:00Z" },
     "MB-02": { "owner": null, "protectedUntil": "2026-07-05T09:00:00Z" },
