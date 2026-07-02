@@ -1062,7 +1062,7 @@ if (timerText) {
 timerGroup.appendChild(timerLabel);
     timerGroup.setAttribute(
     "transform",
-    `translate(${LABEL.badgeSize + (plateWidth / 2) - 10}, ${LABEL.plateHeight + 10})`
+    `translate(${LABEL.badgeSize + (plateWidth / 2) - 18}, ${LABEL.plateHeight + 10})`
 );
 
 label.appendChild(timerGroup);
