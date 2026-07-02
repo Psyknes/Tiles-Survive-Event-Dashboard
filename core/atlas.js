@@ -574,6 +574,35 @@ Object.keys(stateData.tiles)
     
 }
 
+function formatCountdown(targetTime) {
+
+    if (!targetTime) return "";
+
+    const now = new Date();
+
+    const end = new Date(targetTime);
+
+    let diff = Math.floor((end - now) / 1000);
+
+    if (diff <= 0) return "";
+
+    const days = Math.floor(diff / 86400);
+    diff %= 86400;
+
+    const hours = Math.floor(diff / 3600);
+    diff %= 3600;
+
+    const mins = Math.floor(diff / 60);
+
+    if (days > 0)
+        return `${days}d ${hours}h`;
+
+    if (hours > 0)
+        return `${hours}h ${mins}m`;
+
+    return `${mins}m`;
+}
+
 // ======================================================
 // DRAW TEST LABEL
 // ======================================================
@@ -902,8 +931,22 @@ const timerLabel = document.createElementNS(
     "text"
 );
 
-// Temporary
-timerLabel.textContent = "🛡 12:48";
+// Protection timer
+let timerText = "";
+
+if (tileId !== "AR-01") {
+
+    const protectedUntil =
+        tileState?.protectedUntil;
+
+    const countdown =
+        formatCountdown(protectedUntil);
+
+    if (countdown)
+        timerText = `🛡 ${countdown}`;
+}
+
+timerLabel.textContent = timerText;
 
 timerLabel.setAttribute(
     "x",
