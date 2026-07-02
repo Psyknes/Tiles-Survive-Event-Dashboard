@@ -1042,11 +1042,11 @@ if (timerText) {
         "#atlasShield"
     );
 
-    shield.setAttribute("width", 6);
-    shield.setAttribute("height", 6);
+    shield.setAttribute("width", 8);
+    shield.setAttribute("height", 8);
 
     shield.setAttribute("x", 0);
-    shield.setAttribute("y", -5);
+    shield.setAttribute("y", -6);
 
     shield.setAttribute("fill", "#FFFFFF");
 
