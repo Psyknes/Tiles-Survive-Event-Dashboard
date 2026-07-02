@@ -506,11 +506,11 @@ function createLabelLayer() {
 
 const LABEL = {
 
-    badgeSize: 16,
+    badgeSize: 14,
 
-    plateHeight: 14,
+    plateHeight: 12,
 
-    cornerRadius: 4,
+    cornerRadius: 3,
 
     platePadding: 5,
 
@@ -520,7 +520,7 @@ const LABEL = {
 
     fontFamily: "Segoe UI",
 
-    fontSize: 9,
+    fontSize: 8,
 
     tileIdSize: 10,
 
