@@ -864,7 +864,7 @@ tileLabel.setAttribute(
 
 tileLabel.setAttribute(
     "font-size",
-    7
+    7.5
 );
 
 tileLabel.setAttribute(
