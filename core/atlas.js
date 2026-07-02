@@ -665,6 +665,15 @@ function getArcadiaTimer() {
             )
         };
 
+console.log({
+    start: new Date(start),
+    end: new Date(end),
+    now: new Date(),
+    countdown: formatCountdown(
+        new Date(start).toISOString()
+    )
+});
+        
     }
 
     return {
@@ -1021,6 +1030,8 @@ let timerIcon = "shield";
 if (tileId === "AR-01") {
 
     const arcadia = getArcadiaTimer();
+
+    console.log("Arcadia Timer:", arcadia);
 
     if (arcadia) {
 
