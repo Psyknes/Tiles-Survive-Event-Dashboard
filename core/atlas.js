@@ -766,8 +766,8 @@ function drawLabel(tileId) {
 
     plate.setAttribute(
         "y",
-        0
-    );
+           (LABEL.badgeSize - LABEL.plateHeight) / 2
+);
 
     plate.setAttribute(
         "width",
