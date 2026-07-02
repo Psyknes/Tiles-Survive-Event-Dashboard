@@ -1016,8 +1016,20 @@ const timerLabel = document.createElementNS(
 
 // Protection timer
 let timerText = "";
+let timerIcon = "shield";
 
-if (tileId !== "AR-01") {
+if (tileId === "AR-01") {
+
+    const arcadia = getArcadiaTimer();
+
+    if (arcadia) {
+
+        timerText = arcadia.countdown;
+        timerIcon = arcadia.icon;
+
+    }
+
+} else {
 
     const protectedUntil =
         tileState?.protectedUntil;
