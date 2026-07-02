@@ -819,7 +819,7 @@ function drawLabel(tileId) {
 
     plateLabel.setAttribute(
         "y",
-        10
+         10 + ((LABEL.badgeSize - LABEL.plateHeight) / 2)
     );
 
     plateLabel.setAttribute(
