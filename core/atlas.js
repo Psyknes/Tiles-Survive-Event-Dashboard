@@ -983,6 +983,11 @@ timerLabel.setAttribute(
     "bold"
 );
 
+    timerLabel.setAttribute(
+    "filter",
+    `url(#${LABEL.shadowId})`
+);
+
 timerLabel.setAttribute(
     "text-anchor",
     "middle"
