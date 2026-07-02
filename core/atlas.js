@@ -859,7 +859,7 @@ tileLabel.setAttribute(
 
 tileLabel.setAttribute(
     "fill",
-    LABEL.textColor
+    "#222222"
 );
 
 tileLabel.setAttribute(
